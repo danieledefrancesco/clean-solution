@@ -22,6 +22,11 @@ RUN devNull=$(mkdir test-results)
 
 COPY ./CleanSolution.sln ./CleanSolution.sln
 COPY ./scripts ./scripts/
+RUN ls ./scripts
 COPY ./settings ./settings/
+RUN ls ./settings
 COPY ./src ./src/
+RUN ls ./src
 COPY ./test ./test/
+RUN ls ./test
+RUN ls
