@@ -1,0 +1,11 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+*.feature.cs
+tests/functional/target
+es-data/
+mongo-data/
+test-report/
+sonar-report/
