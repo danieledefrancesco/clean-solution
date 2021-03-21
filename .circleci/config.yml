@@ -13,7 +13,11 @@ commands:
       - run:
           name: Run Unit Tests
           command: |
-            ls
+            docker -v
+      - run:
+          name: Run Unit Tests
+          command: |
+            docker-compose -v
       - run:
           name: Run Unit Tests
           command: |
