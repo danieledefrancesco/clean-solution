@@ -5,6 +5,12 @@ defaults: &defaults
     - image: circleci/buildpack-deps:buster-scm
 
 commands:
+  docker_login_command:
+    steps:
+      - run:
+          name: Docker login
+          command: |
+            echo ${DOCKER_PASSWORD} | docker login -u "${DOCKER_LOGIN}" --password-stdin
   unit_tests_command:
     steps:
       - checkout
@@ -26,6 +32,7 @@ jobs:
   unit_tests:
     <<: *defaults
     steps:
+      - docker_login_command
       - unit_tests_command
 
 workflows:
