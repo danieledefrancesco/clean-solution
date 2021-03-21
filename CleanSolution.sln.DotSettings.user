@@ -1,0 +1,32 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">/snap/dotnet-sdk/115/sdk/5.0.200/MSBuild.dll</s:String>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/DotNetCliExePath/@EntryValue">/snap/dotnet-sdk/115/dotnet</s:String>
+	<s:Int64 x:Key="/Default/Environment/Hierarchy/Build/BuildTool/MsbuildVersion/@EntryValue">1048576</s:Int64>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/home/test/.cache/JetBrains/Rider2020.3/resharper-host/temp/Rider/vAny/CoverageData/_CleanSolution.904983384/Snapshot/snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f43b879b_002Da68f_002D440f_002D92ea_002D1770b318cea5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;test&amp;gt;\&amp;lt;Catalog.Domain.Unit.Test&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;And&gt;
+      &lt;TestAncestor&gt;
+        &lt;TestId&gt;NUnit3x::8A4F691F-03AD-427C-AA86-14D90BDE70C8::net5.0::AspNetCore.Examples.ProductService.ValueObjects.ProductNameTest&lt;/TestId&gt;
+        &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.ApplicationServiceCollectionExtensionsTest.Test_AddApplicationServices_AddsProductRepository&lt;/TestId&gt;
+      &lt;/TestAncestor&gt;
+      &lt;Not&gt;
+        &lt;TestAncestor&gt;
+          &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.ApplicationServiceCollectionExtensionsTest.Test_AddApplicationServices_AddsProductRepository&lt;/TestId&gt;
+        &lt;/TestAncestor&gt;
+      &lt;/Not&gt;
+    &lt;/And&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.ApplicationServiceCollectionExtensionsTest.Test_AddApplicationServices_AddsProductRepository&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.RequestHandlers.GetProductByIdRequestHandlerTest.Test_ReturnsNotFound_IfProductDoesntExist&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.RequestHandlers.GetProductByIdRequestHandlerTest.Test_ReturnsProduct_IfProductExists&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.Repositories.ProductRepositoryTest&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::64D6672E-B7F8-43D8-98C4-96E3840D7780::net5.0::AspNetCore.Examples.ProductService.InfrastructureServiceCollectionExtensionsTest.Test_AddMongoDb_SetsConfigurationCorrectly&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::64D6672E-B7F8-43D8-98C4-96E3840D7780::net5.0::AspNetCore.Examples.ProductService.InfrastructureServiceCollectionExtensionsTest&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::8031D881-23BE-4755-9D55-9F654CBD64F4::net5.0::AspNetCore.Examples.ProductService.RequestHandlers.CreateProductCommandRequestHandlerTest.CreateProduct_ReturnsAlreadyExists_IfProductAlreadyExists&lt;/TestId&gt;
+      &lt;TestId&gt;NUnit3x::64D6672E-B7F8-43D8-98C4-96E3840D7780::net5.0::AspNetCore.Examples.ProductService.Persistence.MongoDbPersistenceImplementationTest&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;Project Location="/home/test/RiderProjects/CleanSolution/test/unit/AspNetCore.Examples.ProductService.Application.Test" Presentation="&amp;lt;test&amp;gt;\&amp;lt;unit&amp;gt;\&amp;lt;AspNetCore.Examples.ProductService.Application.Test&amp;gt;" /&gt;
+    &lt;Project Location="/home/test/RiderProjects/CleanSolution/test/unit/AspNetCore.Examples.ProductService.Test" Presentation="&amp;lt;test&amp;gt;\&amp;lt;unit&amp;gt;\&amp;lt;AspNetCore.Examples.ProductService.Test&amp;gt;" /&gt;
+  &lt;/Or&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

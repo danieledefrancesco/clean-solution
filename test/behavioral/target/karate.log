@@ -1,0 +1,2048 @@
+18:16:22.410 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:16:23.414 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:23.517 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:24.237 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b306f744-aac2-42f4-ad0c-e09f9465abad") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:16:24.238 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:25.025 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:25.030 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:25.424 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d457ce2c-13b4-4728-99b4-c434b6b4234d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:16:25.425 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:25.467 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:25.469 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:25.796 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("57a8a55d-e5d7-46c1-90c2-a6ee726fed8d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:16:25.798 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:25.832 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:25.835 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:26.181 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b51b50ac-4d27-4692-9aca-0b0b846dfe3d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:16:26.182 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:26.218 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:26.220 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:26.567 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6cfe8218-dc43-45c3-a544-0a93aa0d184d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:16:26.567 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:26.954 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:26.957 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:27.291 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("eadb5bc2-0f20-44ca-9cb5-e384e23c846d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:16:27.292 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:27.316 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:16:27.700 [main] INFO  com.intuit.karate - Result is db.product.insert({
+  "_id":"a1",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 1"
+  }
+})
+MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("67f25818-7f5b-4a01-b8a5-8f4912619729") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:16:27.701 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:16:27.762 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:27.764 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:28.100 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7e85aa86-6ac9-42cb-b6d0-f9954ca46fc3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:16:28.100 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:16:28.108 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:16:28.488 [main] INFO  com.intuit.karate - Result is db.product.insert({
+  "_id":"a2",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 2"
+  }
+})
+MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e64ce0e6-0327-47f0-b817-555f8b800ab2") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:16:28.489 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:16:28.708 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:16:28.710 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:16:29.092 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("94f5e72a-6e8b-450f-98d7-49e8b044015f") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:16:29.093 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:02.134 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:17:03.013 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:03.097 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:03.542 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("64bf3d2c-9b4d-4da0-ab6d-19a0c405bf82") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:17:03.542 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:03.874 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:03.879 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:04.252 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("62ef2838-4489-4c70-b38c-a60d6012a931") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:17:04.253 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:04.280 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:04.284 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:04.611 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("aa81cbc5-f37e-45f9-ba79-bf9654ee5140") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:17:04.611 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:04.640 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:04.644 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:04.976 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e7fceb8d-d9ae-4ec1-8c7d-32a062758253") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:17:04.977 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:05.003 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:05.006 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:05.339 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("941d4f27-2259-4894-ac18-268c93134f1a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:17:05.340 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:05.363 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:05.366 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:05.700 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0560c668-4e71-42bc-9caf-9983f2448307") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:17:05.700 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:05.724 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:17:06.074 [main] INFO  com.intuit.karate - Result is db.product.insert({
+  "_id":"a1",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 1"
+  }
+})
+MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("985e4c6e-f674-49f3-9c7d-444792122a1f") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:17:06.075 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:17:06.111 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:06.113 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:06.450 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("5e70ca21-f610-47bd-b1a5-39f82f7fce4a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:17:06.450 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:17:06.456 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:17:06.822 [main] INFO  com.intuit.karate - Result is db.product.insert({
+  "_id":"a2",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 2"
+  }
+})
+MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1c638573-162e-40f5-8bdf-b588e45ced3d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:17:06.822 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:17:07.015 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:17:07.018 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:17:07.386 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("41961415-eb94-42dc-a265-e7cb7c30247b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:17:07.386 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:14.408 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:18:15.198 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:15.279 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:15.683 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("5930dde5-4515-4a65-9519-0a9272255061") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:18:15.683 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:15.993 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:15.998 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:16.331 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("df9edc16-3c86-4fd8-9172-61bb8c55e423") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:18:16.331 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:16.354 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:16.357 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:16.693 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("bdcce91b-8a8e-4986-82a3-39bd4f656de7") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:18:16.693 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:16.724 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:16.728 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:17.058 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("dacfa59a-69fd-49a7-ab6e-b6c94d1da895") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:18:17.059 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:17.080 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:17.083 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:17.414 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ae86bd57-d09a-42b6-a0c3-9d69a0a58495") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:18:17.415 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:17.443 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:17.445 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:17.775 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("709fba51-dc6a-424b-8d1f-90a19f9d3cb7") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:18:17.775 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:17.802 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:18:18.163 [main] INFO  com.intuit.karate - Result is db.product.insert({
+  "_id":"a1",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 1"
+  }
+})
+MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c521f73a-139b-4485-b23a-c0dec50d94bb") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:18:18.164 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:18:18.213 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:18.215 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:18.538 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("18aedbfa-eff4-4311-b0e0-5ddc1bd2182b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:18:18.538 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:18.543 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:18:18.939 [main] INFO  com.intuit.karate - Result is db.product.insert({
+  "_id":"a2",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 2"
+  }
+})
+MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b109ed22-03cb-469a-a3b0-5a61dfe2fc87") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:18:18.939 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:18:19.103 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:19.105 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:19.462 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("db010f27-99f8-41b0-8c55-dc779e89e160") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:18:19.462 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:18:19.493 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:18:19.495 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:18:19.819 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("5ac83668-87dc-4982-9b2b-20a30a5767d9") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:18:19.820 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:12.196 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:30:13.054 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:13.133 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:13.560 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("75fa60c8-4b08-48b3-92a4-620ef19c4a08") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:30:13.574 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:13.904 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:13.909 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:14.237 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("447b0feb-0186-43b2-9ade-579f3f5ed72f") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:30:14.237 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:14.260 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:14.262 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:14.607 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ab75e5d7-a443-4af6-a074-e6998834839c") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:30:14.607 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:14.631 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:14.634 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:14.988 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0cc945fd-3e08-4609-8c79-4dec362a5182") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:30:14.988 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:15.012 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:15.016 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:15.354 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("801dec76-7f0e-43e1-b99d-766725d260cf") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:30:15.354 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:15.385 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:15.388 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:15.700 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c9dd907f-21a4-4525-b987-e0376a66fc23") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:30:15.700 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:15.725 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:30:16.070 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("bc2f2d3a-ee44-4ec5-a80d-ae1fc2bbb70f") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:30:16.070 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:30:16.124 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:16.126 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:16.450 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("abcc9252-1bb0-495a-80dc-3dfd8fd9dfe6") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:30:16.451 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:16.457 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:30:16.788 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4ff3b079-4941-43d2-bab9-ea523cf3ca14") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:30:16.788 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:30:17.030 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:17.034 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:17.378 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d0bc0703-ccf5-4a41-8441-61875648b51a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:30:17.379 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:17.436 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:30:17.762 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:30:17.777 [main] ERROR com.intuit.karate - assertion failed: path: $, actual: '1
+', expected: '1', reason: not equal
+18:30:17.790 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:30:17.792 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:30:18.124 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("881294db-a1c7-4a99-89ce-c978d0c6f514") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:30:18.124 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:30:18.138 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:30:18.506 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:30:18.506 [main] ERROR com.intuit.karate - assertion failed: path: $, actual: '1
+', expected: '1', reason: not equal
+18:31:34.733 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:31:35.633 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:35.720 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:36.297 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4910106f-6d19-48c4-9eae-938784355839") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:31:36.319 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:36.674 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:36.681 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:37.010 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e2b05d93-3008-492e-b669-f220c408c0df") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:31:37.010 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:37.049 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:37.057 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:37.394 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7c92e1fe-cccf-4f6a-b08b-3ebe0f4661d9") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:31:37.394 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:37.439 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:37.441 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:37.780 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("27379894-cf43-418a-b2be-e137b88bdd78") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:31:37.780 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:37.805 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:37.808 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:38.168 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b0be91f1-5fd0-454f-8476-dd1c96f9f08a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:31:38.168 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:38.190 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:38.193 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:38.516 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a3b0d165-2f4a-4ae1-94cf-8974c5fd0c34") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:31:38.516 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:38.547 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:31:38.902 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("30e9ef44-518a-4eff-9876-c5f0b4d95978") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:31:38.904 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:31:38.953 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:38.955 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:39.285 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("07bf5b28-6415-49da-a57f-09821ce49561") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:31:39.285 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:39.299 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:31:39.621 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("325f06ba-d49e-44d6-a944-916786448029") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:31:39.622 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:31:39.827 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:39.829 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:40.188 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6ffa2563-8516-456d-a0a8-7ff181589d77") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:31:40.189 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:40.234 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:31:40.572 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:31:40.602 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:31:40.604 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:31:40.930 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2b036c63-4b99-4d9a-a92d-1384f5284e23") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:31:40.930 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:31:40.941 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:31:41.297 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:34:31.699 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:34:32.493 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:32.572 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:33.052 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2daf2c1c-642d-48d8-b324-889e2c8a5c0e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:34:33.076 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:33.386 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:33.391 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:33.785 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8af2021a-5678-4f43-886b-ac401da40271") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:34:33.786 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:33.847 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:33.851 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:34.193 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9745c280-0448-4245-82c9-88bfb472763b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:34:34.193 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:34.217 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:34.220 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:34.532 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d1e21882-421d-4155-8d12-c219e39749f0") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:34:34.532 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:34.562 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:34.565 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:34.924 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("dfa36487-c26c-454c-88d0-b07cb68a6554") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:34:34.924 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:34.954 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:34.956 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:35.302 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e97c026f-7403-4449-8871-63727d9ac0c1") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:34:35.302 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:35.325 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:34:35.666 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b1929807-b877-4518-8faa-5f84344b3773") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:34:35.668 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:34:35.711 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:35.715 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:36.050 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8779f8bd-a208-4fb7-92ff-5b8cf302b881") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:34:36.051 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:36.056 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:34:36.399 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("87f0aadb-32f7-4594-8673-be3d1ffee731") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:34:36.399 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:34:36.583 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:36.586 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:36.939 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ff478f1a-23f1-46f7-8a9e-5f575973a831") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:34:36.940 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:36.983 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:34:37.333 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:34:37.367 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:37.369 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:37.710 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7cc30805-ce8f-4e8c-872c-1558dc4215fc") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:34:37.710 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:37.721 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:34:38.067 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:34:38.079 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:38.080 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:38.405 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("cf9e8b79-ef5b-4c24-ab77-95895c3d444a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:34:38.406 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:38.406 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:34:38.738 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c151589d-3b63-426d-8509-4f9d221681b3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:34:38.739 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:34:38.751 [main] ERROR com.intuit.karate - status code was: 409, expected: 400, response time: 9, url: http://web//products, response: {"message":"The product a1 already exists"}
+18:34:38.766 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:34:38.768 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:34:39.091 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2b44a9b5-c2bd-45b9-b45a-5bb507675919") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:34:39.092 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:34:39.093 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:34:39.433 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("84a6bd3a-696b-43ac-aea2-1104f76fbc05") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:34:39.434 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:34:39.445 [main] ERROR com.intuit.karate - status code was: 409, expected: 400, response time: 7, url: http://web//products, response: {"message":"The product a1 already exists"}
+18:35:11.284 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:35:12.119 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:12.201 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:12.561 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9256078e-b7ee-4a3a-acb8-7a2c92c27452") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:35:12.574 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:12.930 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:12.935 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:13.292 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4a7bde4c-7a71-408b-9058-d7382563e184") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:35:13.292 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:13.314 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:13.317 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:13.665 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("46376d55-2ece-42c8-a052-e393dcb5084e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:35:13.666 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:13.695 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:13.697 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:14.028 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e3170584-4652-4093-97e2-e1b529d813ca") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:35:14.029 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:14.060 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:14.062 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:14.386 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4aff177f-3f88-4898-8b41-7d09e021e010") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:35:14.387 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:14.417 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:14.421 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:14.773 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("251f5e39-7eb5-48fa-8a08-d0d0ffd46937") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:35:14.773 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:14.801 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:35:15.164 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8f0b62fc-a1d8-488c-bce0-c5f42054c3f0") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:35:15.164 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:35:15.201 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:15.204 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:15.549 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e07c6714-b4c0-49ea-81c1-908dd3f51693") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:35:15.549 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:15.562 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:35:15.890 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e8e729a6-ce6f-4027-b2d3-c58087e50706") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:35:15.892 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:35:16.099 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:16.101 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:16.457 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("45be7671-9e69-4a60-8b3a-04ea2dfa7d68") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:35:16.457 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:16.503 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:35:16.832 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:35:16.876 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:16.878 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:17.203 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f898c51e-030d-45d8-a9ed-8514836c304c") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:35:17.204 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:17.221 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:35:17.567 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:35:17.581 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:17.583 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:17.922 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("eed0a2b7-7f60-4162-8499-f272dc1f2d28") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:35:17.923 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:17.925 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:35:18.260 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7d9c68e7-058a-4596-a3e9-8491f18b940e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:35:18.261 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:35:18.277 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:35:18.280 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:35:18.614 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("548358ec-f4b9-412f-8b92-3a416cf89e55") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:35:18.614 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:35:18.615 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:35:18.954 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ff71cbfe-5d33-4fc5-a389-559cbdeff29a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:35:18.954 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:01.787 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:40:02.610 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:02.722 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:03.136 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7fff6ca6-6f5d-4021-9e53-0fd4ba610cb9") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:03.159 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:03.452 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:03.458 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:03.829 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("432161d2-4969-4567-99ac-d49a5c7d3482") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:03.829 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:03.856 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:03.862 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:04.225 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("5797dbf5-74c5-4295-b662-aadd89efe2f7") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:04.228 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:04.251 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:04.255 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:04.593 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("69f063a5-662c-4638-94ab-531500385bcd") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:04.594 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:04.622 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:04.626 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:04.975 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b6555950-de3e-4486-93c1-67cb4f2a05dc") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:04.976 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:04.998 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:05.000 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:05.347 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d3508999-c2b8-4beb-a148-9152766465dc") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:05.347 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:05.377 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:40:05.740 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("98dbda38-3cb8-4591-a80c-087714f13afb") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:05.740 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:05.790 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:05.793 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:06.109 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("80e7a5e9-1dd7-4216-9ba4-c6d4780fb6be") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:06.110 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:06.115 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:40:06.464 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("02c8fd95-0f3d-4f49-bb15-119e070cede2") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:06.464 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:40:06.634 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:06.640 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:06.983 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f9a9e9fb-c2ac-415f-8e07-4deca5184187") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:06.984 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:07.032 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:40:07.368 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:40:07.395 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:07.397 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:07.727 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("83afc7ee-f51c-4e60-8f24-439e71f3fa2a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:07.728 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:07.739 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:40:08.086 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:40:08.112 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:08.113 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:08.455 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("63e57be7-bd26-43f2-9890-87c01d57326e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:08.455 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:08.456 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:40:08.814 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ded13617-a103-44d7-8961-bfcc56a805b2") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:08.815 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:08.836 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:08.838 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:09.209 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("22905c88-d78b-4f1a-b481-6dedc6f64c99") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:09.210 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:09.214 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:40:09.560 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a6e1fee9-fb96-4902-b4bc-5cacfa33a2a9") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:09.560 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:09.590 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:09.593 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:09.970 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9adb560c-4cab-4a29-8f15-c01628a1b755") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:09.970 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:09.983 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:09.985 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:10.354 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("22d2981c-dc45-42cd-970a-8e52c816b0db") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:10.354 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:10.367 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:10.369 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:10.828 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("44a0a1f3-00e2-4a50-81f9-1db6af0e0cae") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:10.829 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:23.013 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:40:23.814 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:23.908 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:24.345 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b1e635b3-6e77-4c96-ae14-2b0d3ad1b22e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:24.368 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:24.668 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:24.673 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:25.125 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7def18ed-794f-46c6-a541-497857236dca") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:25.126 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:25.146 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:25.149 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:25.503 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("74c30cd3-3a9d-46d8-ba0f-16914855c3ab") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:25.503 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:25.538 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:25.540 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:25.884 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("54cd7fdb-6c50-4746-a4a8-1ee60dd8ea71") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:25.884 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:25.936 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:25.938 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:26.268 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2a0d036e-b12f-48cf-8aab-342c3d786fbb") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:26.268 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:26.292 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:26.294 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:26.608 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("711ffb2e-7f6f-40c3-af8a-fd651132c662") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:26.608 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:26.634 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:40:26.984 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("678350cc-7ca0-4bdd-a47b-2d4301860fe3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:26.984 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:27.014 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:27.016 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:27.337 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("82cce658-58d1-4656-837c-ea96d4410eb7") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:27.337 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:27.345 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:40:27.686 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d60600b9-0d2d-4c9b-a451-d6ffd13166f5") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:27.688 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:40:27.888 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:27.890 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:28.230 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("dc642161-055f-4097-b934-edb6b68fe984") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:28.231 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:28.286 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:40:28.618 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:40:28.646 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:28.648 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:28.996 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7b300625-7523-4734-a9eb-784417ad746f") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:29.000 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:29.011 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:40:29.345 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:40:29.358 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:29.359 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:29.694 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("99543c0d-9602-455c-aba9-b7847ebbfeba") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:29.694 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:29.695 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:40:30.042 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a3a20972-c81f-4442-8594-b63215f53693") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:30.043 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:30.058 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:30.060 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:30.429 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1683fd05-f89a-4ae7-84d5-0041256c50c3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:30.429 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:30.430 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:40:30.770 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("725865d7-79c1-484c-b789-78f3e536382a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:40:30.770 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:40:30.793 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:30.795 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:31.128 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("5fb9e0d7-d8e4-4e23-9503-58b37875b23e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:40:31.129 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:31.142 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:31.145 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:31.480 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c8beb6b0-a10b-4d06-bbdc-f93e7045f645") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:31.480 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:31.491 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:31.492 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:31.830 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("920b23f2-1428-48da-ad77-3ae1f5b25a35") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:31.830 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:40:58.524 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:40:59.353 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:40:59.440 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:40:59.827 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("80739f30-d63c-4982-9161-a8cc5e7cfb65") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:40:59.841 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:00.129 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:00.134 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:00.475 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3121ba89-2b3b-4fce-9f29-7cf0a8bc085e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:00.476 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:00.509 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:00.512 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:00.842 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8a682f8c-3ee4-4cad-b6b5-3db4f91f1cce") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:00.844 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:00.865 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:00.867 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:01.213 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("46ec1208-9a28-471b-af56-16049a654a0e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:01.214 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:01.237 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:01.241 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:01.582 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3599f1ba-131d-4eb3-a5a4-d25481029b41") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:01.582 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:01.607 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:01.610 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:01.948 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8a18ff4d-6f34-48b7-91d7-f80999f83e38") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:01.949 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:01.974 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:41:02.320 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a0ca686c-aa30-4e3c-afed-ad53798db5a1") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:41:02.321 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:41:02.350 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:02.352 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:02.697 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("81541edd-ed96-4de6-9345-a844a228a452") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:41:02.697 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:02.719 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:41:03.067 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("907e0936-cf4c-4fd6-a1dc-65f45b15d65a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:41:03.067 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:41:03.264 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:03.267 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:03.613 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1e951d3c-19c4-496b-986b-b2a9e948be9e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:41:03.613 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:03.677 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:41:03.999 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:41:04.032 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:04.034 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:04.374 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0a2857ca-dbbc-4f1d-bce4-1e490aec1361") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:41:04.375 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:04.386 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:41:04.765 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:41:04.783 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:04.785 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:05.137 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6d4cb903-6d9d-4092-a15c-1ada254066f8") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:41:05.139 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:05.140 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:41:05.475 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("21334557-7911-4e67-b5e0-940741613805") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:41:05.475 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:41:05.491 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:05.493 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:05.826 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1324536b-fbfd-4776-aff4-71708f32da63") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:41:05.826 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:05.827 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:41:06.158 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b8e8c435-e9dc-4487-b64d-af00146374c3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:41:06.159 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:41:06.196 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:06.199 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:06.523 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("634351c9-f788-4ada-994a-b757ca3935ca") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:41:06.524 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:06.541 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:06.548 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:06.867 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e3c91d65-1c8b-418a-ae9a-23c48b029551") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:06.867 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:41:06.881 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:41:06.883 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:41:07.210 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f2d73c96-a436-4689-811f-38db69c19714") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:41:07.210 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:22.826 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:43:23.677 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:23.774 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:24.148 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9d5cd79c-b630-4217-831d-3d6c35aa6a41") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:24.162 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:24.462 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:24.467 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:24.827 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1b908d06-b949-4104-98ed-3c4b5f4a6cf4") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:24.828 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:24.881 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:24.884 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:25.213 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("05be68ff-832b-4138-bb61-53d3bf779a56") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:25.214 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:25.237 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:25.240 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:25.565 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("21bdd215-01fa-4b08-9828-87428cdf7f10") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:25.565 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:25.599 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:25.601 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:25.939 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("554aa673-4566-46fa-a83e-9d3cc23c9c5b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:25.940 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:25.966 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:25.967 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:26.299 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("427ef3ca-0204-48cc-9c6a-0802a0b75d08") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:26.299 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:26.327 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:43:26.670 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8ca1f66d-0aaf-4c06-9efe-0a0ece96c7bf") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:43:26.671 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:43:26.707 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:26.709 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:27.036 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7ac236e9-974b-4ad8-b21e-f83df820712d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:27.037 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:27.042 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:43:27.385 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1acafc30-8032-4b7e-b9bb-4e4b3f75b0c3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:43:27.385 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:43:27.537 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:27.539 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:27.894 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("10f0b90f-fe40-43cb-9534-9babff9d9fff") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:27.895 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:27.945 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:43:28.287 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:43:28.314 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:28.316 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:28.647 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("11aaff82-5565-4fa5-a2ba-851ce0c46ebe") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:28.647 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:28.658 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:43:29.028 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:43:29.045 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:29.048 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:29.386 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c7498fc6-7927-4cec-957c-d46ac6d86d3b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:29.386 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:29.387 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:43:29.709 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("89a72be9-193d-464b-9d98-ae1fe437c822") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:43:29.710 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:43:29.725 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:29.728 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:30.047 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e540e9d2-29b8-41c3-bda5-d123712d2c3d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:30.047 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:30.049 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:43:30.389 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8b977a3a-2262-4a24-93ce-c4f3f360e9d4") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:43:30.390 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:43:30.406 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:30.409 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:30.738 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c7ff1d92-fc6c-445e-b241-f098151eb9b2") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:30.739 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:30.755 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:30.757 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:31.078 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f8d0c570-302f-4761-b83c-d7fdab066095") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:31.079 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:31.094 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:31.096 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:31.439 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("16b67e38-568a-4b1c-b0a1-f9d48613fad6") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:31.439 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:31.452 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:31.454 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:31.779 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("01bc44ca-6ba3-441a-a507-423c358dccc0") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:31.779 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:31.809 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:31.816 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:32.154 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1b7e00ec-786e-4401-aa03-2f39b3ce6f99") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:32.154 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:32.169 [main] ERROR com.intuit.karate - status code was: 200, expected: 400, response time: 10, url: http://web//products, response: {"name":"Name","id":"null"}
+18:43:32.184 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:32.186 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:32.534 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("8f2fab82-c135-4c6e-af83-cbce6e239758") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:43:32.534 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:32.549 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:32.551 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:32.986 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("05f0487d-227b-47db-96b5-28a02aaa55a0") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:32.987 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:32.994 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:32.995 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:33.331 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9dffc078-1927-4f5b-ae7f-4b74755f771a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:33.332 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:33.340 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:33.341 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:33.678 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2568b753-52d6-4fe9-be9d-eb8876f6b1f1") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:33.678 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:33.686 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:33.687 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:34.005 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("da1b7a4b-c659-4d79-a6e4-112f9c8a7185") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:34.005 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:34.011 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:34.017 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:34.348 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3981c7fb-d819-478a-8b80-66f5713461a5") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:34.348 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:43:34.359 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:43:34.360 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:43:34.706 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("37594023-28fd-49f7-84e2-9436f4bd4b9a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:43:34.707 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:09.741 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+18:44:10.563 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:10.643 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:11.026 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("fdd64c25-ff88-4e47-a62c-36d14f54127b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:11.036 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:11.328 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:11.334 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:11.662 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9c0fe65f-45e2-483a-904a-00c8f9f294e0") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:11.662 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:11.690 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:11.692 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:12.019 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("bb707d68-dc8f-4157-85d4-677cdc6050eb") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:12.019 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:12.038 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:12.040 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:12.367 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0765346c-a706-4666-9531-4e405f009d51") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:12.368 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:12.395 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:12.397 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:12.741 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("994877a0-92a3-4671-9adb-6ace10d50f67") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:12.741 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:12.777 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:12.779 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:13.116 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("43162a54-8505-4571-a878-a5ae1cf1a978") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:13.116 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:13.140 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:44:13.519 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("bc104c40-9063-4a28-8271-1aed4adb0dcf") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:44:13.520 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:44:13.561 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:13.563 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:13.894 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ab9b97b4-49d9-4873-97cb-47f526c09fbf") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:44:13.894 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:13.900 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+18:44:14.249 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a28604f7-1f71-48de-9dc3-70787b192a4e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:44:14.250 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+18:44:14.435 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:14.438 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:14.793 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("360e86ec-fc91-48fe-be35-f3281ca2d8f2") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:44:14.794 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:14.835 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:44:15.190 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:44:15.214 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:15.216 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:15.559 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("51dec6c8-8c19-4986-8c13-c51e67e51fad") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:44:15.560 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:15.570 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+18:44:15.929 [main] INFO  com.intuit.karate - Result is 1
+ 
+18:44:15.946 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:15.948 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:16.288 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0de9bc90-3d2b-47b6-8aa9-b3df9a55841a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:44:16.288 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:16.289 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:44:16.630 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7d8c309b-a714-491e-8b82-bc0bd48c59d0") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:44:16.631 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:44:16.648 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:16.650 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:16.995 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7c87a909-a270-47aa-9fd1-6bcd3060a448") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:44:16.996 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:16.997 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+18:44:17.333 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a1315e11-861f-4893-948c-f190309df83d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+18:44:17.334 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+18:44:17.360 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:17.363 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:17.690 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("944e118f-b107-45ce-a225-25aed96fd03f") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+18:44:17.691 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:17.706 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:17.707 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:18.040 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("aef83c74-fa83-4e32-990f-dc92ddd239ca") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:18.040 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:18.056 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:18.058 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:18.380 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e54d3117-3487-4b06-a07c-cc7a309b1d27") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:18.381 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:18.395 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:18.397 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:18.728 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("ebb9b3a8-2534-4716-959d-8d3536852528") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:18.729 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:18.745 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:18.747 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:19.089 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e1597fe5-d291-4bd6-843f-a21ea909747c") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:19.090 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:19.115 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:19.117 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:19.449 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("40f6f16a-bb86-4ac0-ba28-d96a92040597") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:19.450 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:19.462 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:19.464 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:19.797 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d5a37f29-943a-4192-b858-a1172de32997") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:19.797 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:19.808 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:19.809 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:20.146 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("59cdb002-104f-408e-b5b7-c4ec50392626") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:20.147 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:20.161 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:20.162 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:20.485 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d7659c22-bde3-4185-b481-5a86a2d707c8") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:20.486 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:20.500 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:20.502 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:20.832 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("59d85222-1218-4c18-9b03-7d111443bee7") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:20.832 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:20.846 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:20.847 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:21.179 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6270158a-203a-4236-8fe1-f8317c35745e") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:21.180 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+18:44:21.194 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+18:44:21.195 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+18:44:21.540 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0d2d7462-b078-42f0-9fc2-3d8019a7ef2b") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+18:44:21.540 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:42.708 [main] INFO  com.intuit.karate.RunnerOptions - found system property 'karate.options': --tags ~@ignore
+10:07:43.932 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:44.056 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:45.356 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("db621fcc-e98a-4d51-9a7f-66d9127765ea") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:45.370 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:46.307 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:46.316 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:46.776 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3e740cc5-5347-4df1-9c96-c72a48ddbc24") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:46.776 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:46.811 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:46.813 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:47.184 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c8af061c-3dd2-49be-85ab-af5a91136da5") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:47.184 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:47.219 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:47.222 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:47.624 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("bb4e3cfb-8bb3-4dd8-ac6f-8c7a3bc21ad8") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:47.626 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:47.665 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:47.668 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:48.040 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("7a4e53c6-ccd6-4b9a-a1e3-f694c42b54e2") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:48.041 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:48.489 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:48.492 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:48.861 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f4007ad4-d2cd-454c-9704-89b03e6969e1") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:48.861 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:48.888 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+10:07:49.319 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("436a9372-b7ff-4c4d-a8ce-83161d63a178") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+10:07:49.319 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+10:07:49.390 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:49.392 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:49.779 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("29a07c3d-7837-4898-8004-8c20506c4fb4") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+10:07:49.785 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:49.791 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a2.json 
+10:07:50.135 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("4a897343-765b-494b-b714-e2f7ca52bfa5") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+10:07:50.135 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a2.json') - [type: NULL, value: null]
+10:07:50.469 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:50.471 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:50.881 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("350161f5-ce76-4743-89e6-3c09602eb1cd") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+10:07:50.881 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:51.023 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+10:07:51.397 [main] INFO  com.intuit.karate - Result is 1
+ 
+10:07:51.427 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:51.430 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:51.785 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("0dffa0e2-fa76-448f-80f4-5612a8612a62") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+10:07:51.785 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:51.805 [main] INFO  com.intuit.karate - Executing command /bin/sh ./get_mongo_db_count_by_id.sh cleansolution_mongodb_1 product-service product b1 
+10:07:52.210 [main] INFO  com.intuit.karate - Result is 1
+ 
+10:07:52.229 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:52.237 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:52.698 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("752b265a-f503-4318-96b5-eba0f067a4b3") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+10:07:52.699 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:52.702 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+10:07:53.163 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e548d04d-2511-4b96-9a95-3761d7a0a964") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+10:07:53.165 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+10:07:53.221 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:53.225 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:53.668 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("457a342b-469a-4fe4-8c9d-773e22df9c21") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+10:07:53.669 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:53.671 [main] INFO  com.intuit.karate - Executing command /bin/sh ./seed_mongo_db.sh cleansolution_mongodb_1 product-service product product_a1.json 
+10:07:54.037 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("89e0f56e-9fc6-42b6-bd54-90dbfd4fad72") }
+MongoDB server version: 4.4.4
+WriteResult({ "nInserted" : 1 })
+ 
+10:07:54.039 [main] WARN  com.intuit.karate - not a js function or feature file: addProduct('product_a1.json') - [type: NULL, value: null]
+10:07:54.094 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:54.105 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:54.485 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c3be0b1e-db41-415e-acbb-efe705461f1d") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 1 })
+ 
+10:07:54.487 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:54.510 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:54.511 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:54.907 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9e8c4b39-3794-465f-bcb2-b8c590e9094a") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:54.908 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:54.932 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:54.935 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:55.356 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("2b3b0709-2fa5-4c7a-8d9c-487c9abdcea9") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:55.356 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:55.378 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:55.380 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:55.757 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("787d33d4-93ea-4fef-b35c-f1f315f55d26") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:55.757 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:55.777 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:55.781 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:56.171 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a33cee00-56d8-47ee-aca7-478885fa93e6") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:56.171 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:56.215 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:56.217 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:56.605 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a8f21f4f-50e7-465c-8550-67fa2c72ef14") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:56.606 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:56.621 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:56.623 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:56.990 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("cb68ee81-fe75-44e1-98f8-12f3e689b9aa") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:56.990 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:57.004 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:57.005 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:57.365 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("477754c8-f0c9-4ceb-927d-d9519e312365") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:57.365 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:57.395 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:57.396 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:57.767 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("324f309e-4b67-4778-b530-edd5d0502994") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:57.768 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:57.782 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:57.783 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:58.158 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("f8546fb0-289b-4983-8658-b196d6835815") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:58.158 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:58.173 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:58.176 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:58.546 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("730a3e74-bf9b-498e-beba-755787b99ca1") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:58.546 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]
+10:07:58.556 [main] INFO  com.intuit.karate - Karate config is:  {"baseUrl":"http://web/"} 
+10:07:58.557 [main] INFO  com.intuit.karate - Executing command docker exec cleansolution_mongodb_1 mongo mongodb://localhost:27017/product-service --eval db.product.remove({}) 
+10:07:58.928 [main] INFO  com.intuit.karate - Result is MongoDB shell version v4.4.4
+connecting to: mongodb://localhost:27017/product-service?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1f015391-683d-4f63-910b-38e3605ede39") }
+MongoDB server version: 4.4.4
+WriteResult({ "nRemoved" : 0 })
+ 
+10:07:58.929 [main] WARN  com.intuit.karate - not a js function or feature file: clearProductDatabase() - [type: NULL, value: null]

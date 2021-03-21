@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>AspNetCore.Examples.ProductService</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AspNetCore.Examples.ProductService.Domain\AspNetCore.Examples.ProductService.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
