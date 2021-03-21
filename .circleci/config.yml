@@ -11,6 +11,20 @@ commands:
           name: Docker login
           command: |
             echo ${DOCKER_PASSWORD} | docker login -u "${DOCKER_LOGIN}" --password-stdin
+  build_sdk_command:
+    steps:
+      - run:
+          name: Build SDK container
+          command: |
+            docker-compose -f docker-compose.sdk.yml build sdk
+      - run:
+          name: List SDK current working directory
+          command: |
+            docker-compose -f docker-compose.sdk.yml run sdk ls
+      - run:
+          name: Echo SDK current working directory
+          command: |
+            docker-compose -f docker-compose.sdk.yml run sdk echo $PWD
   unit_tests_command:
     steps:
       - checkout
@@ -60,6 +74,7 @@ jobs:
     <<: *defaults
     steps:
       - docker_login_command
+      - build_sdk_command
       - unit_tests_command
   behavioral_tests:
     <<: *defaults
@@ -76,14 +91,6 @@ workflows:
   default:
     jobs:
       - unit_tests:
-          filters:
-            tags:
-              only: /.*/
-      - behavioral_tests:
-          filters:
-            tags:
-              only: /.*/
-      - sonar_scan:
           filters:
             tags:
               only: /.*/
