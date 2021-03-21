@@ -24,7 +24,7 @@ commands:
       - run:
           name: Echo SDK current working directory
           command: |
-            docker-compose -f docker-compose.sdk.yml run sdk echo $PWD
+            docker-compose -f docker-compose.sdk.yml run sdk bash -c "echo $PWD"
   unit_tests_command:
     steps:
       - checkout

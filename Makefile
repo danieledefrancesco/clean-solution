@@ -14,13 +14,12 @@ down:
 	ENVIRONMENT=$(env) docker-compose -f docker-compose.web.yml -f docker-compose.kibana.yml -f docker-compose.mongodb.yml down
 	
 unit_test:
-	docker-compose -f docker-compose.sdk.yml build
-	docker-compose -f docker-compose.sdk.yml run sdk sh ./scripts/test_runner.sh unit
+	docker-compose -f docker-compose.sdk.yml run sdk bash -c "bash ./scripts/test_runner.sh unit"
 
 behavioral_test:
 	ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml build
 	ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml up -d --force-recreate
-	ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml run karate make test
+	ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml run karate bash "-c make test"
     ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml down
 	
 build_and_tag_web:
@@ -31,8 +30,8 @@ build_and_tag_sdk:
 	
 run_sonar_scan:
 	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml up -d
-	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml -f docker-compose.sdk.yml run sdk bash ./scripts/wait_sonar_is_green.sh
-	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml -f docker-compose.sdk.yml run sdk bash ./scripts/create_sonar_project.sh
-	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml -f docker-compose.sdk.yml run sdk bash ./scripts/sonar_scan.sh
+	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml -f docker-compose.sdk.yml run sdk bash -c "bash ./scripts/wait_sonar_is_green.sh"
+	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml -f docker-compose.sdk.yml run sdk bash -c "bash ./scripts/create_sonar_project.sh"
+	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml -f docker-compose.sdk.yml run sdk bash -c "bash ./scripts/sonar_scan.sh"
 	docker-compose -f docker-compose.sonarqube.yml -f docker-compose.mongodb-test.yml down
     	
