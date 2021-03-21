@@ -19,7 +19,7 @@ commands:
       - run:
           name: Run Unit Tests
           command: |
-            docker -v
+            systemctl status docker
       - run:
           name: Run Unit Tests
           command: |
