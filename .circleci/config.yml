@@ -7,13 +7,17 @@ defaults: &defaults
 commands:
   unit_tests_command:
     steps:
+      - checkout
       - attach_workspace:
           at: ~/project
       - run:
           name: Run Unit Tests
           command: |
             ls
-  
+      - run:
+          name: Run Unit Tests
+          command: |
+            make unit_test
 jobs:
   unit_tests:
     <<: *defaults
