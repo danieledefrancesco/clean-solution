@@ -18,6 +18,10 @@ commands:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Show current directory
+          command: |
+            ls
+      - run:
           name: Run Unit Tests
           command: |
             make unit_test
@@ -27,6 +31,10 @@ commands:
       - setup_remote_docker
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Show current directory
+          command: |
+            ls
       - run:
           name: Run Behavioral Tests
           command: |
@@ -38,6 +46,10 @@ commands:
       - setup_remote_docker
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Show current directory
+          command: |
+            ls
       - run:
           name: Run Sonarqube Scan
           command: |
