@@ -1,0 +1,31 @@
+version: 2.1
+
+defaults: &defaults
+  docker:
+    - image: circleci/buildpack-deps:buster-scm
+
+commands:
+  unit_tests_command:
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Run Unit Tests
+          command: |
+            make run_unit_tests
+  
+jobs:
+  unit_tests:
+    <<: *defaults
+    steps:
+      - unit_tests_command
+
+workflows:
+  default:
+    jobs:
+      - unit_tests:
+          filters:
+            tags:
+              only: /.*/
