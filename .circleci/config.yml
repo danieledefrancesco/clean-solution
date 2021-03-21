@@ -12,7 +12,7 @@ commands:
       - run:
           name: Run Unit Tests
           command: |
-            make run_unit_tests
+            ls
   
 jobs:
   unit_tests:
