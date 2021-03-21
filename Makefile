@@ -14,7 +14,7 @@ down:
 	ENVIRONMENT=$(env) docker-compose -f docker-compose.web.yml -f docker-compose.kibana.yml -f docker-compose.mongodb.yml down
 	
 unit_test:
-	docker-compose -f docker-compose.sdk.yml run sdk bash -c "bash ./scripts/test_runner.sh unit"
+	echo "bash ./scripts/test_runner.sh unit" | docker-compose -f docker-compose.sdk.yml run sdk bash -s
 
 behavioral_test:
 	ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml build
