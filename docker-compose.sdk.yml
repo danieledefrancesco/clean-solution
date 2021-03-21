@@ -7,7 +7,6 @@ services:
     env_file:
       - ./sdk.env
     volumes:
-      - ./CleanSolution.sln:/app/CleanSolution.sln
       - ./scripts:/app/scripts
       - ./settings:/app/settings
       - ./sonar-report:/app/sonar-report

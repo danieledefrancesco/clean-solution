@@ -21,17 +21,57 @@ commands:
           name: Run Unit Tests
           command: |
             make unit_test
+  behavioral_tests_command:
+    steps:
+      - checkout
+      - setup_remote_docker
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Run Behavioral Tests
+          command: |
+            make behavioral_test
+
+  sonar_scan_command:
+    steps:
+      - checkout
+      - setup_remote_docker
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Run Sonarqube Scan
+          command: |
+            make run_sonar_scan
+            
 jobs:
   unit_tests:
     <<: *defaults
     steps:
       - docker_login_command
       - unit_tests_command
+  behavioral_tests:
+    <<: *defaults
+    steps:
+      - docker_login_command
+      - behavioral_tests_command
+  sonar_scan:
+    <<: *defaults
+    steps:
+      - docker_login_command
+      - sonar_scan_command
 
 workflows:
   default:
     jobs:
       - unit_tests:
+          filters:
+            tags:
+              only: /.*/
+      - behavioral_tests:
+          filters:
+            tags:
+              only: /.*/
+      - sonar_scan:
           filters:
             tags:
               only: /.*/
