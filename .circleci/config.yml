@@ -31,10 +31,7 @@ commands:
       - setup_remote_docker
       - attach_workspace:
           at: ~/project
-      - run:
-          name: Show current directory
-          command: |
-            ls
+      - build_sdk_command
       - run:
           name: Run Unit Tests
           command: |
@@ -74,7 +71,6 @@ jobs:
     <<: *defaults
     steps:
       - docker_login_command
-      - build_sdk_command
       - unit_tests_command
   behavioral_tests:
     <<: *defaults
