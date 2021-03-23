@@ -7,8 +7,8 @@ stages:
     displayName: Build SDK
 
     jobs:
-      - job: Build and Tag SDK image
-        displayName: Build
+      - job: build-sdk
+        displayName: Build and Tag SDK image
         pool:
           vmImage: $(vmImageName)
 
@@ -35,30 +35,29 @@ stages:
   - stage: Build Web
     displayName: Build Web
 
-      jobs:
-        - job: Build and Tag Web image
-          displayName: Build
-          pool:
-            vmImage: $(vmImageName)
+    jobs:
+      - job: build-web
+        displayName: Build and Tag Web image
+        pool:
+          vmImage: $(vmImageName)
 
-          steps:
-            - task: DockerInstaller@0
-              displayName: Install docker
-              inputs:
-                dockerVersion: '17.09.0-ce'
+        steps:
+          - task: DockerInstaller@0
+            displayName: Install docker
+            inputs:
+              dockerVersion: '17.09.0-ce'
 
-            - task: Bash@3
-              displayName: Build and Tag Web Image
-              inputs:
-                targetType: 'inline'
-                script: |
-                  make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
+          - task: Bash@3
+            displayName: Build and Tag Web Image
+            inputs:
+              targetType: 'inline'
+              script: |
+                make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
 
-            - task: Bash@3
-              displayName: Run Behavioral Tests
-              inputs:
-                targetType: 'inline'
-                script: |
-                  make behavioral_tests
-
-          
+          - task: Bash@3
+            displayName: Run Behavioral Tests
+            inputs:
+              targetType: 'inline'
+              script: |
+                make behavioral_tests
+         
