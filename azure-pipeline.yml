@@ -3,7 +3,7 @@ variables:
   workingDirectory: '$(System.DefaultWorkingDirectory)'
   
 stages:
-  - stage: Build SDK
+  - stage: build_sdk
     displayName: Build SDK
 
     jobs:
@@ -32,7 +32,7 @@ stages:
               script: |
                 make run_sonar_scan
                 
-  - stage: Build Web
+  - stage: build_web
     displayName: Build Web
 
     jobs:
