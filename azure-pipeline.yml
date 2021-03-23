@@ -6,10 +6,11 @@ variables:
     value: '$(System.DefaultWorkingDirectory)'
   
 stages:
-  - stage: build_sdk
-    displayName: Build SDK
+  - stage: build_and_tag
+    displayName: Build and Tag SDK and WEB images
 
     jobs:
+ 
       - job: build_sdk
         displayName: Build and Tag SDK image
         pool:
@@ -35,10 +36,6 @@ stages:
               script: |
                 make run_sonar_scan
                 
-  - stage: build_web
-    displayName: Build Web
-
-    jobs:
       - job: build_web
         displayName: Build and Tag Web image
         pool:
@@ -63,4 +60,33 @@ stages:
               targetType: 'inline'
               script: |
                 make behavioral_tests
-         
+
+      - job: publish_artifact
+          displayName: Publish Artifacts
+          pool:
+            vmImage: $(vmImageName)
+          steps:
+            - task: Bash@0
+              displayName: Prepare Artifact Folder
+              inputs:
+                targetType: 'inline'
+                  script: |
+                    mkdir artifact
+                    if [ -d "test-report" ]
+                    then
+                      cp -r test-report artifact
+                    fi
+                    if [ -d "sonar-report" ]
+                    then
+                      cp -r sonar-report artifact
+                    fi
+                    if [ -d  "test/behavioral/target" ]
+                    then
+                      cp -r test/behavioral/target artifact
+                    fi
+            - task: PublishPipelineArtifact@1
+              inputs:
+                targetPath: 'artifact'
+                artifact: 'drop'
+                publishLocation: 'pipeline'
+                    
