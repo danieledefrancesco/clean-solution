@@ -1,6 +1,9 @@
 variables:
-  vmImageName: 'ubuntu-20.04'
-  workingDirectory: '$(System.DefaultWorkingDirectory)'
+  - group: clean-solution
+  - name: 'vmImageName'
+    value: 'ubuntu-20.04'
+  - name: 'workingDirectory'  
+    value: '$(System.DefaultWorkingDirectory)'
   
 stages:
   - stage: build_sdk
