@@ -36,12 +36,6 @@ stages:
               script: |
                 make run_sonar_scan
                 
-      - job: build_web
-        displayName: Build and Tag Web image
-        pool:
-          vmImage: $(vmImageName)
-
-        steps:
           - task: DockerInstaller@0
             displayName: Install docker
             inputs:
@@ -61,13 +55,9 @@ stages:
               script: |
                 make behavioral_test
 
-      - job: publish_artifact
-        displayName: Publish Artifacts
-        pool:
-          vmImage: $(vmImageName)
-        steps:
           - task: Bash@3
             displayName: Prepare Artifact Folder
+            condition: always()
             inputs:
               targetType: 'inline'
               script: |
@@ -87,6 +77,7 @@ stages:
                 fi
                 ls  artifacts
           - task: PublishPipelineArtifact@1
+            condition: always()
             inputs:
               targetPath: 'artifact'
               artifact: 'drop'
