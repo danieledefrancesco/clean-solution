@@ -1,0 +1,9 @@
+version: '2'
+services:
+  web:
+    image: clean-solution-web:latest
+    ports:
+      - 9001:80
+    env_file:
+      - ./web.env
+      - ./web.dev.env

@@ -1,0 +1,14 @@
+version: '2'
+services:
+  sdk:
+    image: ${SDK_IMAGE_NAME}:latest
+    env_file:
+      - ./sdk.env
+    volumes:
+      - ./CleanSolution.sln:/app/CleanSolution.sln
+      - ./scripts:/app/scripts
+      - ./settings:/app/settings
+      - ./sonar-report:/app/sonar-report
+      - ./src:/app/src
+      - ./test:/app/test
+      - ./test-report:/app/test-report

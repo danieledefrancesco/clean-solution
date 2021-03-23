@@ -1,0 +1,64 @@
+variables:
+  vmImageName: 'ubuntu-20.04'
+  workingDirectory: '$(System.DefaultWorkingDirectory)'
+  
+stages:
+  - stage: Build SDK
+    displayName: Build SDK
+
+    jobs:
+      - job: Build and Tag SDK image
+        displayName: Build
+        pool:
+          vmImage: $(vmImageName)
+
+        steps:
+          - task: DockerInstaller@0
+            displayName: Install docker
+            inputs:
+              dockerVersion: '17.09.0-ce'
+
+          - task: Bash@3
+            displayName: Build and Tag SDK Image
+            inputs:
+              targetType: 'inline'
+              script: |
+                make build_and_tag_sdk version=$(Build.BuildNumber) docker_username=$(docker_username)
+
+          - task: Bash@3
+            displayName: Run Unit Tests and Sonar Scan
+            inputs:
+              targetType: 'inline'
+              script: |
+                make run_sonar_scan
+                
+  - stage: Build Web
+      displayName: Build Web
+
+      jobs:
+        - job: Build and Tag Web image
+          displayName: Build
+          pool:
+            vmImage: $(vmImageName)
+
+          steps:
+            - task: DockerInstaller@0
+              displayName: Install docker
+              inputs:
+                dockerVersion: '17.09.0-ce'
+
+            - task: Bash@3
+              displayName: Build and Tag Web Image
+              inputs:
+                targetType: 'inline'
+                script: |
+                  make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
+
+            - task: Bash@3
+              displayName: Run Behavioral Tests
+              inputs:
+                targetType: 'inline'
+                script: |
+                  make behavioral_tests
+
+          
