@@ -70,20 +70,20 @@ stages:
             displayName: Prepare Artifact Folder
             inputs:
               targetType: 'inline'
-                script: |
-                  mkdir artifact
-                  if [ -d "test-report" ]
-                  then
-                    cp -r test-report artifact
-                  fi
-                  if [ -d "sonar-report" ]
-                  then
-                    cp -r sonar-report artifact
-                  fi
-                  if [ -d  "test/behavioral/target" ]
-                  then
-                    cp -r test/behavioral/target artifact
-                  fi
+              script: |
+                mkdir artifact
+                if [ -d "test-report" ]
+                then
+                  cp -r test-report artifact
+                fi
+                if [ -d "sonar-report" ]
+                then
+                  cp -r sonar-report artifact
+                fi
+                if [ -d  "test/behavioral/target" ]
+                then
+                  cp -r test/behavioral/target artifact
+                fi
           - task: PublishPipelineArtifact@1
             inputs:
               targetPath: 'artifact'
