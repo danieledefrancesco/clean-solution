@@ -33,7 +33,7 @@ stages:
                 make run_sonar_scan
                 
   - stage: Build Web
-      displayName: Build Web
+    displayName: Build Web
 
       jobs:
         - job: Build and Tag Web image
