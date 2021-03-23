@@ -7,7 +7,7 @@ stages:
     displayName: Build SDK
 
     jobs:
-      - job: build-sdk
+      - job: build_sdk
         displayName: Build and Tag SDK image
         pool:
           vmImage: $(vmImageName)
@@ -36,7 +36,7 @@ stages:
     displayName: Build Web
 
     jobs:
-      - job: build-web
+      - job: build_web
         displayName: Build and Tag Web image
         pool:
           vmImage: $(vmImageName)
