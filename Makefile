@@ -18,7 +18,7 @@ behavioral_test:
 	WEB_IMAGE_NAME=$(WEB_IMAGE_NAME) ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml build
 	WEB_IMAGE_NAME=$(WEB_IMAGE_NAME) ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml up -d --force-recreate
 	WEB_IMAGE_NAME=$(WEB_IMAGE_NAME) ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml run karate make test
-    WEB_IMAGE_NAME=$(WEB_IMAGE_NAME) ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml down
+	WEB_IMAGE_NAME=$(WEB_IMAGE_NAME) ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml down
 	
 build_and_tag_web:
 	docker build -f web.Dockerfile -t "$(WEB_IMAGE_NAME):latest" -t "$(docker_username)/$(WEB_IMAGE_NAME):$(version)" .
