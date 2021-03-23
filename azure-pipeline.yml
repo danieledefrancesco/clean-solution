@@ -59,7 +59,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                make behavioral_tests
+                make behavioral_test
 
       - job: publish_artifact
         displayName: Publish Artifacts
@@ -72,6 +72,7 @@ stages:
               targetType: 'inline'
               script: |
                 mkdir artifact
+                ls
                 if [ -d "test-report" ]
                 then
                   cp -r test-report artifact
@@ -84,6 +85,7 @@ stages:
                 then
                   cp -r test/behavioral/target artifact
                 fi
+                ls  artifacts
           - task: PublishPipelineArtifact@1
             inputs:
               targetPath: 'artifact'
