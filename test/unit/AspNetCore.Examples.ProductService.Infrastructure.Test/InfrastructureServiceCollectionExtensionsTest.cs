@@ -59,7 +59,7 @@ namespace AspNetCore.Examples.ProductService
         public void AddMongoDb_AddsMongoDbProvider()
         {
             _serviceProvider
-                .GetRequiredService<MongoDbProvider>()
+                .GetRequiredService<IMongoDbProvider>()
                 .Should()
                 .NotBeNull();
         }

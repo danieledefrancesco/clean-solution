@@ -75,7 +75,7 @@ stages:
                 then
                   cp -r test/behavioral/target artifact
                 fi
-                ls  artifacts
+                ls  artifact
           - task: PublishPipelineArtifact@1
             condition: always()
             inputs:

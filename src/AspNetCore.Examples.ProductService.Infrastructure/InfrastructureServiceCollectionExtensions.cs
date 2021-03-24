@@ -17,7 +17,7 @@ namespace AspNetCore.Examples.ProductService
             classMapsRegister.RegisterAllClassMaps();
             return services
                 .Configure<MongoDbConfiguration>(options => configuration.GetSection("MongoDbConfig").Bind(options))
-                .AddScoped<MongoDbProvider>()
+                .AddScoped<IMongoDbProvider,MongoDbProvider>()
                 .AddScoped(typeof(IPersistenceImplementation<,>), typeof(MongoDbPersistenceImplementation<,>));
 
         }
