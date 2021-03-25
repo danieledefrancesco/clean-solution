@@ -5,11 +5,11 @@ variables:
   - name: 'workingDirectory'  
     value: '$(System.DefaultWorkingDirectory)'
   - name: 'reportsFolder'
-  - value: '$(Build.ArtifactStagingDirectory)/reports'
+    value: '$(Build.ArtifactStagingDirectory)/reports'
   - name: 'reportsArchiveFile'
-  - value: '$(Build.ArtifactStagingDirectory)/reports.zip'
+    value: '$(Build.ArtifactStagingDirectory)/reports.zip'
   - name: 'reportsArtifactName'
-  - value: 'reports-$(Build.BuildNumber)'
+    value: 'reports-$(Build.BuildNumber)'
   
   
 stages:
