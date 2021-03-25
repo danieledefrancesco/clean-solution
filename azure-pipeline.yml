@@ -18,8 +18,8 @@ stages:
 
     jobs:
  
-      - job: build_sdk
-        displayName: Build and Tag SDK image
+      - job: build_sdk_web
+        displayName: Build and Tag SDK and WEB images
         pool:
           vmImage: $(vmImageName)
 
@@ -75,7 +75,7 @@ stages:
                 fi
                 if [ -d  "test/behavioral/target/surfire-reports" ]
                 then
-                  cp -r test/behavioral/target/surfire-reports $(reportsFolder)/behavioral-test-report
+                  cp -r test/behavioral/target/surfire-reports $(reportsFolder)
                 fi
                 ls  $(reportsFolder)
 
