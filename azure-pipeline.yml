@@ -73,9 +73,9 @@ stages:
                 then
                   cp -r sonar-report $(reportsFolder)
                 fi
-                if [ -d  "test/behavioral/target/surfire-reports" ]
+                if [ -d  "test/behavioral/target/surefire-reports" ]
                 then
-                  cp -r test/behavioral/target/surfire-reports $(reportsFolder)
+                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)
                 fi
                 ls  $(reportsFolder)
 
