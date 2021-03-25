@@ -4,6 +4,13 @@ variables:
     value: 'ubuntu-20.04'
   - name: 'workingDirectory'  
     value: '$(System.DefaultWorkingDirectory)'
+  - name: 'reportsFolder'
+  - value: '$(Build.ArtifactStagingDirectory)/reports'
+  - name: 'reportsArchiveFile'
+  - value: '$(Build.ArtifactStagingDirectory)/reports.zip'
+  - name: 'reportsArtifactName'
+  - value: 'reports-$(Build.BuildNumber)'
+  
   
 stages:
   - stage: build_and_tag
@@ -35,11 +42,6 @@ stages:
               targetType: 'inline'
               script: |
                 make run_sonar_scan
-                
-          - task: DockerInstaller@0
-            displayName: Install docker
-            inputs:
-              dockerVersion: '17.09.0-ce'
 
           - task: Bash@3
             displayName: Build and Tag Web Image
@@ -61,24 +63,44 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                mkdir artifact
+                mkdir $(reportsFolder)
                 ls
                 if [ -d "test-report" ]
                 then
-                  cp -r test-report artifact
+                  cp -r test-report $(reportsFolder)
                 fi
                 if [ -d "sonar-report" ]
                 then
-                  cp -r sonar-report artifact
+                  cp -r sonar-report $(reportsFolder)
                 fi
-                if [ -d  "test/behavioral/target" ]
+                if [ -d  "test/behavioral/target/surfire-reports" ]
                 then
-                  cp -r test/behavioral/target artifact
+                  cp -r test/behavioral/target/surfire-reports $(reportsFolder)/behavioral-test-report
                 fi
-                ls  artifact
-          - task: PublishPipelineArtifact@1
+                ls  $(reportsFolder)
+
+          - task: ArchiveFiles@2
+            displayName: Archive Reports
             condition: always()
             inputs:
-              targetPath: 'artifact'
-              artifact: 'drop'
+              rootFolderOrFile: '$(reportsFolder)'
+              inlcludeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(reportsArchiveFile)'
+              replaceExistingArchive: true
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish Reports
+            condition: always()
+            inputs:
+              targetPath: '$(reportsArchiveFile)'
+              artifact: 'ci-reports'
               publishLocation: 'pipeline'
+
+          - task: Bash@3
+            displayName: Clear Artifact Staging Directory
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                rm -rf $(Build.ArtifactStagingDirectory)/*
