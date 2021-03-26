@@ -20,8 +20,13 @@ function execDockerCommand(containerName, command) {
     return execCommand(cmd);  
 }
 
+function getMongoDbContainerName()
+{
+    return execCommand("/bin/sh ./get_mongo_container_name.sh");
+}
+
 function execMongoDbCommand(database, mongoDbCommand) {
-    var mongoDbContainerName = java.lang.System.getenv('MONGODB_CONTAINER_NAME');
+    var mongoDbContainerName = getMongoDbContainerName();
     var command = "mongo mongodb://localhost:27017/" + database + " --eval " + mongoDbCommand + "";
     return execDockerCommand(mongoDbContainerName, command);
 }
@@ -32,13 +37,13 @@ function clearProductDatabase() {
 
 function seed(db, table, entityPath)
 {
-    var mongoDbContainerName = java.lang.System.getenv('MONGODB_CONTAINER_NAME');
+    var mongoDbContainerName = getMongoDbContainerName();
     execCommand("/bin/sh ./seed_mongo_db.sh " + mongoDbContainerName + " " + db + " " + table + " " + entityPath);
 }
 
 function getCountById(db, table, id)
 {
-    var mongoDbContainerName = java.lang.System.getenv('MONGODB_CONTAINER_NAME');
+    var mongoDbContainerName = getMongoDbContainerName();
     return execCommand("/bin/sh ./get_mongo_db_count_by_id.sh " + mongoDbContainerName + " " + db + " " + table + " " + id).trim();
 }
 

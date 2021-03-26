@@ -42,3 +42,4 @@ sonar-report/
 es-data/
 mongo-data/
 test/behavioral/target/
+artifact
