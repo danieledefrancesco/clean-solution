@@ -70,7 +70,7 @@ namespace AspNetCore.Examples.ProductService.Entities
             var entity = CreateEntityById(CreateId());
             var otherEntity = CreateEntityById(CreateDifferentId());
             entity
-                .Equals(new object())
+                .Equals(otherEntity)
                 .Should()
                 .BeFalse();
         }
