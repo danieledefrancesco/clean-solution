@@ -19,5 +19,10 @@ namespace AspNetCore.Examples.ProductService.Repositories
                 Name =  ProductName.From("productName")
             };
         }
+
+        protected override string CreateId()
+        {
+            return "id";
+        }
     }
 }

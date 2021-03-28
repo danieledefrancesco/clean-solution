@@ -51,5 +51,40 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                 .BeOfType<AlreadyExistsError>();
 
         }
+        
+        [Test]
+        public void CreateProduct_ReturnsCreateProductCommandResponse_IfProductDoesntExist()
+        {
+            const string productId = "p1";
+            const string productName = "Product 1";
+            var product = new Product()
+            {
+                Id = productId,
+                Name = ProductName.From(productName)
+            };
+
+            _productRepository.Insert(product).Returns(Task.CompletedTask);
+            _productRepository.ClearReceivedCalls();
+            
+            var response = _createProductCommandRequestHandler
+                .Handle(new CreateProductCommandRequest(product), CancellationToken.None)
+                .Result;
+            
+            response
+                .IsT0
+                .Should()
+                .BeTrue();
+
+            response
+                .AsT0
+                .CreatedProduct
+                .Should()
+                .Be(product);
+
+            _productRepository
+                .Received(1)
+                .Insert(product);
+
+        }
     }
 }
