@@ -1,10 +1,10 @@
 if test "$#" -ne 1; then
-    echo "Usage: sh ./test_runner.sh [unit|behavioral]"
+    echo "Usage: sh ./test_runner.sh [unit|integration]"
     exit 1
 fi
-if [ $1 != "unit" ] && [ $1 != "behavioral" ]
+if [ $1 != "unit" ] && [ $1 != "integration" ]
 then
-    echo "The only supported test types are unit and behavioral"
+    echo "The only supported test types are unit and integration"
     exit 1
 fi
 

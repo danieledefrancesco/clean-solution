@@ -12,7 +12,12 @@ down:
 	ENVIRONMENT=$(env) docker-compose -f docker-compose.web.yml -f docker-compose.kibana.yml -f docker-compose.mongodb.yml down
 	
 unit_test:
-	docker-compose -f docker-compose.sdk.yml run sdk sh ./scripts/test_runner.sh unit
+	SDK_IMAGE_NAME=$(SDK_IMAGE_NAME) docker-compose -f docker-compose.sdk.yml run sdk sh ./scripts/test_runner.sh unit
+
+integration_test:
+	docker-compose -f docker-compose.mongodb-test.yml up -d
+	SDK_IMAGE_NAME=$(SDK_IMAGE_NAME) docker-compose -f docker-compose.sdk.yml run sdk sh ./scripts/test_runner.sh integration
+	docker-compose -f docker-compose.mongodb-test.yml down
 
 behavioral_test:
 	WEB_IMAGE_NAME=$(WEB_IMAGE_NAME) ENVIRONMENT=test docker-compose -f docker-compose.web.yml -f docker-compose.karate.yml -f docker-compose.mongodb-test.yml build
