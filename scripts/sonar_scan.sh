@@ -7,7 +7,8 @@ dotnet sonarscanner begin \
   /d:sonar.host.url=${SONAR_URI} \
   /d:sonar.qualitygate.wait=true
 dotnet build
-sh ./scripts/test_runner.sh unit
+dotnet test --settings settings/coverlet.runsettings --logger trx --results-directory "test-results"
+reportgenerator "-reports:test-results/**/*.opencover.xml" "-targetdir:test-report"
 dotnet sonarscanner end /d:sonar.login=${SONAR_LOGIN} /d:sonar.password=${SONAR_PASSWORD}
 exitStatus=$?
 sh ./scripts/get_sonar_report.sh
