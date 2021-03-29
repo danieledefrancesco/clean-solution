@@ -12,7 +12,9 @@ namespace AspNetCore.Examples.ProductService
         {
             Action createHostBuilderAction = () =>
             {
-                Program.CreateHostBuilder(new string[] { });
+                Program
+                    .CreateHostBuilder(new string[] { })
+                    .Build();
             };
             
             createHostBuilderAction
