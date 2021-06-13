@@ -192,6 +192,50 @@ namespace AspNetCore.Examples.ProductService.Persistence
                 .Should()
                 .BeNull();
         }
+        
+        [Test]
+        public void DeleteById_DeletesEntity_IfEntityExists()
+        {
+            var entity = new TestEntity()
+            {
+                Id = "id1"
+            };
+            
+            _collection.InsertOne(entity);
+            
+            _mongoDbPersistenceImplementation
+                .DeleteById(entity.Id)
+                .Wait();
+
+            var deletedEntity = _collection
+                .Find(x => x.Id == entity.Id)
+                .SingleOrDefault();
+
+            deletedEntity
+                .Should()
+                .BeNull();
+        }
+        
+        [Test]
+        public void DeleteById_DoesNothing_IfEntityDoesntExist()
+        {
+            var entity = new TestEntity()
+            {
+                Id = "id1"
+            };
+            
+            _mongoDbPersistenceImplementation
+                .DeleteById(entity.Id)
+                .Wait();
+
+            var deletedEntity = _collection
+                .Find(x => x.Id == entity.Id)
+                .SingleOrDefault();
+
+            deletedEntity
+                .Should()
+                .BeNull();
+        }
 
     }
 }
