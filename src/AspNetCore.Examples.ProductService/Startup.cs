@@ -42,7 +42,7 @@ namespace AspNetCore.Examples.ProductService
             AddErrorHandlers(services);
         }
 
-        private void AddErrorHandlers(IServiceCollection services)
+        private static void AddErrorHandlers(IServiceCollection services)
         {
             services.AddScoped<IErrorHandlerFactory, ErrorHandlerFactory>();
             services.AddScoped<IErrorHandler, NotFoundErrorHandler>();

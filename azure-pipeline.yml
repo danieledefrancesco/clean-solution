@@ -37,25 +37,33 @@ stages:
                 make build_and_tag_sdk version=$(Build.BuildNumber) docker_username=$(docker_username)
 
           - task: Bash@3
-            displayName: Run Unit Tests and Sonar Scan
-            inputs:
-              targetType: 'inline'
-              script: |
-                make run_sonar_scan
+              displayName: Start Sonar Scan
+              inputs:
+                targetType: 'inline'
+                script: |
+                  make start_sonar_scan
 
           - task: Bash@3
-            displayName: Build and Tag Web Image
-            inputs:
-              targetType: 'inline'
-              script: |
-                make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
+              displayName: Run Unit Tests
+              inputs:
+                targetType: 'inline'
+                script: |
+                  make run_unit_tests
+                  
+          - task: Bash@3
+              displayName: Run Behavioral Tests
+              inputs:
+                targetType: 'inline'
+                script: |
+                  make run_behavioral_tests
 
           - task: Bash@3
-            displayName: Run Behavioral Tests
+            displayName: End Sonar Scan and Generate Reports
             inputs:
               targetType: 'inline'
+              condition: always()
               script: |
-                make behavioral_test
+                make end_sonar_scan
 
           - task: Bash@3
             displayName: Prepare Artifact Folder
@@ -104,3 +112,12 @@ stages:
               targetType: 'inline'
               script: |
                 rm -rf $(Build.ArtifactStagingDirectory)/*
+                
+          - task: Bash@3
+              displayName: Build and Tag Web Image
+              inputs:
+                targetType: 'inline'
+                script: |
+                  make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
+
+

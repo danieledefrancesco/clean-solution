@@ -102,8 +102,9 @@ ProjectSection(SolutionItems) = preProject
 	scripts\create_sonar_project.sh = scripts\create_sonar_project.sh
 	scripts\sonar_scan.sh = scripts\sonar_scan.sh
 	scripts\test_runner.sh = scripts\test_runner.sh
-	scripts\get_sonar_report.sh = scripts\get_sonar_report.sh
 	scripts\wait_sonar_is_green.sh = scripts\wait_sonar_is_green.sh
+	scripts\get_sonar_report.sh = scripts\get_sonar_report.sh
+	scripts\start_with_coverlet_watch.sh = scripts\start_with_coverlet_watch.sh
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "settings", "settings", "{CEF58597-48DE-4B6F-A070-E7FA0B245502}"

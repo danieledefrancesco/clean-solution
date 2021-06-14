@@ -32,20 +32,27 @@ namespace AspNetCore.Examples.ProductService
 
         private static void RegisterConcreteTypesForInterfaces(IServiceCollection services, Assembly assembly, IEnumerable<Type> interfaces)
         {
-            foreach (var @interface in interfaces)
+            var interfacesWithConcreteTypes = GetInterfacesWithConcreteTypes(assembly, interfaces);
+            
+            foreach (var @interface in interfacesWithConcreteTypes)
             {
                 RegisterConcreteTypeForInterface(services,assembly,@interface);
             }
         }
 
+        private static IEnumerable<Type> GetInterfacesWithConcreteTypes(Assembly assembly, IEnumerable<Type> interfaces)
+        {
+            return interfaces
+                .Where(@interface => 
+                    assembly.GetExportedTypes()
+                        .Any(@type => 
+                            IsConcreteImplementationOfInterface(@type, @interface)));
+        }
+
         private static void RegisterConcreteTypeForInterface(IServiceCollection services, Assembly assembly, Type @interface)
         {
-            var concreteType = assembly.GetExportedTypes().FirstOrDefault(concreteType =>
-                IsConcreteImplementationOfInterface(concreteType, @interface));
-            if (concreteType == null)
-            {
-                return;
-            }
+            var concreteType = assembly.GetExportedTypes().First(@type =>
+                IsConcreteImplementationOfInterface(type, @interface));
             services.AddScoped(@interface, concreteType);
         }
 

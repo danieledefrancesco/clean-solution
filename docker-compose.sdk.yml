@@ -12,3 +12,4 @@ services:
       - ./src:/app/src
       - ./test:/app/test
       - ./test-report:/app/test-report
+    command:  "tail /dev/null -f"

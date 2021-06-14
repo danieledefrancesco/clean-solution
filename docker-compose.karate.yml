@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: karate.Dockerfile
     environment:
-      - "SUT_BASE_URL=http://web/"
+      - "SUT_BASE_URL=http://sdk:5000"
       - "MONGODB_CONTAINER_NAME=cleansolution_mongodb_1"
     volumes:
       - "./test/behavioral:/usr/src/karate"

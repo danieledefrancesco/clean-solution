@@ -1,0 +1,1 @@
+dotnet test --settings settings/coverlet.runsettings --logger trx --results-directory "test-results"
