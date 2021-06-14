@@ -17,12 +17,10 @@ stages:
     displayName: Build and Tag SDK and WEB images
 
     jobs:
- 
       - job: build_sdk_web
         displayName: Build and Tag SDK and WEB images
         pool:
           vmImage: $(vmImageName)
-
         steps:
           - task: DockerInstaller@0
             displayName: Install docker
@@ -37,25 +35,25 @@ stages:
                 make build_and_tag_sdk version=$(Build.BuildNumber) docker_username=$(docker_username)
 
           - task: Bash@3
-              displayName: Start Sonar Scan
-              inputs:
-                targetType: 'inline'
-                script: |
-                  make start_sonar_scan
+            displayName: Start Sonar Scan
+            inputs:
+              targetType: 'inline'
+              script: |
+                make start_sonar_scan
 
           - task: Bash@3
-              displayName: Run Unit Tests
-              inputs:
-                targetType: 'inline'
-                script: |
-                  make run_unit_tests
+            displayName: Run Unit Tests
+            inputs:
+              targetType: 'inline'
+              script: |
+                make run_unit_tests
                   
           - task: Bash@3
-              displayName: Run Behavioral Tests
-              inputs:
-                targetType: 'inline'
-                script: |
-                  make run_behavioral_tests
+            displayName: Run Behavioral Tests
+            inputs:
+              targetType: 'inline'
+              script: |
+                make run_behavioral_tests
 
           - task: Bash@3
             displayName: End Sonar Scan and Generate Reports
@@ -114,10 +112,8 @@ stages:
                 rm -rf $(Build.ArtifactStagingDirectory)/*
                 
           - task: Bash@3
-              displayName: Build and Tag Web Image
-              inputs:
-                targetType: 'inline'
-                script: |
-                  make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
-
-
+            displayName: Build and Tag Web Image
+            inputs:
+              targetType: 'inline'
+              script: |
+                make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
