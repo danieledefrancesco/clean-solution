@@ -11,7 +11,6 @@ variables:
   - name: 'reportsArtifactName'
     value: 'reports-$(Build.BuildNumber)'
   
-  
 stages:
   - stage: build_and_tag
     displayName: Build and Tag SDK and WEB images
@@ -32,28 +31,28 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                make build_and_tag_sdk version=$(Build.BuildNumber) docker_username=$(docker_username)
+                make build_and_tag_web_dev version=$(Build.BuildNumber) docker_username=$(docker_username)
 
           - task: Bash@3
             displayName: Start Sonar Scan
             inputs:
               targetType: 'inline'
               script: |
-                make start_sonar_scan
+                make start_sonar_scan_ci
 
           - task: Bash@3
             displayName: Run Unit Tests
             inputs:
               targetType: 'inline'
               script: |
-                make run_unit_tests
+                make run_unit_tests_ci
                   
           - task: Bash@3
             displayName: Run Behavioral Tests
             inputs:
               targetType: 'inline'
               script: |
-                make run_behavioral_tests
+                make run_behavioral_tests_ci
 
           - task: Bash@3
             displayName: End Sonar Scan and Generate Reports
@@ -61,7 +60,15 @@ stages:
               targetType: 'inline'
               condition: always()
               script: |
-                make end_sonar_scan
+                make end_sonar_scan_ci
+                
+          - task: Bash@3
+            displayName: Clean up containers
+            inputs:
+              targetType: 'inline'
+              condition: always()
+              script: |
+                make shut_containers_down_ci
 
           - task: Bash@3
             displayName: Prepare Artifact Folder
@@ -116,4 +123,4 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
+                make build_and_tag_web_prod version=$(Build.BuildNumber) docker_username=$(docker_username)

@@ -3,9 +3,9 @@ services:
   karate:
     build:
       context: .
-      dockerfile: karate.Dockerfile
+      dockerfile: Dockerfile.karate
     environment:
-      - "SUT_BASE_URL=http://sdk:5000"
+      - "SUT_BASE_URL=http://web"
       - "MONGODB_CONTAINER_NAME=cleansolution_mongodb_1"
     volumes:
       - "./test/behavioral:/usr/src/karate"

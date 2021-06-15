@@ -1,0 +1,9 @@
+version: '2'
+services:
+  web:
+    image: ${WEB_PROD_IMAGE_NAME}:latest
+    ports:
+      - 8080:80
+    env_file:
+      - ./web.env
+      - ./web.test.env

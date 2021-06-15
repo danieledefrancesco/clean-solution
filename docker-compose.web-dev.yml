@@ -1,9 +1,12 @@
 version: '2'
 services:
-  sdk:
-    image: ${SDK_IMAGE_NAME}:latest
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web.dev
     env_file:
-      - ./sdk.env
+      - ./web.env
+      - ./web.dev.env
     volumes:
       - ./CleanSolution.sln:/app/CleanSolution.sln
       - ./scripts:/app/scripts
@@ -12,4 +15,5 @@ services:
       - ./src:/app/src
       - ./test:/app/test
       - ./test-report:/app/test-report
-    command:  "tail /dev/null -f"
+    ports:
+      - 8080:80

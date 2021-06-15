@@ -3,25 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{99EBF0AF-02B0-4033-B1CA-E002245430F6}"
 ProjectSection(SolutionItems) = preProject
 	docker-compose.kibana.yml = docker-compose.kibana.yml
-	docker-compose.sdk.yml = docker-compose.sdk.yml
-	docker-compose.web.yml = docker-compose.web.yml
+	docker-compose.web-dev-ci.yml = docker-compose.web-dev-ci.yml
 	Makefile = Makefile
 	README.md = README.md
-	sdk.Dockerfile = sdk.Dockerfile
+	Dockerfile.web.dev = Dockerfile.web.dev
 	web.dev.env = web.dev.env
-	web.Dockerfile = web.Dockerfile
+	Dockerfile.web.prod = Dockerfile.web.prod
 	web.env = web.env
 	docker-compose.wiremock.yml = docker-compose.wiremock.yml
-	sdk.env = sdk.env
 	web.test.env = web.test.env
-	karate.Dockerfile = karate.Dockerfile
+	Dockerfile.karate = Dockerfile.karate
 	docker-compose.karate.yml = docker-compose.karate.yml
 	docker-compose.mongodb.yml = docker-compose.mongodb.yml
 	docker-compose.mongodb-test.yml = docker-compose.mongodb-test.yml
-	sonarqube.Dockerfile = sonarqube.Dockerfile
 	docker-compose.sonarqube.yml = docker-compose.sonarqube.yml
 	azure-pipeline.yml = azure-pipeline.yml
 	.gitignore = .gitignore
+	docker-compose.web-dev.yml = docker-compose.web-dev.yml
+	docker-compose.web-prod-ci.yml = docker-compose.web-prod-ci.yml
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{09775295-5A43-44CA-B3A8-205CC068263D}"
@@ -101,10 +100,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{8725
 ProjectSection(SolutionItems) = preProject
 	scripts\create_sonar_project.sh = scripts\create_sonar_project.sh
 	scripts\sonar_scan.sh = scripts\sonar_scan.sh
-	scripts\test_runner.sh = scripts\test_runner.sh
 	scripts\wait_sonar_is_green.sh = scripts\wait_sonar_is_green.sh
 	scripts\get_sonar_report.sh = scripts\get_sonar_report.sh
 	scripts\start_with_coverlet_watch.sh = scripts\start_with_coverlet_watch.sh
+	scripts\begin_sonar_scan.sh = scripts\begin_sonar_scan.sh
+	scripts\end_coverlet.sh = scripts\end_coverlet.sh
+	scripts\end_sonar_scan.sh = scripts\end_sonar_scan.sh
+	scripts\run_unit_tests.sh = scripts\run_unit_tests.sh
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "settings", "settings", "{CEF58597-48DE-4B6F-A070-E7FA0B245502}"

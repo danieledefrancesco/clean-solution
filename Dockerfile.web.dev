@@ -29,3 +29,5 @@ COPY ./src ./src/
 COPY ./test ./test/
 
 RUN dotnet publish src/AspNetCore.Examples.ProductService/AspNetCore.Examples.ProductService.csproj -c Debug -o out
+
+CMD ["dotnet", "watch", "run", "--project", "src/AspNetCore.Examples.ProductService/AspNetCore.Examples.ProductService.csproj", "--urls=http://0.0.0.0:80"]

@@ -22,7 +22,6 @@ namespace AspNetCore.Examples.ProductService.Controllers
         {
             _mapper = mapper;
         }
-        
 
         [HttpGet("{id}")]
         public Task<IActionResult> Get([FromRoute] GetProductDtoRequest getProductDtoRequest)
