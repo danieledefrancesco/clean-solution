@@ -1,28 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{99EBF0AF-02B0-4033-B1CA-E002245430F6}"
-ProjectSection(SolutionItems) = preProject
-	docker-compose.kibana.yml = docker-compose.kibana.yml
-	docker-compose.web-dev-ci.yml = docker-compose.web-dev-ci.yml
-	Makefile = Makefile
-	README.md = README.md
-	Dockerfile.web.dev = Dockerfile.web.dev
-	web.dev.env = web.dev.env
-	Dockerfile.web.prod = Dockerfile.web.prod
-	web.env = web.env
-	docker-compose.wiremock.yml = docker-compose.wiremock.yml
-	web.test.env = web.test.env
-	Dockerfile.karate = Dockerfile.karate
-	docker-compose.karate.yml = docker-compose.karate.yml
-	docker-compose.mongodb.yml = docker-compose.mongodb.yml
-	docker-compose.mongodb-test.yml = docker-compose.mongodb-test.yml
-	docker-compose.sonarqube.yml = docker-compose.sonarqube.yml
-	azure-pipeline.yml = azure-pipeline.yml
-	.gitignore = .gitignore
-	docker-compose.web-dev.yml = docker-compose.web-dev.yml
-	docker-compose.web-prod-ci.yml = docker-compose.web-prod-ci.yml
-EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{09775295-5A43-44CA-B3A8-205CC068263D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService", "src\AspNetCore.Examples.ProductService\AspNetCore.Examples.ProductService.csproj", "{69CCD21F-FF26-475F-83A4-2711446DB1DF}"
@@ -39,18 +16,6 @@ ProjectSection(SolutionItems) = preProject
 	test\behavioral\Makefile = test\behavioral\Makefile
 	test\behavioral\seed_mongo_db.sh = test\behavioral\seed_mongo_db.sh
 	test\behavioral\get_mongo_db_count_by_id.sh = test\behavioral\get_mongo_db_count_by_id.sh
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiremock", "wiremock", "{49A0C3A7-A6A0-4A11-AC8F-72C95E9ABB0E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mappings", "mappings", "{FA7CAEBF-CE0E-43E6-8EFA-9CA34CC7447E}"
-ProjectSection(SolutionItems) = preProject
-	wiremock\mappings\test.json = wiremock\mappings\test.json
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{B1F9CFE7-6BF4-47A2-AE82-ECF39DB0DD27}"
-ProjectSection(SolutionItems) = preProject
-	wiremock\files\test.json = wiremock\files\test.json
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Contracts", "src\AspNetCore.Examples.ProductService.Contracts\AspNetCore.Examples.ProductService.Contracts.csproj", "{E4F0D750-D844-48BD-B5E3-2F47BF55B416}"
@@ -96,24 +61,6 @@ ProjectSection(SolutionItems) = preProject
 	test\behavioral\seeds\product_a2.json = test\behavioral\seeds\product_a2.json
 EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{872516F1-1A75-4664-9CAB-C7ABAB8B6E58}"
-ProjectSection(SolutionItems) = preProject
-	scripts\create_sonar_project.sh = scripts\create_sonar_project.sh
-	scripts\sonar_scan.sh = scripts\sonar_scan.sh
-	scripts\wait_sonar_is_green.sh = scripts\wait_sonar_is_green.sh
-	scripts\get_sonar_report.sh = scripts\get_sonar_report.sh
-	scripts\start_with_coverlet_watch.sh = scripts\start_with_coverlet_watch.sh
-	scripts\begin_sonar_scan.sh = scripts\begin_sonar_scan.sh
-	scripts\end_coverlet.sh = scripts\end_coverlet.sh
-	scripts\end_sonar_scan.sh = scripts\end_sonar_scan.sh
-	scripts\run_unit_tests.sh = scripts\run_unit_tests.sh
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "settings", "settings", "{CEF58597-48DE-4B6F-A070-E7FA0B245502}"
-ProjectSection(SolutionItems) = preProject
-	settings\coverlet.runsettings = settings\coverlet.runsettings
-EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{95F780A0-31AC-4C24-8167-67D830587701}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest", "test\integration\AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest\AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest.csproj", "{7DE79319-534F-46BF-800E-93F38AC6A047}"
@@ -128,8 +75,6 @@ Global
 		{5CC13013-CABD-45B0-A76B-F21942DB78F0} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
 		{97FF427A-9D63-4528-A6FE-4FCA21D3483F} = {5CC13013-CABD-45B0-A76B-F21942DB78F0}
 		{6D3C9310-99E6-45DE-8960-3D89B38DCF3D} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
-		{FA7CAEBF-CE0E-43E6-8EFA-9CA34CC7447E} = {49A0C3A7-A6A0-4A11-AC8F-72C95E9ABB0E}
-		{B1F9CFE7-6BF4-47A2-AE82-ECF39DB0DD27} = {49A0C3A7-A6A0-4A11-AC8F-72C95E9ABB0E}
 		{E4F0D750-D844-48BD-B5E3-2F47BF55B416} = {09775295-5A43-44CA-B3A8-205CC068263D}
 		{591C77CC-AF9D-451C-9935-3D2F3B5E2789} = {6D3C9310-99E6-45DE-8960-3D89B38DCF3D}
 		{6DCBAFAE-A1F4-466C-A162-9778273D0899} = {591C77CC-AF9D-451C-9935-3D2F3B5E2789}
