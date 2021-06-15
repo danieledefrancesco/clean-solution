@@ -1,0 +1,15 @@
+version: "2"
+services:
+  karate:
+    container_name: karate
+    domainname: app
+    image: karate
+    build:
+      context: ../../
+      dockerfile: docker/karate/Dockerfile.karate
+    environment:
+      - "SUT_BASE_URL=http://web"
+      - "MONGODB_CONTAINER_NAME=mongo"
+    volumes:
+      - "../../test/behavioral:/usr/src/karate"
+      - "/var/run/docker.sock:/var/run/docker.sock"

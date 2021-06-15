@@ -1,10 +1,10 @@
 version: '2'
 services:
   mongodb:
+    domainname: app
+    container_name: mongodb
     image: mongo
     ports:
-      - "27017:27017"
-    volumes:
-      - ./mongo-data:/data/db
+      - "27017-27019:27017-27019"
     environment:
       - MONGO_INITDB_DATABASE=product-service
