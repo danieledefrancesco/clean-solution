@@ -27,7 +27,7 @@ stages:
               dockerVersion: '17.09.0-ce'
 
           - task: Bash@3
-            displayName: Build and Tag SDK Image
+            displayName: Build and Tag Dev Image
             inputs:
               targetType: 'inline'
               script: |
@@ -56,14 +56,15 @@ stages:
 
           - task: Bash@3
             displayName: End Sonar Scan and Generate Reports
+            condition: always()
             inputs:
               targetType: 'inline'
-              condition: always()
               script: |
                 make end_sonar_scan_ci
                 
           - task: Bash@3
             displayName: Clean up containers
+            condition: always()
             inputs:
               targetType: 'inline'
               condition: always()
@@ -129,7 +130,7 @@ stages:
               dockerVersion: '17.09.0-ce'
 
           - task: Bash@3
-            displayName: Build and Tag SDK Image
+            displayName: Build and Tag Prod Image
             inputs:
               targetType: 'inline'
               script: |
