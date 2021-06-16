@@ -1,0 +1,22 @@
+version: '2'
+services:
+  web:
+    container_name: web
+    domainname: app
+    build:
+      context: ../../
+      dockerfile: docker/web/Dockerfile.web.dev
+    image: ${WEB_DEV_IMAGE_NAME}
+    env_file:
+      - ../../env/web.env
+      - ../../env/web.dev.env
+    volumes:
+      - ../../CleanSolution.sln:/app/CleanSolution.sln
+      - ../../scripts:/app/scripts
+      - ../../settings:/app/settings
+      - ../../sonar-report:/app/sonar-report
+      - ../../src:/app/src
+      - ../../test:/app/test
+      - ../../test-report:/app/test-report
+    ports:
+      - 8080:80

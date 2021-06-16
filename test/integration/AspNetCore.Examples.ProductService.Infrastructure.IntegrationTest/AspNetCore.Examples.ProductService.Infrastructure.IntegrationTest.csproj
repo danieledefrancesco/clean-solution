@@ -30,6 +30,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\src\AspNetCore.Examples.ProductService.Infrastructure.Abstractions\AspNetCore.Examples.ProductService.Infrastructure.Abstractions.csproj" />
       <ProjectReference Include="..\..\..\src\AspNetCore.Examples.ProductService.Infrastructure\AspNetCore.Examples.ProductService.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\..\src\AspNetCore.Examples.ProductService\AspNetCore.Examples.ProductService.csproj" />
     </ItemGroup>
 
 </Project>

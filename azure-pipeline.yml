@@ -11,18 +11,15 @@ variables:
   - name: 'reportsArtifactName'
     value: 'reports-$(Build.BuildNumber)'
   
-  
 stages:
   - stage: build_and_tag
-    displayName: Build and Tag SDK and WEB images
+    displayName: Build and Tag Dev and Prod images
 
     jobs:
- 
-      - job: build_sdk_web
-        displayName: Build and Tag SDK and WEB images
+      - job: build_dev
+        displayName: Build and Tag Dev Image
         pool:
           vmImage: $(vmImageName)
-
         steps:
           - task: DockerInstaller@0
             displayName: Install docker
@@ -30,32 +27,49 @@ stages:
               dockerVersion: '17.09.0-ce'
 
           - task: Bash@3
-            displayName: Build and Tag SDK Image
+            displayName: Build and Tag Dev Image
             inputs:
               targetType: 'inline'
               script: |
-                make build_and_tag_sdk version=$(Build.BuildNumber) docker_username=$(docker_username)
+                make build_and_tag_web_dev version=$(Build.BuildNumber) docker_username=$(docker_username)
 
           - task: Bash@3
-            displayName: Run Unit Tests and Sonar Scan
+            displayName: Start Sonar Scan
             inputs:
               targetType: 'inline'
               script: |
-                make run_sonar_scan
+                make start_sonar_scan_ci
 
           - task: Bash@3
-            displayName: Build and Tag Web Image
+            displayName: Run Unit Tests
             inputs:
               targetType: 'inline'
               script: |
-                make build_and_tag_web version=$(Build.BuildNumber) docker_username=$(docker_username)
-
+                make run_unit_tests_ci
+                  
           - task: Bash@3
             displayName: Run Behavioral Tests
             inputs:
               targetType: 'inline'
               script: |
-                make behavioral_test
+                make run_behavioral_tests_ci
+
+          - task: Bash@3
+            displayName: End Sonar Scan and Generate Reports
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                make end_sonar_scan_ci
+                
+          - task: Bash@3
+            displayName: Clean up containers
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              condition: always()
+              script: |
+                make shut_containers_down_ci
 
           - task: Bash@3
             displayName: Prepare Artifact Folder
@@ -63,38 +77,101 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                mkdir $(reportsFolder)
+                mkdir $(reportsFolder)-dev
                 ls
                 if [ -d "test-report" ]
                 then
-                  cp -r test-report $(reportsFolder)
+                  cp -r test-report $(reportsFolder)-dev
                 fi
                 if [ -d "sonar-report" ]
                 then
-                  cp -r sonar-report $(reportsFolder)
+                  cp -r sonar-report $(reportsFolder)-dev
                 fi
                 if [ -d  "test/behavioral/target/surefire-reports" ]
                 then
-                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)
+                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)-dev
                 fi
-                ls  $(reportsFolder)
+                ls  $(reportsFolder)-dev
 
           - task: ArchiveFiles@2
             displayName: Archive Reports
             condition: always()
             inputs:
-              rootFolderOrFile: '$(reportsFolder)'
+              rootFolderOrFile: '$(reportsFolder)-dev'
               inlcludeRootFolder: false
               archiveType: 'zip'
-              archiveFile: '$(reportsArchiveFile)'
+              archiveFile: '$(reportsArchiveFile)-dev'
               replaceExistingArchive: true
 
           - task: PublishPipelineArtifact@1
             displayName: Publish Reports
             condition: always()
             inputs:
-              targetPath: '$(reportsArchiveFile)'
-              artifact: 'ci-reports'
+              targetPath: '$(reportsArchiveFile)-dev'
+              artifact: 'ci-reports-dev'
+              publishLocation: 'pipeline'
+
+          - task: Bash@3
+            displayName: Clear Artifact Staging Directory
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                rm -rf $(Build.ArtifactStagingDirectory)/*
+                
+      - job: build_prod
+        displayName: Build and Tag Prod image
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - task: DockerInstaller@0
+            displayName: Install docker
+            inputs:
+              dockerVersion: '17.09.0-ce'
+
+          - task: Bash@3
+            displayName: Build and Tag Prod Image
+            inputs:
+              targetType: 'inline'
+              script: |
+                make build_and_tag_web_prod version=$(Build.BuildNumber) docker_username=$(docker_username)
+                
+          - task: Bash@3
+            displayName: Run Behavioral Tests
+            inputs:
+              targetType: 'inline'
+              script: |
+                make run_behavioral_tests_prod_ci
+                
+          - task: Bash@3
+            displayName: Prepare Artifact Folder
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                mkdir $(reportsFolder)-prod
+                if [ -d  "test/behavioral/target/surefire-reports" ]
+                then
+                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)-prod
+                fi
+                ls  $(reportsFolder)-prod
+                
+          - task: ArchiveFiles@2
+            displayName: Archive Reports
+            condition: always()
+            inputs:
+              rootFolderOrFile: '$(reportsFolder)-prod'
+              inlcludeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(reportsArchiveFile)-prod'
+              replaceExistingArchive: true
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish Reports
+            condition: always()
+            inputs:
+              targetPath: '$(reportsArchiveFile)-prod'
+              artifact: 'ci-reports-prod'
               publishLocation: 'pipeline'
 
           - task: Bash@3
