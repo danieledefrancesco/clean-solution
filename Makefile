@@ -69,6 +69,3 @@ run_behavioral_tests_ci:
 
 run_behavioral_tests_prod_ci:
 	$(CI_PROD_DOCKER_COMPOSE_COMMAND) run karate make test
-	
-abc:
-	$(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run karate bash

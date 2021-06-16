@@ -13,10 +13,10 @@ variables:
   
 stages:
   - stage: build_and_tag
-    displayName: Build and Tag SDK and WEB images
+    displayName: Build and Tag Dev and Prod images
 
     jobs:
-      - job: build_sdk_web
+      - job: build_dev
         displayName: Build and Tag SDK and WEB images
         pool:
           vmImage: $(vmImageName)
@@ -76,38 +76,38 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                mkdir $(reportsFolder)
+                mkdir $(reportsFolder)-dev
                 ls
                 if [ -d "test-report" ]
                 then
-                  cp -r test-report $(reportsFolder)
+                  cp -r test-report $(reportsFolder)-dev
                 fi
                 if [ -d "sonar-report" ]
                 then
-                  cp -r sonar-report $(reportsFolder)
+                  cp -r sonar-report $(reportsFolder)-dev
                 fi
                 if [ -d  "test/behavioral/target/surefire-reports" ]
                 then
-                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)
+                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)-dev
                 fi
-                ls  $(reportsFolder)
+                ls  $(reportsFolder)-dev
 
           - task: ArchiveFiles@2
             displayName: Archive Reports
             condition: always()
             inputs:
-              rootFolderOrFile: '$(reportsFolder)'
+              rootFolderOrFile: '$(reportsFolder)-dev'
               inlcludeRootFolder: false
               archiveType: 'zip'
-              archiveFile: '$(reportsArchiveFile)'
+              archiveFile: '$(reportsArchiveFile)-dev'
               replaceExistingArchive: true
 
           - task: PublishPipelineArtifact@1
             displayName: Publish Reports
             condition: always()
             inputs:
-              targetPath: '$(reportsArchiveFile)'
-              artifact: 'ci-reports'
+              targetPath: '$(reportsArchiveFile)-dev'
+              artifact: 'ci-reports-dev'
               publishLocation: 'pipeline'
 
           - task: Bash@3
@@ -117,10 +117,71 @@ stages:
               targetType: 'inline'
               script: |
                 rm -rf $(Build.ArtifactStagingDirectory)/*
+                rm -rf test-report
+                rm -rf sonar-report
+                rm -rf test/behavioral/target/surefire-reports
                 
+                
+      - job: build_dev
+        displayName: Build and Tag SDK and WEB images
+        pool:
+          vmImage: $(vmImageName)
+        steps:
+          - task: DockerInstaller@0
+            displayName: Install docker
+            inputs:
+              dockerVersion: '17.09.0-ce'
+
           - task: Bash@3
-            displayName: Build and Tag Web Image
+            displayName: Build and Tag SDK Image
             inputs:
               targetType: 'inline'
               script: |
                 make build_and_tag_web_prod version=$(Build.BuildNumber) docker_username=$(docker_username)
+                
+          - task: Bash@3
+            displayName: Run Behavioral Tests
+            inputs:
+              targetType: 'inline'
+              script: |
+                make run_behavioral_tests_prod_ci
+                
+          - task: Bash@3
+            displayName: Prepare Artifact Folder
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                mkdir $(reportsFolder)-prod
+                if [ -d  "test/behavioral/target/surefire-reports" ]
+                then
+                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)-prod
+                fi
+                ls  $(reportsFolder)-prod
+                
+          - task: ArchiveFiles@2
+            displayName: Archive Reports
+            condition: always()
+            inputs:
+              rootFolderOrFile: '$(reportsFolder)-prod'
+              inlcludeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(reportsArchiveFile)-prod'
+              replaceExistingArchive: true
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish Reports
+            condition: always()
+            inputs:
+              targetPath: '$(reportsArchiveFile)-prod'
+              artifact: 'ci-reports-prod'
+              publishLocation: 'pipeline'
+
+          - task: Bash@3
+            displayName: Clear Artifact Staging Directory
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                rm -rf $(Build.ArtifactStagingDirectory)/*
+                rm -rf test/behavioral/target/surefire-reports
