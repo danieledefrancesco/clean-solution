@@ -17,7 +17,7 @@ stages:
 
     jobs:
       - job: build_dev
-        displayName: Build and Tag SDK and WEB images
+        displayName: Build and Tag Dev Image
         pool:
           vmImage: $(vmImageName)
         steps:
@@ -117,13 +117,9 @@ stages:
               targetType: 'inline'
               script: |
                 rm -rf $(Build.ArtifactStagingDirectory)/*
-                rm -rf test-report
-                rm -rf sonar-report
-                rm -rf test/behavioral/target/surefire-reports
-                
                 
       - job: build_prod
-        displayName: Build and Tag SDK and WEB images
+        displayName: Build and Tag Prod image
         pool:
           vmImage: $(vmImageName)
         steps:
@@ -184,4 +180,3 @@ stages:
               targetType: 'inline'
               script: |
                 rm -rf $(Build.ArtifactStagingDirectory)/*
-                rm -rf test/behavioral/target/surefire-reports

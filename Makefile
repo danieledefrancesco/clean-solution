@@ -60,12 +60,12 @@ run_behavioral_tests_dev:
 	$(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) down
 	
 run_unit_tests_ci:
-	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web sh ./scripts/run_unit_tests.sh
+	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash -c "sh ./scripts/run_unit_tests.sh"
 	
 run_behavioral_tests_ci:
 	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T -d web bash -c "sh ./scripts/start_with_coverlet_watch.sh > coverlet.log"
 	$(CI_DEV_DOCKER_COMPOSE_COMMAND) run karate make test
-	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/end_coverlet.sh
+	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash -c "sh ./scripts/end_coverlet.sh"
 
 run_behavioral_tests_prod_ci:
 	$(CI_PROD_DOCKER_COMPOSE_COMMAND) run karate make test
