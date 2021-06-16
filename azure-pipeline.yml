@@ -122,7 +122,7 @@ stages:
                 rm -rf test/behavioral/target/surefire-reports
                 
                 
-      - job: build_dev
+      - job: build_prod
         displayName: Build and Tag SDK and WEB images
         pool:
           vmImage: $(vmImageName)
