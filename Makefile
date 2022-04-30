@@ -52,9 +52,9 @@ run_unit_tests_ci:
 	
 run_behavioral_tests_ci:
 	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T -d web bash -c "sh ./scripts/start_with_coverlet_watch.sh > coverlet.log"
-	$(CI_DEV_DOCKER_COMPOSE_COMMAND) run karate make test
+	$(CI_DEV_DOCKER_COMPOSE_COMMAND) run karate bash -c "make test"
 	$(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash -c "sh ./scripts/end_coverlet.sh"
 
 run_behavioral_tests_prod_ci:
 	$(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d
-	$(CI_PROD_DOCKER_COMPOSE_COMMAND) run karate make test
+	$(CI_PROD_DOCKER_COMPOSE_COMMAND) run karate bash -c "make test"
