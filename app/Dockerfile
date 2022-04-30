@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS prepare-build-env
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS prepare-build-env
 
 #Downloading dependencies
 RUN apt-get update
@@ -32,7 +32,10 @@ COPY ./test ./test/
 ARG PROJECT_PATH
 RUN dotnet publish ${PROJECT_PATH} -c Debug -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS prod
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim AS prepare-prod-env
+RUN apt-get update && apt-get -y install curl
+
+FROM prepare-prod-env AS prod
 WORKDIR /web
 COPY --from=build-env /app/out .
 COPY scripts/run_prod.sh .
@@ -42,6 +45,6 @@ CMD ["sh", "./run_prod.sh"]
 
 FROM build-env as dev
 ARG PROJECT_PATH
-ENV PROJECT_PATH_ENV=$PROJECT_PATH
+ENV PROJECT_PATH=$PROJECT_PATH
 CMD ["sh", "./scripts/run_dev.sh"]
 

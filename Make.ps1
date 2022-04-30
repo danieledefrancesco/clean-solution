@@ -40,5 +40,17 @@ switch ($args[0])
         docker-compose --env-file .env run web bash -c "dotnet test"
         docker-compose --env-file .env down
         break
-    }     
+    }
+    "build_prod" {
+        $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
+        $env:WEB_ENV="prod"
+        docker-compose --env-file .env build web
+        break
+    }
+    "build_dev" {
+        $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
+        $env:WEB_ENV="dev"
+        docker-compose --env-file .env build web
+        break
+    }          
 }
