@@ -1,3 +1,6 @@
+test-report
+sonar-report
+
 *.swp
 *.*~
 project.lock.json
@@ -36,6 +39,3 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
-
-test/behavioral/target/
-artifact
