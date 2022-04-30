@@ -11,10 +11,10 @@ CI_PROD_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_PROD_IMAGE_NAME) WEB_ENV=pro
 
 
 build_and_tag_web_prod:
-	docker build -f ${WEB_PROD_DOCKER_FILE} -t "$(WEB_PROD_IMAGE_NAME):latest" -t "$(docker_username)/$(WEB_PROD_IMAGE_NAME):$(version)" .
+	docker build -t "$(WEB_PROD_IMAGE_NAME):latest" -t "$(docker_username)/$(WEB_PROD_IMAGE_NAME):$(version)" app
 
 build_and_tag_web_dev:
-	docker build -f ${WEB_DEV_DOCKER_FILE} -t "$(WEB_DEV_IMAGE_NAME):latest" -t "$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" .
+	docker build -t "$(WEB_DEV_IMAGE_NAME):latest" -t "$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" app
 
 start_sonar_scan_ci:	
 	$(CI_DEV_DOCKER_COMPOSE_COMMAND) up -d
