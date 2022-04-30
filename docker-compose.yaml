@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  web:
+    container_name: web
+    domainname: app
+    build:
+      context: app
+      target: ${WEB_ENV}
+    image: ${WEB_IMAGE_NAME}
+    env_file:
+      - ./app/env/web.env
+      - ./app/env/web.dev.env
+    volumes:
+      - ./app/CleanSolution.sln:/app/CleanSolution.sln
+      - ./app/scripts:/app/scripts
+      - ./app/settings:/app/settings
+      - ./app/sonar-report:/app/sonar-report
+      - ./app/src:/app/src
+      - ./app/test:/app/test
+      - ./app/test-report:/app/test-report
+    ports:
+      - 8080:80
+    depends_on:
+      - wiremock
+      - mongodb
+  wiremock:
+    domainname: app
+    container_name: wiremock
+    build:
+      context: wiremock
+    ports:
+      - 8080:8080
+      - 8443:8443
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings
+      - ./wiremock/files:/home/wiremock/__files
+  mongodb:
+    domainname: app
+    container_name: mongodb
+    build:
+      context: mongo
+    ports:
+      - "27017-27019:27017-27019"
+    environment:
+      - MONGO_INITDB_DATABASE=product-service
