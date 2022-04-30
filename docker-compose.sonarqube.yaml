@@ -10,6 +10,12 @@ services:
       - "SONAR_PASSWORD=admin"
       - "SONAR_URI=http://sonarqube:9000"
     command: "tail /dev/null -f"
+    healthcheck:
+      test: exit 0
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
   sonarqube:
     domainname: app
     container_name: sonarqube
