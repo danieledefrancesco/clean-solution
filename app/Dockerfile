@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS prepare-build-env
 
 #Downloading dependencies
-RUN mkdir /usr/share/man/man1/ > /dev/null
+RUN catch=$(mkdir /usr/share/man/man1/ 2>&1)
 RUN apt-get update
 RUN apt-get -y install default-jre
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
