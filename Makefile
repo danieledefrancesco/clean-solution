@@ -4,10 +4,10 @@ DOCKER_IMAGE_PREFIX=clean-solution
 WEB_DEV_IMAGE_NAME=${DOCKER_IMAGE_PREFIX}${WEB_DEV_SUFFIX}
 WEB_PROD_IMAGE_NAME=${DOCKER_IMAGE_PREFIX}${WEB_PROD_SUFFIX}
 
-LOCAL_DEV_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose
-LOCAL_TEST_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml
-CI_DEV_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml
-CI_PROD_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_PROD_IMAGE_NAME) WEB_ENV=prod docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml
+LOCAL_DEV_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose --env-file ./.env
+LOCAL_TEST_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml --env-file ./.env
+CI_DEV_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file ./.env
+CI_PROD_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_PROD_IMAGE_NAME) WEB_ENV=prod docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml --env-file ./.env
 
 
 build_and_tag_web_prod:

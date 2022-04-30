@@ -6,8 +6,10 @@ variables:
     value: '$(System.DefaultWorkingDirectory)'
   - name: 'reportsFolder'
     value: '$(Build.ArtifactStagingDirectory)/reports'
-  - name: 'reportsArchiveFile'
-    value: '$(Build.ArtifactStagingDirectory)/reports.zip'
+  - name: 'reportsArchiveFileDev'
+    value: '$(Build.ArtifactStagingDirectory)/reports-dev.zip'
+  - name: 'reportsArchiveFileProd'
+    value: '$(Build.ArtifactStagingDirectory)/reports-prod.zip'
   - name: 'reportsArtifactName'
     value: 'reports-$(Build.BuildNumber)'
   
@@ -100,14 +102,14 @@ stages:
               rootFolderOrFile: '$(reportsFolder)-dev'
               inlcludeRootFolder: false
               archiveType: 'zip'
-              archiveFile: '$(reportsArchiveFile)-dev'
+              archiveFile: '$(reportsArchiveFileDev)'
               replaceExistingArchive: true
 
           - task: PublishPipelineArtifact@1
             displayName: Publish Reports
             condition: always()
             inputs:
-              targetPath: '$(reportsArchiveFile)-dev'
+              targetPath: '$(reportsArchiveFileDev)'
               artifact: 'ci-reports-dev'
               publishLocation: 'pipeline'
 
@@ -163,14 +165,14 @@ stages:
               rootFolderOrFile: '$(reportsFolder)-prod'
               inlcludeRootFolder: false
               archiveType: 'zip'
-              archiveFile: '$(reportsArchiveFile)-prod'
+              archiveFile: '$(reportsArchiveFileProd)'
               replaceExistingArchive: true
 
           - task: PublishPipelineArtifact@1
             displayName: Publish Reports
             condition: always()
             inputs:
-              targetPath: '$(reportsArchiveFile)-prod'
+              targetPath: '$(reportsArchiveFileProd)'
               artifact: 'ci-reports-prod'
               publishLocation: 'pipeline'
 

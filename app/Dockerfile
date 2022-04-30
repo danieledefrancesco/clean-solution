@@ -23,20 +23,22 @@ RUN devNull=$(mkdir behavioral-test-results)
 
 FROM prepare-build-env AS build-env
 
-COPY ./CleanSolution.sln ./CleanSolution.sln
+COPY ./App.sln ./App.sln
 COPY ./scripts ./scripts/
 COPY ./settings ./settings/
 COPY ./src ./src/
 COPY ./test ./test/
 
-RUN dotnet publish src/AspNetCore.Examples.ProductService/AspNetCore.Examples.ProductService.csproj -c Debug -o out
+ARG PROJECT_PATH
+RUN dotnet publish ${PROJECT_PATH} -c Debug -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS prod
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "AspNetCore.Examples.ProductService.dll"]
+ARG DLL_NAME
+ENTRYPOINT ["dotnet", "${DLL_NAME}"]
 
 FROM build-env as dev
-
-CMD ["dotnet", "watch", "run", "--project", "src/AspNetCore.Examples.ProductService/AspNetCore.Examples.ProductService.csproj", "--urls=http://0.0.0.0:80"]
+ARG PROJECT_PATH
+CMD ["dotnet", "watch", "run", "--project", "${PROJECT_PATH}", "--urls=http://0.0.0.0:80"]
 

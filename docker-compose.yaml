@@ -6,6 +6,9 @@ services:
     build:
       context: app
       target: ${WEB_ENV}
+      args:
+        PROJECT_PATH: ${PROJECT_PATH}
+        DLL_NAME: ${DLL_NAME}
     image: ${WEB_IMAGE_NAME}
     env_file:
       - ./app/env/web.env

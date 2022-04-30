@@ -37,9 +37,5 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-test-report/
-sonar-report/
-es-data/
-mongo-data/
 test/behavioral/target/
 artifact
