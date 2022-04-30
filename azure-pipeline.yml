@@ -79,17 +79,17 @@ stages:
               script: |
                 mkdir $(reportsFolder)-dev
                 ls
-                if [ -d "test-report" ]
+                if [ -d "./app/test-report" ]
                 then
-                  cp -r test-report $(reportsFolder)-dev
+                  cp -r ./app/test-report $(reportsFolder)-dev
                 fi
-                if [ -d "sonar-report" ]
+                if [ -d "./app/sonar-report" ]
                 then
-                  cp -r sonar-report $(reportsFolder)-dev
+                  cp -r ./app/sonar-report $(reportsFolder)-dev
                 fi
-                if [ -d  "test/behavioral/target/surefire-reports" ]
+                if [ -d  "./karate/target/surefire-reports" ]
                 then
-                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)-dev
+                  cp -r ./karate/target/surefire-reports $(reportsFolder)-dev
                 fi
                 ls  $(reportsFolder)-dev
 
@@ -150,9 +150,9 @@ stages:
               targetType: 'inline'
               script: |
                 mkdir $(reportsFolder)-prod
-                if [ -d  "test/behavioral/target/surefire-reports" ]
+                if [ -d  "karate/target/surefire-reports" ]
                 then
-                  cp -r test/behavioral/target/surefire-reports $(reportsFolder)-prod
+                  cp -r karate/target/surefire-reports $(reportsFolder)-prod
                 fi
                 ls  $(reportsFolder)-prod
                 
