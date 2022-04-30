@@ -10,5 +10,5 @@ services:
       - "SUT_BASE_URL=http://web"
       - "MONGODB_CONTAINER_NAME=mongo"
     volumes:
-      - "./karate/test/behavioral:/usr/src/karate"
+      - "./karate:/usr/src/karate"
       - "/var/run/docker.sock:/var/run/docker.sock"
