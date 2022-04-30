@@ -33,12 +33,15 @@ ARG PROJECT_PATH
 RUN dotnet publish ${PROJECT_PATH} -c Debug -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS prod
-WORKDIR /app
+WORKDIR /web
 COPY --from=build-env /app/out .
+COPY scripts/run_prod.sh .
 ARG DLL_NAME
-ENTRYPOINT ["dotnet", "${DLL_NAME}"]
+ENV DLL_NAME=$DLL_NAME
+CMD ["sh", "./run_prod.sh"]
 
 FROM build-env as dev
 ARG PROJECT_PATH
-CMD ["dotnet", "watch", "run", "--project", "${PROJECT_PATH}", "--urls=http://0.0.0.0:80"]
+ENV PROJECT_PATH_ENV=$PROJECT_PATH
+CMD ["sh", "./scripts/run_dev.sh"]
 
