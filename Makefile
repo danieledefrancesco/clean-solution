@@ -4,18 +4,6 @@ DOCKER_IMAGE_PREFIX=clean-solution
 WEB_DEV_IMAGE_NAME=${DOCKER_IMAGE_PREFIX}${WEB_DEV_SUFFIX}
 WEB_PROD_IMAGE_NAME=${DOCKER_IMAGE_PREFIX}${WEB_PROD_SUFFIX}
 
-WEB_DEV_DOCKER_COMPOSE_FILE=docker/web/docker-compose.web-dev.yml
-WEB_DEV_CI_DOCKER_COMPOSE_FILE=docker/web/docker-compose.web-dev-ci.yml
-WEB_PROD_CI_DOCKER_COMPOSE_FILE=docker/web/docker-compose.web-prod-ci.yml
-MONGODB_TEST_DOCKER_COMPOSE_FILE=docker/mongo/docker-compose.mongodb-test.yml
-MONGODB_DOCKER_COMPOSE_FILE=docker/mongo/docker-compose.mongodb.yml
-SONARQUBE_DOCKER_COMPOSE_FILE=docker/sonarqube/docker-compose.sonarqube.yml
-ELK_DOCKER_COMPOSE_FILE=docker/elk/docker-compose.elk.yml
-KARATE_DOCKER_COMPOSE_FILE=docker/karate/docker-compose.karate.yml
-
-WEB_DEV_DOCKER_FILE=docker/web/Dockerfile.web.dev
-WEB_PROD_DOCKER_FILE=docker/web/Dockerfile.web.prod
-
 LOCAL_DEV_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose
 LOCAL_TEST_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml
 CI_DEV_DOCKER_COMPOSE_COMMAND=WEB_IMAGE_NAME=$(WEB_DEV_IMAGE_NAME) WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml
