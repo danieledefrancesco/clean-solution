@@ -10,7 +10,7 @@ RUN node -v
 RUN npm -v
 RUN npm install -g sonar-report
 
-RUN dotnet tool install --global dotnet-sonarscanner --version 5.1.0
+RUN dotnet tool install --global dotnet-sonarscanner --version 5.5.3
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 RUN dotnet tool install --global coverlet.console --version 3.0.3
 ENV PATH=${PATH}:/root/.dotnet/tools
