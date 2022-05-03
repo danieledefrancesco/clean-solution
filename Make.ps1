@@ -29,9 +29,9 @@ function Exec-Command ($command) {
         "run_behavioral_tests_ci" {
             $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
             $env:WEB_ENV="dev"
-            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file ./.env exec -T -d web bash -c "sh ./scripts/start_with_coverlet_watch.sh > coverlet.log"
+            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file ./.env exec -T -d web make start_with_coverlet_watch
             docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env run karate make test
-            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web bash -c "sh ./scripts/end_coverlet.sh"
+            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web make end_coverlet
             break
         }
         "run_behavioral_tests_prod" {

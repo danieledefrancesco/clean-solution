@@ -9,8 +9,8 @@ LOCAL_TEST_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose -f docker-compose.y
 CI_DEV_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file ./.env
 CI_PROD_DOCKER_COMPOSE_COMMAND=WEB_ENV=prod docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml --env-file ./.env
 
-docker_username?=local
-version?=latest
+docker_username=local
+version=latest
 
 build_and_tag_web_prod:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_PROD_IMAGE_NAME):$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) build web
@@ -43,7 +43,6 @@ run_unit_tests_dev:
 
 run_behavioral_tests_dev:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d
-	sleep 30s	
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run karate make test
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) down
 	
