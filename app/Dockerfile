@@ -5,6 +5,7 @@ RUN apt-get update
 RUN apt-get -y install default-jre
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
 RUN apt-get -y install nodejs
+RUN apt-get -y install make
 RUN node -v
 RUN npm -v
 RUN npm install -g sonar-report
