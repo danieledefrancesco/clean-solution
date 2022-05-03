@@ -52,7 +52,7 @@ function Exec-Command ($command) {
         "run_unit_tests_ci" {
             $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
             $env:WEB_ENV="dev"
-            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web bash -c "sh ./scripts/run_unit_tests.sh"
+            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web make run_unit_tests
             break
         }
         "build_prod" {
@@ -72,13 +72,13 @@ function Exec-Command ($command) {
             $env:WEB_ENV="dev"
             docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env up -d
             docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T sonarqube bash /scripts/create_sonar_project.sh
-            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web bash ./scripts/begin_sonar_scan.sh        
+            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web make begin_sonar_scan      
             break
         }
         "end_sonar_scan_ci" {
             $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
             $env:WEB_ENV="dev"
-            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web bash ./scripts/end_sonar_scan.sh     
+            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web make end_sonar_scan     
             break
         }
         "shut_containers_down_ci" {
