@@ -2,7 +2,8 @@ version: '3.7'
 services:
   web:
     depends_on:
-      - sonarqube
+      sonarqube:
+        condition: service_healthy
     environment:
       - "SONAR_PROJECT_KEY=product-service"
       - "SONAR_PROJECT_NAME=ProductService"
@@ -23,5 +24,15 @@ services:
       context: sonarqube
     ports:
       - 9000:9000
+    environment:
+      - "SONAR_LOGIN=admin"
+      - "SONAR_PASSWORD=admin"
+      - "SONAR_URI=http://127.0.0.1:9000"
     volumes:
       - ./sonarqube/sonar-conf:/opt/sonarqube/conf
+    healthcheck:
+      test: /bin/bash /scripts/healthcheck.sh
+      interval: 20s
+      retries: 30
+      start_period: 20s
+      timeout: 10s

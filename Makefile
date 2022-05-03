@@ -20,8 +20,7 @@ build_and_tag_web_dev:
 
 start_sonar_scan_ci:	
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) up -d
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/wait_sonar_is_green.sh
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/create_sonar_project.sh
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T sonarqube bash /scripts/create_sonar_project.sh
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/begin_sonar_scan.sh
 	
 end_sonar_scan_ci:
