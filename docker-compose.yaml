@@ -15,6 +15,7 @@ services:
       - ./app/env/web.dev.env
     volumes:
       - ./app/CleanSolution.sln:/app/CleanSolution.sln
+      - ./app/CleanSolution.sln:/app/Makefile
       - ./app/scripts:/app/scripts
       - ./app/settings:/app/settings
       - ./app/sonar-report:/app/sonar-report

@@ -29,6 +29,7 @@ COPY ./scripts ./scripts/
 COPY ./settings ./settings/
 COPY ./src ./src/
 COPY ./test ./test/
+COPY ./Makefile ./Makefile
 
 ARG PROJECT_PATH
 RUN dotnet publish ${PROJECT_PATH} -c Debug -o out
