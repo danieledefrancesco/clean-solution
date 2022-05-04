@@ -10,7 +10,9 @@ begin_sonar_scan:
 	dotnet build
 
 end_coverlet:
-	pid=$(cat .coverlet-pid)
+	pidLine=$(ps -ax | grep dotnet)
+	pidLine=$(echo $pidLine)
+	pid=${pidLine%% *}
 	echo "pid = $pid"
 	kill $pid
 
@@ -41,7 +43,7 @@ start_with_coverlet_watch:
 		--format opencover \
 		--include-test-assembly \
 		--verbosity:detailed \
-		--output test-results/behavioral.opencover.xml & echo $! > .coverlet-pid
+		--output test-results/behavioral.opencover.xml > coverlet.log
 
 sonar_scan:
 	dotnet sonarscanner begin \
