@@ -32,7 +32,7 @@ generate_sonar_report:
 shut_containers_down_ci:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) down
 	
-run_whole_sonar_flow: start_sonar_scan_ci run_unit_tests_ci run_behavioral_tests_ci end_sonar_scan_ci
+run_whole_sonar_flow: start_sonar_scan_ci run_unit_tests_ci run_behavioral_tests_ci end_sonar_scan_ci generate_sonar_report
 
 start_development_mode:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d

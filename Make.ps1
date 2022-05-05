@@ -81,6 +81,12 @@ function Exec-Command ($command) {
             docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web make end_sonar_scan     
             break
         }
+        "generate_sonar_report" {
+            $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
+            $env:WEB_ENV="dev"
+            docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file .env exec -T web make generate_sonar_report     
+            break
+        }
         "shut_containers_down_ci" {
             $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
             $env:WEB_ENV="dev"
@@ -92,6 +98,7 @@ function Exec-Command ($command) {
             Exec-Command run_unit_tests_ci
             Exec-Command run_behavioral_tests_ci
             Exec-Command shut_containers_down_ci
+            Exec-Command generate_sonar_report
         }
         default {
             Write-Host "Command $command is not supported"
