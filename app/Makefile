@@ -15,7 +15,8 @@ end_coverlet:
 end_sonar_scan:
 	reportgenerator "-reports:test-results/**/*.opencover.xml" "-targetdir:test-report"
 	dotnet sonarscanner end /d:sonar.login=${SONAR_LOGIN} /d:sonar.password=${SONAR_PASSWORD}
-	exitStatus=$?
+
+generate_sonar_report:
 	sonar-report \
     		--sonarurl=${SONAR_URI} \
     		--project=${SONAR_PROJECT_KEY} \
@@ -26,8 +27,6 @@ end_sonar_scan:
     		--sonarpassword=${SONAR_PASSWORD} \
     		--allbugs="true" \
     		--noSecurityHotspot="true" > ./sonar-report/sonar-report.html
-	echo "Exit status is $exitStatus"
-	exit $exitStatus
 
 run_unit_tests:
 	dotnet test --settings settings/coverlet.runsettings --logger trx --results-directory "test-results"

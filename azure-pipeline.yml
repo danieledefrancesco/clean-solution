@@ -57,12 +57,20 @@ stages:
                 make run_behavioral_tests_ci
 
           - task: Bash@3
-            displayName: End Sonar Scan and Generate Reports
+            displayName: End Sonar Scan
             condition: always()
             inputs:
               targetType: 'inline'
               script: |
                 make end_sonar_scan_ci
+                
+          - task: Bash@3
+            displayName: Generate Sonar Report
+            condition: always()
+            inputs:
+              targetType: 'inline'
+              script: |
+                make generate_sonar_report
                 
           - task: Bash@3
             displayName: Clean up containers
