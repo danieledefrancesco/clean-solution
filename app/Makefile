@@ -10,11 +10,8 @@ begin_sonar_scan:
 	dotnet build
 
 end_coverlet:
-	pidLine=$(ps -ax | grep dotnet | grep -v defunct | grep -v coverlet | grep -v grep)
-	pidLine=$(echo $pidLine)
-	pid=${pidLine%% *}
-	echo "pid = $pid"
-	kill $pid
+	ps -ax | grep dotnet | grep -v defunct | grep -v coverlet | grep -v grep | awk '{ print $$1 }' > .tmp.pid
+	kill $(shell cat .tmp.pid)
 
 end_sonar_scan:
 	reportgenerator "-reports:test-results/**/*.opencover.xml" "-targetdir:test-report"
