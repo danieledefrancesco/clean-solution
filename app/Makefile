@@ -10,8 +10,7 @@ begin_sonar_scan:
 	dotnet build
 
 end_coverlet:
-	ps -ax | grep dotnet | grep -v defunct | grep -v coverlet | grep -v grep | awk '{ print $$1 }' > .tmp.pid
-	kill $(shell cat .tmp.pid)
+	kill $(shell ps -ax | grep dotnet | grep -v defunct | grep -v coverlet | grep -v grep | awk '{ print $$1 }')
 
 end_sonar_scan:
 	reportgenerator "-reports:test-results/**/*.opencover.xml" "-targetdir:test-report"
