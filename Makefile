@@ -9,8 +9,8 @@ LOCAL_TEST_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose -f docker-compose.y
 CI_DEV_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml -f docker-compose.sonarqube.yaml --env-file ./.env
 CI_PROD_DOCKER_COMPOSE_COMMAND=WEB_ENV=prod docker-compose -f docker-compose.yaml -f docker-compose.karate.yaml --env-file ./.env
 
-docker_username?=local
-version?=latest
+docker_username=local
+version=latest
 
 build_and_tag_web_prod:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_PROD_IMAGE_NAME):$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) build web
@@ -20,17 +20,19 @@ build_and_tag_web_dev:
 
 start_sonar_scan_ci:	
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) up -d
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/wait_sonar_is_green.sh
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/create_sonar_project.sh
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/begin_sonar_scan.sh
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T sonarqube bash /scripts/create_sonar_project.sh
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make begin_sonar_scan
 	
 end_sonar_scan_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash ./scripts/end_sonar_scan.sh
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make end_sonar_scan
+	
+generate_sonar_report:
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make generate_sonar_report
 
 shut_containers_down_ci:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) down
 	
-run_whole_sonar_flow: start_sonar_scan_ci run_unit_tests_ci run_behavioral_tests_ci end_sonar_scan_ci
+run_whole_sonar_flow: start_sonar_scan_ci run_unit_tests_ci run_behavioral_tests_ci end_sonar_scan_ci generate_sonar_report
 
 start_development_mode:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d
@@ -44,17 +46,16 @@ run_unit_tests_dev:
 
 run_behavioral_tests_dev:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d
-	sleep 30s	
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run karate make test
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) down
 	
 run_unit_tests_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash -c "sh ./scripts/run_unit_tests.sh"
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make run_unit_tests
 	
 run_behavioral_tests_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T -d web bash -c "sh ./scripts/start_with_coverlet_watch.sh > coverlet.log"
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T -d web make start_with_coverlet_watch
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) run karate bash -c "make test"
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web bash -c "sh ./scripts/end_coverlet.sh"
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make end_coverlet
 
 run_behavioral_tests_prod_ci:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_PROD_IMAGE_NAME):$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d
