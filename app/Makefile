@@ -65,5 +65,5 @@ sonar_scan:
 		--sonarpassword=${SONAR_PASSWORD} \
 		--allbugs="true" \
 		--noSecurityHotspot="true" > ./sonar-report/sonar-report.html
-	echo "Exit status is $exitStatus"
-	exit $exitStatus
+	echo "Exit status is ${exitStatus}"
+	exit ${exitStatus}
