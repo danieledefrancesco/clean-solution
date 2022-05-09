@@ -1,0 +1,14 @@
+{
+  "priority": 3,
+  "request": {
+    "method": "GET",
+    "url": "/price-card-service/price-cards/active/a3"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "price-card-service/active-less-than-zero-a3.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

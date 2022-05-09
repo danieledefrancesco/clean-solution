@@ -15,10 +15,7 @@ namespace AspNetCore.Examples.ProductService.Entities
             var id = CreateId();
             var entity = CreateEntityById(id);
 
-            entity
-                .GetHashCode()
-                .Should()
-                .Be(id.GetHashCode());
+            entity.GetHashCode().Should().Be(id.GetHashCode());
         }
 
         [Test]
@@ -26,30 +23,29 @@ namespace AspNetCore.Examples.ProductService.Entities
         {
             var entity = CreateEntityById(CreateId());
             var entity2 = entity;
-            entity
-                .Equals(entity2)
-                .Should()
-                .BeTrue();
+            entity.Equals(entity2).Should().BeTrue();
+        }
+        
+        [Test]
+        public void Equals_ReturnsFalse_IfIdIsNull()
+        {
+            var entity = CreateEntityById(null);
+            var entity2 = CreateEntityById(CreateId());
+            entity.Equals(entity2).Should().BeFalse();
         }
         
         [Test]
         public void Equals_ReturnsFalse_IfOtherObjectIsNull()
         {
             var entity = CreateEntityById(CreateId());
-            entity
-                .Equals(null)
-                .Should()
-                .BeFalse();
+            entity.Equals(null).Should().BeFalse();
         }
         
         [Test]
         public void Equals_ReturnsFalse_IfOtherObjectIsOfDifferentType()
         {
             var entity = CreateEntityById(CreateId());
-            entity
-                .Equals(new object())
-                .Should()
-                .BeFalse();
+            entity.Equals(new object()).Should().BeFalse();
         }
         
         [Test]
@@ -58,10 +54,7 @@ namespace AspNetCore.Examples.ProductService.Entities
             var id = CreateId();
             var entity = CreateEntityById(id);
             var otherEntity = CreateEntityById(id);
-            entity
-                .Equals(otherEntity)
-                .Should()
-                .BeTrue();
+            entity.Equals(otherEntity).Should().BeTrue();
         }
         
         [Test]
@@ -69,10 +62,7 @@ namespace AspNetCore.Examples.ProductService.Entities
         {
             var entity = CreateEntityById(CreateId());
             var otherEntity = CreateEntityById(CreateDifferentId());
-            entity
-                .Equals(otherEntity)
-                .Should()
-                .BeFalse();
+            entity.Equals(otherEntity).Should().BeFalse();
         }
         
         protected abstract TId CreateId();

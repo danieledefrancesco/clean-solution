@@ -1,0 +1,11 @@
+{
+  "_id":"a3",
+  "CreatedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
+  "Name":{
+    "Value":"Product 3"
+  },
+  "Price": {
+    "Value": 10.55
+  }
+}

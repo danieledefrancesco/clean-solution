@@ -6,7 +6,7 @@ namespace AspNetCore.Examples.ProductService
 {
     public abstract class InfrastructureIntegrationTestBase
     {
-        public IServiceProvider ServiceProvider { get; private set; }
+        protected IServiceProvider ServiceProvider { get; }
 
         protected InfrastructureIntegrationTestBase()
         {
@@ -16,12 +16,12 @@ namespace AspNetCore.Examples.ProductService
             ServiceProvider = services.BuildServiceProvider();
         }
 
-        protected virtual IConfigurationBuilder BuildConfiguration(IConfigurationBuilder builder)
+        private IConfigurationBuilder BuildConfiguration(IConfigurationBuilder builder)
         {
             return builder.AddEnvironmentVariables();
         }
 
-        protected virtual void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        private void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddMongoDb(configuration);
         }

@@ -18,7 +18,8 @@ namespace AspNetCore.Examples.ProductService.Persistence
         }
 
         private IMongoDatabase Database => _mongoDatabase ??= _mongoDbProvider.GetDatabase();
-        private IMongoCollection<TEntity> RootCollection =>
+
+        public IMongoCollection<TEntity> RootCollection =>
             _rootCollection ??= Database.GetCollection<TEntity>(typeof(TEntity).Name.ToLower());
 
 

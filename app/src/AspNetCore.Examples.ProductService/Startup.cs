@@ -30,14 +30,10 @@ namespace AspNetCore.Examples.ProductService
             
             services.AddAutoMapper(typeof(Startup));
             
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "AspNetCore.Examples.ProductService.Test", Version = "v1"});
-            });
-
             services
                 .AddApplicationServices(Configuration)
-                .AddMongoDb(Configuration);
+                .AddMongoDb(Configuration)
+                .AddDefaultHttpClientFactory();
             
             AddErrorHandlers(services);
         }
@@ -47,19 +43,13 @@ namespace AspNetCore.Examples.ProductService
             services.AddScoped<IErrorHandlerFactory, ErrorHandlerFactory>();
             services.AddScoped<IErrorHandler, NotFoundErrorHandler>();
             services.AddScoped<IErrorHandler, AlreadyExistsErrorHandler>();
+            services.AddScoped<IErrorHandler, PriceCardNewPriceLessThanZeroErrorHandler>();
             services.AddScoped<IErrorHandler, DefaultErrorHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AspNetCore.Examples.ProductService.Test v1"));
-            }
-
             app.UseHttpsRedirection();
 
             app.UseRouting();

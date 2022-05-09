@@ -45,7 +45,8 @@ function Exec-Command ($command) {
         "run_unit_tests" {
             $env:WEB_IMAGE_NAME=$WEB_DEV_IMAGE_NAME
             $env:WEB_ENV="dev"
-            docker-compose --env-file .env run web bash -c "dotnet test"
+            docker-compose --env-file .env up -d
+            docker-compose --env-file .env exec web make run_unit_tests
             docker-compose --env-file .env down
             break
         }

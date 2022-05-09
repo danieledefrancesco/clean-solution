@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Price Card Service
+  version: 1.0.0
+servers:
+  - url: /
+tags:
+  - name: Price Cards
+    description: Operations on price cards
+paths:
+  /price-cards/active/{productId}:
+    get:
+      summary: Get active price cards for a given product
+      tags:
+        - Price Cards
+      parameters:
+        - description: Product ID
+          in: path
+          name: productId
+          required: true
+          example: product1
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceCardList'
+          description: Successful response
+
+components:
+  schemas:
+    PriceCard:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The price card id
+        name:
+          type: string
+          description: The price card name
+        validFrom:
+          type: string
+          format: date-time
+          description: The price card valid from date time
+        validTo:
+          type: string
+          format: date-time
+          description: The price card valid to date time
+        productId:
+          type: string
+          description: The product id
+        newPrice:
+          type: number
+          description: The new price of the product
+    PriceCardList:
+      type: object
+      properties:
+        items:
+          type: array
+          description: The price cards
+          items:
+            $ref: '#/components/schemas/PriceCard'
+  
