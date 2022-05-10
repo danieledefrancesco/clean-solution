@@ -2,6 +2,7 @@ using System;
 using AspNetCore.Examples.ProductService.Common;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using NUnit.Framework;
 
@@ -11,7 +12,6 @@ namespace AspNetCore.Examples.ProductService.Persistence
     {
 
         private MongoDbPersistenceImplementation<TestEntity, string> _mongoDbPersistenceImplementation;
-        private IMongoDbProvider _mongoDbProvider;
         private IMongoCollection<TestEntity> _collection;
 
         [SetUp]
@@ -19,15 +19,24 @@ namespace AspNetCore.Examples.ProductService.Persistence
         {
             _mongoDbPersistenceImplementation = ActivatorUtilities
                 .GetServiceOrCreateInstance<MongoDbPersistenceImplementation<TestEntity, string>>(ServiceProvider);
-            _mongoDbProvider = ServiceProvider.GetRequiredService<IMongoDbProvider>();
-            _collection = _mongoDbProvider.GetDatabase().GetCollection<TestEntity>("testentity");
             
+            _collection = _mongoDbPersistenceImplementation.RootCollection;
             ResetCollection();
         }
 
         private void ResetCollection()
         {
             _collection.DeleteMany(x => true);
+        }
+
+        [Test]
+        public void Dummy()
+        {
+            _collection.InsertOne(new TestEntity()
+            {
+                Id = "a"
+            });
+            _collection.Find(x => x.Id == "a").FirstOrDefault().Should().NotBeNull();
         }
 
         [Test]

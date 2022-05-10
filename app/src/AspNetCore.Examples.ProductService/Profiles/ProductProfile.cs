@@ -13,11 +13,15 @@ namespace AspNetCore.Examples.ProductService.Profiles
                 .ForMember(
                     productDto => productDto.Name,
                     opt => opt.MapFrom(dest => dest.Name.Value))
+                .ForMember(
+                    productDto => productDto.Price,
+                    opt => opt.MapFrom(dest => dest.Price.Value))
                 .ReverseMap()
                 .ForMember(
                     product => product.Name,
-                    opt => opt.MapFrom(dest => ProductName.From(dest.Name)));
-            
+                    opt => opt.MapFrom(dest => ProductName.From(dest.Name)))
+                .ForMember(product => product.Price,
+                    opt => opt.MapFrom(dest => ProductPrice.From(dest.Price)));
             CreateMap<GetProductByIdRequest, GetProductDtoRequest>().ReverseMap();
         }
     }

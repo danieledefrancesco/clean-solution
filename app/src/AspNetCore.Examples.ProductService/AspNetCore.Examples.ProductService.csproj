@@ -29,4 +29,10 @@
       <ProjectReference Include="..\AspNetCore.Examples.ProductService.Infrastructure\AspNetCore.Examples.ProductService.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="appsettings.Development.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

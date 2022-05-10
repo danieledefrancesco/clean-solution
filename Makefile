@@ -41,7 +41,8 @@ stop_development_mode:
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) down
     
 run_unit_tests_dev:
-	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run web bash -c "dotnet test"
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d
+	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) exec web make run_unit_tests
 	WEB_IMAGE_NAME="$(docker_username)/$(WEB_DEV_IMAGE_NAME):$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) down
 
 run_behavioral_tests_dev:

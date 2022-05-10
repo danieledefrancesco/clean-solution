@@ -4,5 +4,8 @@
   "LastModifiedAt":ISODate("2021-03-07T20:37:25.829Z"),
   "Name":{
     "Value":"Product 1"
+  },
+  "Price": {
+    "Value": 10.55
   }
 }

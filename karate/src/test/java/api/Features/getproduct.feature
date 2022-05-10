@@ -34,8 +34,16 @@ Background:
     Then status 200
     * match $.id == '<id>'
     * match $.name == '<name>'
+    * match $.price == <price>
     
     Examples:
-      | id  | name      | product_seed    |
-      | a1  | Product 1 | product_a1.json |
-      | a2  | Product 2 | product_a2.json |
+      | id  | name      | price | product_seed    |
+      | a1  | Product 1 | 1.55  | product_a1.json |
+      | a2  | Product 2 | 10.55 | product_a2.json |
+
+  Scenario: Requesting /products/{id} with an existing product id when the given product has an associated price card with a new price less than 0 should return a 422 error.
+
+    * call addProduct('product_a3.json')
+    Given url baseUrl + '/products/a3'
+    When method GET
+    Then status 422

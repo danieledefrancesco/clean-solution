@@ -1,7 +1,9 @@
 FROM maven:3.6.3-jdk-11 as prepare-env
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y --quiet \
+RUN apt-get clean
+RUN apt-get update
+RUN apt-get install -y --quiet \
         make \
         apt-transport-https \
         ca-certificates \

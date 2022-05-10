@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Persistence;
 using AspNetCore.Examples.ProductService.Persistence.ClassMapRegistrationProviders;
 using FluentAssertions;
@@ -29,13 +31,14 @@ namespace AspNetCore.Examples.ProductService
             _configuration = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string>()
                 {
-                    {"MongoDbConfig:DatabaseName","DatabaseName"},
-                    {"MongoDbConfig:ConnectionString","ConnectionString"}
+                    {$"{nameof(MongoDbConfiguration)}:{nameof(MongoDbConfiguration.DatabaseName)}","DatabaseName"},
+                    {$"{nameof(MongoDbConfiguration)}:{nameof(MongoDbConfiguration.ConnectionString)}","ConnectionString"}
                 })
             .Build();
 
             _services = new ServiceCollection();
             _services.AddMongoDb(_configuration, _mongoDbClassMapsRegister);
+            _services.AddDefaultHttpClientFactory();
             _serviceProvider = _services.BuildServiceProvider();
         }
 
@@ -72,6 +75,14 @@ namespace AspNetCore.Examples.ProductService
                 .Contain(x =>
                     x.ServiceType == typeof(IPersistenceImplementation<,>) &&
                     x.ImplementationType == typeof(MongoDbPersistenceImplementation<,>));
+        }
+
+        [Test]
+        public void AddDefaultHttpClientFactory_AddsDefaultHttpClientFactoryConfiguration()
+        {
+            _services.Should().Contain(x =>
+                x.ServiceType == typeof(IHttpClientFactory) &&
+                x.ImplementationType == typeof(DefaultHttpClientFactory));
         }
     }
 }

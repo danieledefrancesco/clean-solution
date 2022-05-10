@@ -30,6 +30,7 @@ generate_sonar_report:
 
 run_unit_tests:
 	dotnet test --settings settings/coverlet.runsettings --logger trx --results-directory "test-results"
+	reportgenerator "-reports:test-results/**/*.opencover.xml" "-targetdir:test-report"
 
 start_with_coverlet_watch:
 	coverlet out/AspNetCore.Examples.ProductService.dll \

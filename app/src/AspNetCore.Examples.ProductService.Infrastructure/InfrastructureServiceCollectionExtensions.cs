@@ -1,3 +1,5 @@
+using System.Net.Http;
+using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Persistence;
 using AspNetCore.Examples.ProductService.Persistence.ClassMapRegistrationProviders;
 using Microsoft.Extensions.Configuration;
@@ -16,10 +18,14 @@ namespace AspNetCore.Examples.ProductService
         {
             classMapsRegister.RegisterAllClassMaps();
             return services
-                .Configure<MongoDbConfiguration>(options => configuration.GetSection("MongoDbConfig").Bind(options))
+                .Configure<MongoDbConfiguration>(options => configuration.GetSection(nameof(MongoDbConfiguration)).Bind(options))
                 .AddScoped<IMongoDbProvider,MongoDbProvider>()
                 .AddScoped(typeof(IPersistenceImplementation<,>), typeof(MongoDbPersistenceImplementation<,>));
 
         }
+
+        public static IServiceCollection AddDefaultHttpClientFactory(this IServiceCollection services) =>
+            services.AddSingleton<IHttpClientFactory, DefaultHttpClientFactory>();
     }
+
 }

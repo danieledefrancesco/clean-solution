@@ -7,7 +7,7 @@ namespace AspNetCore.Examples.ProductService.ValueObjects
     public class ProductNameTest
     {
         [TestCase("anything")]
-        public void Test_ValidProductName_ShouldNotThrowException(string productNameValue)
+        public void From_ShouldNotThrowException_IfProductNameIsNotNullOrWhiteSpace(string productNameValue)
         {
             Action action = () =>
             {
@@ -21,7 +21,7 @@ namespace AspNetCore.Examples.ProductService.ValueObjects
         [TestCase("")]
         [TestCase(null)]
         [TestCase(" ")]
-        public void Test_InvalidProductName_ShouldThrowArgumentException(string productNameValue)
+        public void From_ShouldThrowArgumentException_IfProductNameIsNotNullOrWhiteSpace(string productNameValue)
         {
             Action action = () =>
             {

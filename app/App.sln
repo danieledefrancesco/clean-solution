@@ -65,6 +65,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest", "test\integration\AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest\AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest.csproj", "{7DE79319-534F-46BF-800E-93F38AC6A047}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.PriceCardService", "src\AspNetCore.Examples.ProductService.PriceCardService\AspNetCore.Examples.ProductService.PriceCardService.csproj", "{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,7 @@ Global
 		{E4B68417-A8B3-4845-B63A-A23F69E90C03} = {6D3C9310-99E6-45DE-8960-3D89B38DCF3D}
 		{95F780A0-31AC-4C24-8167-67D830587701} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
 		{7DE79319-534F-46BF-800E-93F38AC6A047} = {95F780A0-31AC-4C24-8167-67D830587701}
+		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85} = {09775295-5A43-44CA-B3A8-205CC068263D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{69CCD21F-FF26-475F-83A4-2711446DB1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -137,5 +140,9 @@ Global
 		{7DE79319-534F-46BF-800E-93F38AC6A047}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DE79319-534F-46BF-800E-93F38AC6A047}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DE79319-534F-46BF-800E-93F38AC6A047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
