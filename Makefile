@@ -67,3 +67,7 @@ add_migration_local:
 update_database_local:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run web /bin/bash -c "make update_database"
 
+push_images:
+	docker push $(docker_username)/$(DOCKER_IMAGE_PREFIX)-prod:$(version)
+	docker push $(docker_username)/$(DOCKER_IMAGE_PREFIX)-dev:$(version)
+	

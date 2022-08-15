@@ -20,24 +20,30 @@ jobs:
       - name: Install make
         run: sudo apt-get install -y make
         
+      - name: Docker login
+        run: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+        
       - name: Build and tag
-        run: make build_and_tag
+        run: make build_and_tag docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
         
       - name: Start sonar scan
-        run: make start_sonar_scan_ci
+        run: make start_sonar_scan_ci docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
         
       - name: Run unit tests
-        run: make run_unit_tests_ci
+        run: make run_unit_tests_ci docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
         
       - name: Run functional tests
-        run: make run_functional_tests_ci
+        run: make run_functional_tests_ci docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
 
       - name: End sonar scan
-        run: make end_sonar_scan_ci
+        run: make end_sonar_scan_ci docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
         if: ${{ always() }}
         
       - name: Generate sonar report
-        run: make generate_sonar_report
+        run: make generate_sonar_report docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
         
       - name: Shut containers down
-        run: make shut_containers_down_ci
+        run: make shut_containers_down_ci docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
+        
+      - name: Push images to artifactory repository
+        run: make push_images docker_username=${DOCKER_USERNAME} version=${{github.run_number}}
