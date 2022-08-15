@@ -1,5 +1,4 @@
 using AspNetCore.Examples.ProductService.Entities;
-using AspNetCore.Examples.ProductService.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCore.Examples.ProductService.Repositories

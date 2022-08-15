@@ -18,7 +18,7 @@ namespace AspNetCore.Examples.ProductService.Repositories
         protected DbSet<TEntity> _dbSet;
 
         [SetUp]
-        public virtual async Task SetUp()
+        public virtual void SetUp()
         {
             _dbContext = CreateDbContext();
             _repository = CreteRepository(_dbContext);

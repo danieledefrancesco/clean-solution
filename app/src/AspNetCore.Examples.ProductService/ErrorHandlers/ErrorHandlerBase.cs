@@ -1,6 +1,4 @@
 using AspNetCore.Examples.ProductService.Errors;
-using AutoMapper;
-using Elasticsearch.Net.Specification.IndexLifecycleManagementApi;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers

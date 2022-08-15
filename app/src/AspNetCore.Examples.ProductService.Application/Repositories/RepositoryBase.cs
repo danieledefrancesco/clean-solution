@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Common;
-using AspNetCore.Examples.ProductService.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCore.Examples.ProductService.Repositories

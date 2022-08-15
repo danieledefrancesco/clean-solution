@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
-using AspNetCore.Examples.PriceCardService;
 using FluentAssertions;
-using RestEase;
 using TechTalk.SpecFlow;
 
 namespace AspNetCore.Examples.ProductService.Specs.Steps
@@ -9,10 +7,6 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
     [Binding]
     public sealed class GetProductStepDefinitions
     {
-
-        private readonly ScenarioContext _scenarioContext;
-        
-
 
         [When(@"I make a GET request to the /products/(.+) endpoint")]
         public async Task WhenIMakeAGetRequestToTheProductsIdEndpoint(string productId)
