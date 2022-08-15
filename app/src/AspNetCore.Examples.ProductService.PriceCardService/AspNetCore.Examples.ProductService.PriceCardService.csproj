@@ -11,7 +11,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Virtuosity.Fody" Version="3.1.1" />
+    <PackageReference Include="Virtuosity.Fody" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <OpenApiReference Include="pricecard_openapi.yaml" Namespace="AspNetCore.Examples.PriceCardService">
