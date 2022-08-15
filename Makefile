@@ -18,14 +18,14 @@ build_and_tag:
 
 start_sonar_scan_ci:	
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) up -d
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T sonarqube bash /scripts/create_sonar_project.sh
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make begin_sonar_scan
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec sonarqube bash /scripts/create_sonar_project.sh
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec web make begin_sonar_scan
 	
 end_sonar_scan_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make end_sonar_scan
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec web make end_sonar_scan
 	
 generate_sonar_report:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make generate_sonar_report
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec web make generate_sonar_report
 
 shut_containers_down_ci:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) down
