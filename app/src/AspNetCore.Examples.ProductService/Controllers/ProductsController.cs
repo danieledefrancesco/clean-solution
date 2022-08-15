@@ -34,9 +34,9 @@ namespace AspNetCore.Examples.ProductService.Controllers
 
         [HttpPost]
         [HttpPut]
-        public Task<IActionResult> Insert([FromBody] ProductDto product)
+        public Task<IActionResult> Insert([FromBody] CreateProductRequestDto createProductRequest)
         {
-            var domainProduct = _mapper.Map<Product>(product);
+            var domainProduct = _mapper.Map<Product>(createProductRequest);
             var createProductCommandRequest = new CreateProductCommandRequest(domainProduct);
             return MediatorResponse<CreateProductCommandRequest, CreateProductCommandResponse>(
                 createProductCommandRequest,

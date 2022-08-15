@@ -1,4 +1,5 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
@@ -6,36 +7,36 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class DefaultErrorHandlerTest
+    public class DefaultErrorHandlerTest: ErrorHandlerTestBase<DefaultErrorHandler>
     {
-        private DefaultErrorHandler _defaultErrorHandler;
-
+        private IMapper _mapper;
+        protected override DefaultErrorHandler ErrorHandler { get; set; }
+        protected override int ExpectedStatusCode => 400;
+        
         [SetUp]
         public void SetUp()
         {
-            _defaultErrorHandler = new DefaultErrorHandler();
+            _mapper = Substitute.For<IMapper>();
+            ErrorHandler = new DefaultErrorHandler(_mapper);
+            var error = new ErrorDto
+            {
+                Message = string.Empty
+            };
+            _mapper.Map<ErrorDto>(Arg.Any<IError>()).Returns(error);
         }
 
         [Test]
         public void Supports_ReturnsTrue()
         {
-            _defaultErrorHandler
+            ErrorHandler
                 .Supports(Substitute.For<IError>())
                 .Should()
                 .BeTrue();
         }
         
-        [Test]
-        public void HandleError_Returns400ObjectResult()
+        protected override IError CreateErrorInstance()
         {
-            var actionResult = _defaultErrorHandler
-                .HandleError(new AlreadyExistsError());
-                
-            var objectResult = actionResult as ObjectResult;
-            objectResult
-                .StatusCode
-                .Should()
-                .Be(400);
+            return Substitute.For<IError>();
         }
     }
 }

@@ -2,8 +2,7 @@ version: '3.7'
 services:
   web:
     depends_on:
-      sonarqube:
-        condition: service_healthy
+      - sonarqube
     environment:
       - "SONAR_PROJECT_KEY=product-service"
       - "SONAR_PROJECT_NAME=ProductService"

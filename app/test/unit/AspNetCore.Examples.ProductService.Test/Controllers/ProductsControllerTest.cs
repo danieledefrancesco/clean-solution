@@ -80,7 +80,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             const decimal productPrice = 1;
             const string productName = "name";
 
-            var productDto = new ProductDto
+            var createProductRequestDto = new CreateProductRequestDto
             {
                 Id = productId,
                 Price = productPrice,
@@ -90,10 +90,17 @@ namespace AspNetCore.Examples.ProductService.Controllers
             var product = new Product
             {
                 Id = productId,
-                Name = ProductName.From(productDto.Name),
-                Price = ProductPrice.From(productDto.Price),
+                Name = ProductName.From(createProductRequestDto.Name),
+                Price = ProductPrice.From(createProductRequestDto.Price),
                 CreatedAt = DateTime.Now,
                 LastModifiedAt = DateTime.Now
+            };
+            
+            var productDto = new ProductDto
+            {
+                Id = productId,
+                Name = ProductName.From(createProductRequestDto.Name),
+                Price = ProductPrice.From(createProductRequestDto.Price)
             };
 
             var createProductResponse = new CreateProductCommandResponse(product);
@@ -101,9 +108,9 @@ namespace AspNetCore.Examples.ProductService.Controllers
             _mediator.Send(Arg.Any<CreateProductCommandRequest>(), Arg.Any<CancellationToken>()).Returns(createProductResponse);
             
             _mapper.Map<ProductDto>(product).Returns(productDto);
-            _mapper.Map<Product>(productDto).Returns(product);
+            _mapper.Map<Product>(createProductRequestDto).Returns(product);
             
-            var actionResult = _productsController.Insert(productDto).Result;
+            var actionResult = _productsController.Insert(createProductRequestDto).Result;
 
             actionResult.Should().BeOfType<OkObjectResult>();
             

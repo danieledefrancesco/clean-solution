@@ -11,7 +11,7 @@ namespace AspNetCore.Examples.ProductService.Repositories
         Task<TEntity> GetById(TId id);
         Task DeleteById(TId id);
         Task Delete(TEntity entity);
-        Task Insert(TEntity entity);
+        Task<TEntity> Insert(TEntity entity);
         Task Update(TEntity entity);
         
     }

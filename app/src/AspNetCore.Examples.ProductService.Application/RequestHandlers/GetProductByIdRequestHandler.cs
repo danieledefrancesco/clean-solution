@@ -36,7 +36,11 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
 
             var priceCardList = await _priceCardServiceClientFactory.Create().ActiveAsync(product.Id, cancellationToken);
 
-            if (!priceCardList.Items.Any()) return new GetProductByIdResponse(product);
+            if (!priceCardList.Items.Any())
+            {
+                product.FinalPrice = product.Price;
+                return new GetProductByIdResponse(product);
+            }
             var priceCard = priceCardList.Items.First();
             if (priceCard.NewPrice < 0)
             {
@@ -45,7 +49,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                     Message = $"Price {priceCard.NewPrice} for PriceCard {priceCard.Id} for Product {product.Id} must be greater or equal to 0"
                 };
             }
-            product.Price = ProductPrice.From(System.Convert.ToDecimal(priceCard.NewPrice));
+            product.FinalPrice = ProductPrice.From(System.Convert.ToDecimal(priceCard.NewPrice));
 
             return new GetProductByIdResponse(product);
         }

@@ -1,18 +1,21 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class AlreadyExistsErrorHandler : IErrorHandler
+    public class AlreadyExistsErrorHandler : ErrorHandlerBase<AlreadyExistsError>
     {
-        public bool Supports(IError error)
+        private readonly IMapper _mapper;
+
+        public AlreadyExistsErrorHandler(IMapper mapper)
         {
-            return error is AlreadyExistsError;
+            _mapper = mapper;
         }
 
-        public IActionResult HandleError(IError error)
+        public override IActionResult HandleError(IError error)
         {
-            return new ObjectResult(error)
+            return new ObjectResult(_mapper.Map<ErrorDto>(error))
             {
                 StatusCode = 409
             };

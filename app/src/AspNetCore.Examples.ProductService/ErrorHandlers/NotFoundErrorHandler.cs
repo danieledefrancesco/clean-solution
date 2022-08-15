@@ -1,18 +1,21 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class NotFoundErrorHandler : IErrorHandler
+    public class NotFoundErrorHandler : ErrorHandlerBase<NotFoundError>
     {
-        public bool Supports(IError error)
+        private readonly IMapper _mapper;
+
+        public NotFoundErrorHandler(IMapper mapper)
         {
-            return error is NotFoundError;
+            _mapper = mapper;
         }
 
-        public IActionResult HandleError(IError error)
+        public override IActionResult HandleError(IError error)
         {
-            return new NotFoundObjectResult(error);
+            return new NotFoundObjectResult(_mapper.Map<ErrorDto>(error));
         }
     }
 }

@@ -1,4 +1,5 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
@@ -6,45 +7,31 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class AlreadyExistsErrorHandlerTest
+    public class AlreadyExistsErrorHandlerTest : ErrorHandlerTestBase<AlreadyExistsErrorHandler, AlreadyExistsError>
     {
-        private AlreadyExistsErrorHandler _alreadyExistsErrorHandler;
+        private IMapper _mapper;
 
         [SetUp]
         public void SetUp()
         {
-            _alreadyExistsErrorHandler = new AlreadyExistsErrorHandler();
+            _mapper = Substitute.For<IMapper>();
+            ErrorHandler = new AlreadyExistsErrorHandler(_mapper);
+            var error = new ErrorDto
+            {
+                Message = string.Empty
+            };
+            _mapper.Map<ErrorDto>(Arg.Any<IError>()).Returns(error);
         }
 
-        [Test]
-        public void Supports_ReturnsTrue_IfErrorIsAnAlreadyExistsError()
+        protected override AlreadyExistsErrorHandler ErrorHandler { get; set; }
+
+        protected override int ExpectedStatusCode => 409;
+
+        protected override AlreadyExistsError CreateErrorInstance()
         {
-            _alreadyExistsErrorHandler
-                .Supports(new AlreadyExistsError())
-                .Should()
-                .BeTrue();
+            return new AlreadyExistsError();
         }
+
         
-        [Test]
-        public void Supports_ReturnsFalse_IfErrorIsNotAnAlreadyExistsError()
-        {
-            _alreadyExistsErrorHandler
-                .Supports(Substitute.For<IError>())
-                .Should()
-                .BeFalse();
-        }
-        
-        [Test]
-        public void HandleError_Returns409ObjectResult()
-        {
-            var actionResult = _alreadyExistsErrorHandler
-                .HandleError(new AlreadyExistsError());
-                
-            var objectResult = actionResult as ObjectResult;
-            objectResult
-                .StatusCode
-                .Should()
-                .Be(409);
-        }
     }
 }

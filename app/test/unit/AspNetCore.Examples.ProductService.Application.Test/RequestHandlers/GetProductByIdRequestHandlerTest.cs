@@ -33,7 +33,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
         }
 
         [Test]
-        public void Test_ReturnsNotFound_IfProductDoesntExist()
+        public void Handle_ReturnsNotFound_IfProductDoesntExist()
         {
             const string productId = "abc";
             var mockedResult = Task.FromResult((Product) null);
@@ -52,7 +52,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
         }
         
         [Test]
-        public void Test_ReturnsPriceCardNewPriceIsLowerThanZero_IfProductExists()
+        public void Handle_ReturnsPriceCardNewPriceIsLowerThanZero_IfProductExists()
         {
             const string productId = "abc";
             const string productName = "name";
@@ -95,7 +95,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
         }
         
         [Test]
-        public void Test_ReturnsProduct_IfProductExists()
+        public void Handle_ReturnsProduct_IfProductExists()
         {
             const string productId = "abc";
             const string productName = "name";
@@ -133,10 +133,11 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             product.Name.Value.Should().Be(productName);
             product.Name.Value.Should().Be(productName);
             product.Price.Value.Should().Be(productPrice);
+            product.FinalPrice.Value.Should().Be(productPrice);
         }
         
         [Test]
-        public void Test_ReturnsProductWithPriceCardPrice_IfProductAndPriceCardExist()
+        public void Handle_ReturnsProductWithPriceCardPrice_IfProductAndPriceCardExist()
         {
             const string productId = "abc";
             const string productName = "name";
@@ -179,7 +180,8 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             product.Should().NotBeNull();
             product.Id.Should().Be(productId);
             product.Name.Value.Should().Be(productName);
-            product.Price.Value.Should().Be(System.Convert.ToDecimal(priceCardPrice));
+            product.Price.Value.Should().Be(System.Convert.ToDecimal(productPrice));
+            product.FinalPrice.Value.Should().Be(System.Convert.ToDecimal(priceCardPrice));
         }
     }
 }

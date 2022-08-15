@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Common;
 using AspNetCore.Examples.ProductService.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCore.Examples.ProductService.Repositories
 {
@@ -9,12 +10,15 @@ namespace AspNetCore.Examples.ProductService.Repositories
     where TEntity : EntityBase<TId>
     where TId : class
     {
-        private readonly IPersistenceImplementation<TEntity,TId> _persistenceImplementation;
+        protected DbContext DbContext { get; }
+        protected DbSet<TEntity> Set { get; }
 
-        protected RepositoryBase(IPersistenceImplementation<TEntity, TId> persistenceImplementation)
+        protected RepositoryBase(DbContext dbContext)
         {
-            _persistenceImplementation = persistenceImplementation;
+            DbContext = dbContext;
+            Set = dbContext.Set<TEntity>();
         }
+
 
         public async Task<bool> ExistsById(TId id)
         {
@@ -22,23 +26,34 @@ namespace AspNetCore.Examples.ProductService.Repositories
             return currentEntity != null;
         }
 
-        public Task<TEntity> GetById(TId id) => _persistenceImplementation.GetById(id);
+        public Task<TEntity> GetById(TId id) => Set.FirstOrDefaultAsync(x => x.Id == id);
 
-        public Task DeleteById(TId id) => _persistenceImplementation.DeleteById(id);
+        public async Task DeleteById(TId id)
+        {
+            var entity = await GetById(id);
+            await Delete(entity);
+        }
 
-        public Task Delete(TEntity entity) => _persistenceImplementation.Delete(entity);
+        public async Task Delete(TEntity entity)
+        {
+            Set.Remove(entity);
+            await DbContext.SaveChangesAsync();
+        } 
 
-        public Task Insert(TEntity entity)
+        public async Task<TEntity> Insert(TEntity entity)
         {
             entity.CreatedAt = DateTime.Now;
             entity.LastModifiedAt = entity.CreatedAt;
-            return _persistenceImplementation.Insert(entity);
+            var addResult = await Set.AddAsync(entity);
+            await DbContext.SaveChangesAsync();
+            return addResult.Entity;
         }
 
-        public Task Update(TEntity entity)
+        public async Task Update(TEntity entity)
         {
             entity.LastModifiedAt = DateTime.Now;
-            return _persistenceImplementation.Update(entity);
+            Set.Update(entity);
+            await DbContext.SaveChangesAsync();
         }
     }
 }

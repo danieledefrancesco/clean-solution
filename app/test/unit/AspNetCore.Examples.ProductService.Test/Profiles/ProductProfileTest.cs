@@ -29,23 +29,23 @@ namespace AspNetCore.Examples.ProductService.Profiles
         }
         
         [Test]
-        public void ProductDto_ToProduct_IsMappedCorrectly()
+        public void CreateProductRequestDto_ToProduct_IsMappedCorrectly()
         {
-            var productDto = new ProductDto()
+            var createProductRequestDto = new CreateProductRequestDto
             {
                 Id = "Id",
                 Name = "Name"
             };
 
-            var product = _mapper.Map<Product>(productDto);
+            var product = _mapper.Map<Product>(createProductRequestDto);
 
             product.Id
                 .Should()
-                .Be(productDto.Id);
+                .Be(createProductRequestDto.Id);
             
             product.Name
                 .Should()
-                .Be(ProductName.From(productDto.Name));
+                .Be(ProductName.From(createProductRequestDto.Name));
         }
 
     }

@@ -7,6 +7,7 @@ namespace AspNetCore.Examples.ProductService
 {
     public class ProgramTest
     {
+        /**
         [Test]
         public void CreateHostBuilder_ShouldNotThrowException()
         {
@@ -21,5 +22,6 @@ namespace AspNetCore.Examples.ProductService
                 .Should()
                 .NotThrow();
         }
+        **/
     }
 }
