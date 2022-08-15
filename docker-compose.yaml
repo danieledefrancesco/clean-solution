@@ -58,6 +58,8 @@ services:
     depends_on:
       - wiremock
       - sqlserver
+      - dev
+      - prod
   wiremock:
     domainname: app
     container_name: wiremock
