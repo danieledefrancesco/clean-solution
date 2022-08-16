@@ -1,1 +1,0 @@
-/opt/mssql-tools/bin/sqlcmd -H ${DB_HOST} -d ${DB_NAME} -U ${DB_USER} -P ${DB_PWD} -i ./queries/$1.sql
