@@ -15,7 +15,7 @@ RUN dotnet tool install --global coverlet.console --version 3.0.3
 RUN dotnet tool install --global Microsoft.dotnet-openapi --version 6.0.8
 RUN dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI --version 3.9.57
 RUN dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 6.4.0
-RUN dotnet tool install --globak dotnet-ef --version 6.0.8
+RUN dotnet tool install --global dotnet-ef --version 6.0.8
 ENV PATH=${PATH}:/root/.dotnet/tools
 
 WORKDIR /app

@@ -53,7 +53,7 @@ jobs:
       - name: Generate swagger
         run: make generate_swagger
 
-      - name: Upload functional tests artifact
+      - name: Upload swagger artifact
         uses: actions/upload-artifact@v3
         with:
           name: swagger
