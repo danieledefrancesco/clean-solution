@@ -70,4 +70,6 @@ update_database_local:
 push_images:
 	docker push $(docker_username)/$(DOCKER_IMAGE_PREFIX)-prod:$(version)
 	docker push $(docker_username)/$(DOCKER_IMAGE_PREFIX)-dev:$(version)
-	
+
+generate_swagger:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run dev make generate_swagger

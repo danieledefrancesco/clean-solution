@@ -78,3 +78,7 @@ update_database:
 run_functional_tests:
 	dotnet test ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
 	livingdoc test-assembly ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/${SPECS_DLL_NAME} -t ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/TestExecution.json --output behavioral-test-results
+
+generate_swagger:
+	swagger tofile --yaml --host http://localhost:8000 --output swagger.yaml ${PROJECT_FOLDER_PATH}/bin/Debug/net6.0/${DLL_NAME} v1
+	

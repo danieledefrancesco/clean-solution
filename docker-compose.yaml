@@ -10,6 +10,9 @@ services:
     env_file:
       - ./app/env/web.env
       - ./app/env/web.dev.env
+    environment:
+      - "PROJECT_FOLDER_PATH=${PROJECT_FOLDER_PATH}"
+      - "DLL_NAME=${DLL_NAME}"
     image: "${WEB_IMAGE_NAME}-dev:${VERSION}"
     volumes:
       - ./app/CleanSolution.sln:/app/CleanSolution.sln
@@ -21,6 +24,7 @@ services:
       - ./app/test:/app/test
       - ./app/test-report:/app/test-report
       - ./app/behavioral-test-results:/app/behavioral-test-results
+      - ./app/swagger.yaml:/app/swagger.yaml
     command: "echo 'shutting down'"
   prod:
     build:

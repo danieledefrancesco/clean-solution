@@ -49,6 +49,16 @@ jobs:
           name: behavioral-test-results
           path: app/behavioral-test-results
         if: ${{ always() }}
+        
+      - name: Generate swagger
+        run: make generate_swagger
+
+      - name: Upload functional tests artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: swagger
+          path: app/swagger.yaml
+        if: ${{ always() }}  
 
       - name: Shut containers down
         run: make shut_containers_down_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
