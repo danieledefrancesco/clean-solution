@@ -80,4 +80,4 @@ run_functional_tests:
 	dotnet test ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
 	ls ${SPECS_PROJECT_PATH}/bin/Debug/
 	ls ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/
-	livingdoc test-assembly ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/${SPECS_DLL_NAME} -t ${SPECS_PROJECT_PATH}/bin/debug/${NET_VERSION}/TestExecution.json --output behavioral-test-results
+	livingdoc test-assembly ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/${SPECS_DLL_NAME} -t ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/TestExecution.json --output behavioral-test-results
