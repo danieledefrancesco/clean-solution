@@ -1,1 +1,0 @@
-docker ps | grep mongodb | sed -En "s/(.*)   (.*)/\2/p"
