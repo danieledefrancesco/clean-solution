@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
@@ -28,12 +29,18 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
             };
         }
 
-        [When(@"I make a POST request to the /products endpoint")]
-        public async Task WhenIMakeApostRequestToTheProductsEndpoint()
+        [When(@"I make a (.*) request to the /products endpoint")]
+        public async Task WhenIMakeApostRequestToTheProductsEndpoint(string method)
         {
+            IDictionary<string, Func<CreateProductRequestDto, Task<Response<ProductDto>>>> request =
+                new Dictionary<string, Func<CreateProductRequestDto, Task<Response<ProductDto>>>>
+                {
+                    { "POST", Services.ProductServiceClient.CreatePost },
+                    { "PUT", Services.ProductServiceClient.CreatePut }
+                };
             try
             {
-                TestData.ProductResponse = await Services.ProductServiceClient.Create(TestData.CreateProductRequest);
+                TestData.ProductResponse = await request[method].Invoke(TestData.CreateProductRequest);
             }
             catch (ApiException e)
             {
