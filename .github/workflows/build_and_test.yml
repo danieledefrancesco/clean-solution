@@ -28,10 +28,10 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
         
       - name: Build and tag
-        run: make build_and_tag docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        run: make build_and_tag save_all_images docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Run unit tests
-        run: make run_unit_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        run: make load_all_images run_unit_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Upload unit tests artifact
         uses: actions/upload-artifact@v3
@@ -41,7 +41,7 @@ jobs:
         if: ${{ always() }}
         
       - name: Run functional tests
-        run: make run_functional_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        run: make load_all_images run_functional_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Upload functional tests artifact
         uses: actions/upload-artifact@v3
@@ -51,17 +51,17 @@ jobs:
         if: ${{ always() }}
         
       - name: Generate swagger
-        run: make generate_swagger
+        run: make load_all_images generate_swagger
 
       - name: Upload swagger artifact
         uses: actions/upload-artifact@v3
         with:
           name: swagger
-          path: app/swagger.yaml
+          path: app/swagger-output/swagger.yaml
         if: ${{ always() }}  
 
       - name: Shut containers down
         run: make shut_containers_down_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Push images to artifactory repository
-        run: make push_images docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        run: make load_all_images push_images docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}

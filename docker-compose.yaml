@@ -24,7 +24,7 @@ services:
       - ./app/test:/app/test
       - ./app/test-report:/app/test-report
       - ./app/behavioral-test-results:/app/behavioral-test-results
-      - ./app/swagger.yaml:/app/swagger.yaml
+      - ./app/swagger-output:/app/swagger-output
     command: "echo 'shutting down'"
   prod:
     build:
