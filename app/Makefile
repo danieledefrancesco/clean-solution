@@ -78,4 +78,9 @@ update_database:
 run_functional_tests:
 	dotnet build ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
 	dotnet test ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
+	ls
+	ls ${SPECS_PROJECT_PATH}
+	ls ${SPECS_PROJECT_PATH}/bin/
+	ls ${SPECS_PROJECT_PATH}/bin/debug/
+	ls ${SPECS_PROJECT_PATH}/bin/debug/${NET_VERSION}/
 	livingdoc test-assembly ${SPECS_PROJECT_PATH}/bin/debug/${NET_VERSION}/${SPECS_DLL_NAME} -t ${SPECS_PROJECT_PATH}/bin/debug/${NET_VERSION}/TestExecution.json --output behavioral-test-results
