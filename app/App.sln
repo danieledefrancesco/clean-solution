@@ -10,36 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{5CC13013-C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Test", "test\unit\AspNetCore.Examples.ProductService.Test\AspNetCore.Examples.ProductService.Test.csproj", "{97FF427A-9D63-4528-A6FE-4FCA21D3483F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "behavioral", "behavioral", "{6D3C9310-99E6-45DE-8960-3D89B38DCF3D}"
-ProjectSection(SolutionItems) = preProject
-	test\behavioral\pom.xml = test\behavioral\pom.xml
-	test\behavioral\Makefile = test\behavioral\Makefile
-	test\behavioral\seed_mongo_db.sh = test\behavioral\seed_mongo_db.sh
-	test\behavioral\get_mongo_db_count_by_id.sh = test\behavioral\get_mongo_db_count_by_id.sh
-EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Contracts", "src\AspNetCore.Examples.ProductService.Contracts\AspNetCore.Examples.ProductService.Contracts.csproj", "{E4F0D750-D844-48BD-B5E3-2F47BF55B416}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{591C77CC-AF9D-451C-9935-3D2F3B5E2789}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6DCBAFAE-A1F4-466C-A162-9778273D0899}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "java", "java", "{AD9D0647-79DA-422E-8FD2-AE7FBE264686}"
-ProjectSection(SolutionItems) = preProject
-	test\behavioral\src\test\java\logback-test.xml = test\behavioral\src\test\java\logback-test.xml
-	test\behavioral\src\test\java\karate-config.js = test\behavioral\src\test\java\karate-config.js
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{5CA48641-E26F-488B-AB48-0F47B3678F0A}"
-ProjectSection(SolutionItems) = preProject
-	test\behavioral\src\test\java\api\TestRunner.java = test\behavioral\src\test\java\api\TestRunner.java
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{D8570D65-28BA-4875-A51F-0A36D9CBCB92}"
-ProjectSection(SolutionItems) = preProject
-	test\behavioral\src\test\java\api\Features\getproduct.feature = test\behavioral\src\test\java\api\Features\getproduct.feature
-	test\behavioral\src\test\java\api\Features\createproduct.feature = test\behavioral\src\test\java\api\Features\createproduct.feature
-EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Domain", "src\AspNetCore.Examples.ProductService.Domain\AspNetCore.Examples.ProductService.Domain.csproj", "{E399B347-733B-4363-848C-2EE9F8FD3CE4}"
 EndProject
@@ -55,17 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.Product
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Infrastructure.Test", "test\unit\AspNetCore.Examples.ProductService.Infrastructure.Test\AspNetCore.Examples.ProductService.Infrastructure.Test.csproj", "{64D6672E-B7F8-43D8-98C4-96E3840D7780}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "seeds", "seeds", "{E4B68417-A8B3-4845-B63A-A23F69E90C03}"
-ProjectSection(SolutionItems) = preProject
-	test\behavioral\seeds\product_a1.json = test\behavioral\seeds\product_a1.json
-	test\behavioral\seeds\product_a2.json = test\behavioral\seeds\product_a2.json
-EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{95F780A0-31AC-4C24-8167-67D830587701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest", "test\integration\AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest\AspNetCore.Examples.ProductService.Infrastructure.IntegrationTest.csproj", "{7DE79319-534F-46BF-800E-93F38AC6A047}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.PriceCardService", "src\AspNetCore.Examples.ProductService.PriceCardService\AspNetCore.Examples.ProductService.PriceCardService.csproj", "{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "functional", "functional", "{49C2E68C-CAC2-4731-8626-3F48CFAFAB31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Specs", "test\functional\AspNetCore.Examples.ProductService.Specs\AspNetCore.Examples.ProductService.Specs.csproj", "{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,13 +43,7 @@ Global
 		{69CCD21F-FF26-475F-83A4-2711446DB1DF} = {09775295-5A43-44CA-B3A8-205CC068263D}
 		{5CC13013-CABD-45B0-A76B-F21942DB78F0} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
 		{97FF427A-9D63-4528-A6FE-4FCA21D3483F} = {5CC13013-CABD-45B0-A76B-F21942DB78F0}
-		{6D3C9310-99E6-45DE-8960-3D89B38DCF3D} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
 		{E4F0D750-D844-48BD-B5E3-2F47BF55B416} = {09775295-5A43-44CA-B3A8-205CC068263D}
-		{591C77CC-AF9D-451C-9935-3D2F3B5E2789} = {6D3C9310-99E6-45DE-8960-3D89B38DCF3D}
-		{6DCBAFAE-A1F4-466C-A162-9778273D0899} = {591C77CC-AF9D-451C-9935-3D2F3B5E2789}
-		{AD9D0647-79DA-422E-8FD2-AE7FBE264686} = {6DCBAFAE-A1F4-466C-A162-9778273D0899}
-		{5CA48641-E26F-488B-AB48-0F47B3678F0A} = {AD9D0647-79DA-422E-8FD2-AE7FBE264686}
-		{D8570D65-28BA-4875-A51F-0A36D9CBCB92} = {5CA48641-E26F-488B-AB48-0F47B3678F0A}
 		{E399B347-733B-4363-848C-2EE9F8FD3CE4} = {09775295-5A43-44CA-B3A8-205CC068263D}
 		{8A4F691F-03AD-427C-AA86-14D90BDE70C8} = {5CC13013-CABD-45B0-A76B-F21942DB78F0}
 		{AE23511E-8BE9-437A-9AE1-213F5FDD2F53} = {09775295-5A43-44CA-B3A8-205CC068263D}
@@ -90,10 +51,10 @@ Global
 		{79CAA3A2-A164-4E12-9149-8E3D91042EB8} = {09775295-5A43-44CA-B3A8-205CC068263D}
 		{8031D881-23BE-4755-9D55-9F654CBD64F4} = {5CC13013-CABD-45B0-A76B-F21942DB78F0}
 		{64D6672E-B7F8-43D8-98C4-96E3840D7780} = {5CC13013-CABD-45B0-A76B-F21942DB78F0}
-		{E4B68417-A8B3-4845-B63A-A23F69E90C03} = {6D3C9310-99E6-45DE-8960-3D89B38DCF3D}
 		{95F780A0-31AC-4C24-8167-67D830587701} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
-		{7DE79319-534F-46BF-800E-93F38AC6A047} = {95F780A0-31AC-4C24-8167-67D830587701}
 		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85} = {09775295-5A43-44CA-B3A8-205CC068263D}
+		{49C2E68C-CAC2-4731-8626-3F48CFAFAB31} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
+		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79} = {49C2E68C-CAC2-4731-8626-3F48CFAFAB31}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{69CCD21F-FF26-475F-83A4-2711446DB1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -136,13 +97,13 @@ Global
 		{64D6672E-B7F8-43D8-98C4-96E3840D7780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64D6672E-B7F8-43D8-98C4-96E3840D7780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64D6672E-B7F8-43D8-98C4-96E3840D7780}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DE79319-534F-46BF-800E-93F38AC6A047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DE79319-534F-46BF-800E-93F38AC6A047}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DE79319-534F-46BF-800E-93F38AC6A047}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DE79319-534F-46BF-800E-93F38AC6A047}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,9 @@
+using System.Linq;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Common;
 using AspNetCore.Examples.ProductService.Persistence;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -12,129 +14,110 @@ namespace AspNetCore.Examples.ProductService.Repositories
     where TId : class
     {
         protected RepositoryBase<TEntity, TId> _repository;
-        protected IPersistenceImplementation<TEntity, TId> _persistenceImplementation;
+        protected DbContext _dbContext;
+        protected DbSet<TEntity> _dbSet;
 
         [SetUp]
         public virtual void SetUp()
         {
-            _persistenceImplementation = Substitute.For<IPersistenceImplementation<TEntity,TId>>();
-            _repository = CreteRepository(_persistenceImplementation);
+            _dbContext = CreateDbContext();
+            _repository = CreteRepository(_dbContext);
+            _dbSet = _dbContext.Set<TEntity>();
+            _dbSet.RemoveRange(_dbSet.ToList());
         }
 
         protected abstract RepositoryBase<TEntity, TId> CreteRepository(
-            IPersistenceImplementation<TEntity, TId> persistenceImplementation);
+            DbContext dbContext);
+
+        protected abstract DbContext CreateDbContext();
         
         [Test]
-        public virtual void ExistsById_ReturnsTrue_IfEntityExists()
+        public virtual async Task ExistsById_ReturnsTrue_IfEntityExists()
         {
             var entity = CreateTestEntity();
-            var persistenceImplementationResult = Task.FromResult(entity);
-            _persistenceImplementation.GetById(entity.Id).Returns(persistenceImplementationResult);
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
 
-            _repository.ExistsById(entity.Id)
-                .Result
+            (await _repository.ExistsById(entity.Id))
                 .Should()
                 .BeTrue();
         }
 
         [Test]
-        public virtual void ExistsById_ReturnsFalse_IfEntityDoesntExist()
+        public virtual async Task ExistsById_ReturnsFalse_IfEntityDoesntExist()
         {
             var id = CreateId();
-            TEntity entity = null;
-            _persistenceImplementation.GetById(id).Returns(entity);
 
-            _repository.ExistsById(id)
-                .Result
+            (await _repository.ExistsById(id))
                 .Should()
                 .BeFalse();
         }
 
         [Test]
-        public virtual void GetById_ReturnsEntity_IfEntityExists()
+        public virtual async Task GetById_ReturnsEntity_IfEntityExists()
         {
             var entity = CreateTestEntity();
-            var persistenceImplementationResult = Task.FromResult(entity);
-            _persistenceImplementation.GetById(entity.Id).Returns(persistenceImplementationResult);
-
-            _repository.GetById(entity.Id)
-                .Result
+            await _dbSet.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
+            
+            (await _repository.GetById(entity.Id))
                 .Should()
                 .Be(entity);
         }
 
         [Test]
-        public virtual void GetById_ReturnsNull_IfEntityDoesntExist()
+        public virtual async Task GetById_ReturnsNull_IfEntityDoesntExist()
         {
             var id = CreateId();
-            TEntity entity = null;
-            _persistenceImplementation.GetById(id).Returns(entity);
 
-            _repository.GetById(id)
-                .Result
+            (await _repository.GetById(id))
                 .Should()
                 .BeNull();
         }
 
         [Test]
-        public virtual void Delete_InvokesPersistenceLayer()
+        public virtual async Task Delete_DeletesEntity()
         {
             var entityToDelete = CreateTestEntity();
-            
-            _persistenceImplementation
-                .Delete(entityToDelete)
-                .Returns(Task.CompletedTask);
-            
-            _persistenceImplementation.ClearReceivedCalls();
-            
-            _repository
-                .Delete(entityToDelete)
-                .Wait();
 
-            _persistenceImplementation
-                .Received(1)
+            await _dbSet.AddAsync(entityToDelete);
+            await _dbContext.SaveChangesAsync();
+            
+            await _repository
                 .Delete(entityToDelete);
+            (await _dbSet.CountAsync())
+                .Should()
+                .Be(0);
         }
 
         [Test]
-        public virtual void DeleteById_InvokesPersistenceLayer()
+        public virtual async Task DeleteById_DeletesEntity()
         {
-            var idToDelete = CreateId();
-            
-            _persistenceImplementation
-                .DeleteById(idToDelete)
-                .Returns(Task.CompletedTask);
-            
-            _persistenceImplementation.ClearReceivedCalls();
-            
-            _repository
-                .DeleteById(idToDelete)
-                .Wait();
+            var entityToDelete = CreateTestEntity();
 
-            _persistenceImplementation
-                .Received(1)
-                .DeleteById(idToDelete);
+            await _dbSet.AddAsync(entityToDelete);
+            await _dbContext.SaveChangesAsync();
+
+            await _repository
+                .DeleteById(entityToDelete.Id);
+            
+            (await _dbSet.CountAsync())
+                .Should()
+                .Be(0);
         }
         
         [Test]
-        public virtual void Insert_InvokesPersistenceLayerAndSetsCreatedAtAndLastModifiedAt()
+        public virtual async Task Insert_InsertsEntityAndSetsCreatedAtAndLastModifiedAt()
         {
             var entityToInsert = CreateTestEntity();
-            
-            _persistenceImplementation
-                .Insert(entityToInsert)
-                .Returns(Task.CompletedTask);
-            
-            _persistenceImplementation.ClearReceivedCalls();
-            
-            _repository
-                .Insert(entityToInsert)
-                .Wait();
 
-            _persistenceImplementation
-                .Received(1)
+            await _repository
                 .Insert(entityToInsert);
 
+            (await _dbSet.CountAsync())
+                .Should()
+                .Be(1);
+            
             entityToInsert
                 .CreatedAt
                 .Should()
@@ -147,22 +130,14 @@ namespace AspNetCore.Examples.ProductService.Repositories
         }
         
         [Test]
-        public virtual void Update_InvokesPersistenceLayerAndSetsLastModifiedAt()
+        public virtual async Task Update_UpdatesEntityAndSetsLastModifiedAt()
         {
             var entityToUpdate = CreateTestEntity();
-            
-            _persistenceImplementation
-                .Update(entityToUpdate)
-                .Returns(Task.CompletedTask);
-            
-            _persistenceImplementation.ClearReceivedCalls();
-            
-            _repository
-                .Update(entityToUpdate)
-                .Wait();
 
-            _persistenceImplementation
-                .Received(1)
+            await _dbSet.AddAsync(entityToUpdate);
+            await _dbContext.SaveChangesAsync();
+
+            await _repository
                 .Update(entityToUpdate);
 
             entityToUpdate

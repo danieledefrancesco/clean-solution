@@ -7,5 +7,6 @@ namespace AspNetCore.Examples.ProductService.Entities
     {
         public ProductName Name { get; set; }
         public ProductPrice Price { get; set; }
+        public ProductPrice FinalPrice { get; set; }
     }
 }

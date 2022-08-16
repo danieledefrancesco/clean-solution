@@ -1,4 +1,5 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
@@ -6,45 +7,28 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class NotFoundErrorHandlerTest
+    public class NotFoundErrorHandlerTest: ErrorHandlerTestBase<NotFoundErrorHandler, NotFoundError>
     {
-        private NotFoundErrorHandler _notFoundErrorHandler;
+        private IMapper _mapper;
+        protected override NotFoundErrorHandler ErrorHandler { get; set; }
+        protected override int ExpectedStatusCode => 404;
+
 
         [SetUp]
         public void SetUp()
         {
-            _notFoundErrorHandler = new NotFoundErrorHandler();
+            _mapper = Substitute.For<IMapper>();
+            ErrorHandler = new NotFoundErrorHandler(_mapper);
+            var error = new ErrorDto
+            {
+                Message = string.Empty
+            };
+            _mapper.Map<ErrorDto>(Arg.Any<IError>()).Returns(error);
         }
 
-        [Test]
-        public void Supports_ReturnsTrue_IfErrorIsANotFoundError()
+        protected override NotFoundError CreateErrorInstance()
         {
-            _notFoundErrorHandler
-                .Supports(new NotFoundError())
-                .Should()
-                .BeTrue();
-        }
-        
-        [Test]
-        public void Supports_ReturnsFalse_IfErrorIsNotANotFoundError()
-        {
-            _notFoundErrorHandler
-                .Supports(Substitute.For<IError>())
-                .Should()
-                .BeFalse();
-        }
-        
-        [Test]
-        public void HandleError_Returns404ObjectResult()
-        {
-            var actionResult = _notFoundErrorHandler
-                .HandleError(new NotFoundError());
-                
-            var objectResult = actionResult as ObjectResult;
-            objectResult
-                .StatusCode
-                .Should()
-                .Be(404);
+            return new NotFoundError();
         }
     }
 }

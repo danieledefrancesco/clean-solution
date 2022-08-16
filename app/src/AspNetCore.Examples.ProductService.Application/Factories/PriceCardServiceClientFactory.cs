@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http;
 using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Configurations;

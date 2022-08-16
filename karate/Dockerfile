@@ -12,10 +12,12 @@ RUN apt-get install -y --quiet \
         software-properties-common
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable"
 
-RUN apt-get update && apt-get install -y --quiet docker-ce-cli
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
+
+RUN apt-get update && apt-get install -y docker-ce-cli mssql-cli
 RUN chsh -s /bin/bash
 
 FROM prepare-env

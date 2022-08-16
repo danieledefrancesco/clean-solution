@@ -1,4 +1,5 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
@@ -6,45 +7,27 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class PriceCardNewPriceLessThanZeroErrorHandlerTest
+    public class PriceCardNewPriceLessThanZeroErrorHandlerTest: ErrorHandlerTestBase<PriceCardNewPriceLessThanZeroErrorHandler, PriceCardNewPriceLessThanZeroError>
     {
-        private PriceCardNewPriceLessThanZeroErrorHandler _priceCardNewPriceLessThanZeroErrorHandler;
+        private IMapper _mapper;
+        protected override PriceCardNewPriceLessThanZeroErrorHandler ErrorHandler { get; set; }
+        protected override int ExpectedStatusCode => 422;
 
         [SetUp]
         public void SetUp()
         {
-            _priceCardNewPriceLessThanZeroErrorHandler = new PriceCardNewPriceLessThanZeroErrorHandler();
+            _mapper = Substitute.For<IMapper>();
+            ErrorHandler = new PriceCardNewPriceLessThanZeroErrorHandler(_mapper);
+            var error = new ErrorDto
+            {
+                Message = string.Empty
+            };
+            _mapper.Map<ErrorDto>(Arg.Any<IError>()).Returns(error);
         }
 
-        [Test]
-        public void Supports_ReturnsTrue_IfErrorIsAnAlreadyExistsError()
+        protected override IError CreateErrorInstance()
         {
-            _priceCardNewPriceLessThanZeroErrorHandler
-                .Supports(new PriceCardNewPriceLessThanZeroError())
-                .Should()
-                .BeTrue();
-        }
-        
-        [Test]
-        public void Supports_ReturnsFalse_IfErrorIsNotAnAlreadyExistsError()
-        {
-            _priceCardNewPriceLessThanZeroErrorHandler
-                .Supports(Substitute.For<IError>())
-                .Should()
-                .BeFalse();
-        }
-        
-        [Test]
-        public void HandleError_Returns422ObjectResult()
-        {
-            var actionResult = _priceCardNewPriceLessThanZeroErrorHandler
-                .HandleError(new PriceCardNewPriceLessThanZeroError());
-                
-            var objectResult = actionResult as ObjectResult;
-            objectResult!
-                .StatusCode
-                .Should()
-                .Be(422);
+            return new PriceCardNewPriceLessThanZeroError();
         }
     }
 }

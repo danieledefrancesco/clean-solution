@@ -37,5 +37,5 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-test/behavioral/target/
+behavioral-test-results
 artifact

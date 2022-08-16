@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  functional:
+    container_name: functional
+    domainname: app
+    image: functional
+    build:
+      context: app
+      target: functional
+      args:
+        PROJECT_PATH: ${PROJECT_PATH}
+        DLL_NAME: ${DLL_NAME}
+    environment:
+      - "SUT_BASE_URL=http://web"
+      - "WIREMOCK_BASE_URL=http://wiremock:8080"
+      - "DATABASE_CONNECTION_STRING=Data Source=sqlserver;Initial Catalog=product-service;Password=@_str0nG-p@ssw0rd!;User ID=sa"
+      - "SPECS_PROJECT_PATH=${SPECS_PROJECT_PATH}"
+      - "SPECS_PROJECT_NAME=${SPECS_PROJECT_NAME}"
+      - "SPECS_DLL_NAME=${SPECS_DLL_NAME}"
+      - "NET_VERSION=${NET_VERSION}"
+    volumes:
+      - ./app/CleanSolution.sln:/app/CleanSolution.sln
+      - ./app/Makefile:/app/Makefile
+      - ./app/scripts:/app/scripts
+      - ./app/settings:/app/settings
+      - ./app/sonar-report:/app/sonar-report
+      - ./app/src:/app/src
+      - ./app/test:/app/test
+      - ./app/test-report:/app/test-report
+      - ./app/behavioral-test-results:/app/behavioral-test-results
+    depends_on:
+      - web

@@ -1,18 +1,22 @@
 using AspNetCore.Examples.ProductService.Errors;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class PriceCardNewPriceLessThanZeroErrorHandler : IErrorHandler
+    public class PriceCardNewPriceLessThanZeroErrorHandler : ErrorHandlerBase<PriceCardNewPriceLessThanZeroError>
     {
-        public bool Supports(IError error)
+        private readonly IMapper _mapper;
+
+        public PriceCardNewPriceLessThanZeroErrorHandler(IMapper mapper)
         {
-            return error.GetType() == typeof(PriceCardNewPriceLessThanZeroError);
+            _mapper = mapper;
         }
 
-        public IActionResult HandleError(IError error)
+
+        public override IActionResult HandleError(IError error)
         {
-            return new ObjectResult(error)
+            return new ObjectResult(_mapper.Map<ErrorDto>(error))
             {
                 StatusCode = 422
             };

@@ -1,15 +1,40 @@
 version: '3.7'
+
 services:
-  web:
-    container_name: web
-    domainname: app
+  dev:
     build:
       context: app
-      target: ${WEB_ENV}
+      target: dev
+      args:
+        PROJECT_PATH: ${PROJECT_PATH}
+    env_file:
+      - ./app/env/web.env
+      - ./app/env/web.dev.env
+    image: "${WEB_IMAGE_NAME}-dev:${VERSION}"
+    volumes:
+      - ./app/CleanSolution.sln:/app/CleanSolution.sln
+      - ./app/Makefile:/app/Makefile
+      - ./app/scripts:/app/scripts
+      - ./app/settings:/app/settings
+      - ./app/sonar-report:/app/sonar-report
+      - ./app/src:/app/src
+      - ./app/test:/app/test
+      - ./app/test-report:/app/test-report
+      - ./app/behavioral-test-results:/app/behavioral-test-results
+    command: "echo 'shutting down'"
+  prod:
+    build:
+      context: app
+      target: dev
       args:
         PROJECT_PATH: ${PROJECT_PATH}
         DLL_NAME: ${DLL_NAME}
-    image: ${WEB_IMAGE_NAME}
+    image: "${WEB_IMAGE_NAME}-prod:${VERSION}"
+    command: "echo 'shutting down'"
+  web:
+    container_name: web
+    domainname: app
+    image: "${WEB_IMAGE_NAME}-${WEB_ENV}:${VERSION}"
     env_file:
       - ./app/env/web.env
       - ./app/env/web.dev.env
@@ -22,6 +47,7 @@ services:
       - ./app/src:/app/src
       - ./app/test:/app/test
       - ./app/test-report:/app/test-report
+      - ./app/behavioral-test-results:/app/behavioral-test-results
     ports:
       - 8000:80
     healthcheck:
@@ -32,7 +58,9 @@ services:
       timeout: 10s
     depends_on:
       - wiremock
-      - mongodb
+      - sqlserver
+      - dev
+      - prod
   wiremock:
     domainname: app
     container_name: wiremock
@@ -44,18 +72,13 @@ services:
     volumes:
       - ./wiremock/mappings:/home/wiremock/mappings
       - ./wiremock/files:/home/wiremock/__files
-  mongodb:
+  sqlserver:
     domainname: app
-    container_name: mongodb
+    container_name: sqlserver
     build:
-      context: mongo
+      context: sqlserver
     ports:
-      - "27017-27019:27017-27019"
+      - 9002:1433
     environment:
-      - MONGO_INITDB_DATABASE=product-service
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
-      interval: 10s
-      timeout: 10s
-      retries: 5
-      start_period: 20s
+      SA_PASSWORD: "@_str0nG-p@ssw0rd!"
+      ACCEPT_EULA: "Y"

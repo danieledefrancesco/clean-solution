@@ -1,3 +1,1 @@
-entity=$(cat ./seeds/$4 | tr -d '\r')
-mongoCmd="db.$3.insert($entity)"
-docker exec $1 mongo mongodb://localhost:27017/$2 --eval "$mongoCmd"
+/opt/mssql-tools/bin/sqlcmd -H ${DB_HOST} -d ${DB_NAME} -U ${DB_USER} -P ${DB_PWD} -i ./queries/$1.sql

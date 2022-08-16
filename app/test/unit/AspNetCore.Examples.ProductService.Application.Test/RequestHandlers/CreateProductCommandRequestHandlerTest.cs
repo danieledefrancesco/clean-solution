@@ -63,7 +63,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                 Name = ProductName.From(productName)
             };
 
-            _productRepository.Insert(product).Returns(Task.CompletedTask);
+            var completedTask = Task.CompletedTask;
             _productRepository.ClearReceivedCalls();
             
             var response = _createProductCommandRequestHandler
