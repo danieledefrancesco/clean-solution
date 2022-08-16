@@ -76,8 +76,5 @@ update_database:
 	dotnet ef database update --project ./src/AspNetCore.Examples.ProductService.Infrastructure/AspNetCore.Examples.ProductService.Infrastructure.csproj
 
 run_functional_tests:
-	dotnet build ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
 	dotnet test ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
-	ls ${SPECS_PROJECT_PATH}/bin/Debug/
-	ls ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/
 	livingdoc test-assembly ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/${SPECS_DLL_NAME} -t ${SPECS_PROJECT_PATH}/bin/Debug/${NET_VERSION}/TestExecution.json --output behavioral-test-results

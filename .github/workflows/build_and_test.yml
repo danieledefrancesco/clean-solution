@@ -29,6 +29,13 @@ jobs:
       - name: Run unit tests
         run: make run_unit_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
+      - name: Upload unit tests artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: app/test-report
+        if: ${{ always() }}
+        
       - name: Run functional tests
         run: make run_functional_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
 
