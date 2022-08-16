@@ -12,9 +12,10 @@ RUN npm install -g sonar-report
 RUN dotnet tool install --global dotnet-sonarscanner --version 5.5.3
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 RUN dotnet tool install --global coverlet.console --version 3.0.3
-RUN dotnet tool install --global Microsoft.dotnet-openapi
-RUN dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
-RUN dotnet tool install dotnet-ef -g
+RUN dotnet tool install --global Microsoft.dotnet-openapi --version 6.0.8
+RUN dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI --version 3.9.57
+RUN dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 6.4.0
+RUN dotnet tool install --global dotnet-ef --version 6.0.8
 ENV PATH=${PATH}:/root/.dotnet/tools
 
 WORKDIR /app
@@ -22,6 +23,7 @@ RUN devNull=$(mkdir sonar-report)
 RUN devNull=$(mkdir test-report)
 RUN devNull=$(mkdir test-results)
 RUN devNull=$(mkdir behavioral-test-results)
+RUN devNull=$(mkdir swagger-output)
 
 FROM prepare-build-env AS build-env
 
@@ -34,7 +36,8 @@ COPY ./Makefile ./Makefile
 
 RUN apt-get update && apt-get install -y dnsutils curl
 
-RUN dotnet restore --disable-parallel
+RUN dotnet restore
+RUN dotnet build
 ARG PROJECT_PATH
 RUN dotnet publish ${PROJECT_PATH} -c Release -o out
 
