@@ -3,11 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS prepare-build-env
 #Downloading dependencies
 RUN apt-get update
 RUN apt-get -y install default-jre
-RUN curl -sL https://deb.nodesource.com/setup_13.x | bash
-RUN apt-get -y install nodejs make procps
-RUN node -v
-RUN npm -v
-RUN npm install -g sonar-report
+RUN apt-get -y install make procps
 
 RUN dotnet tool install --global dotnet-sonarscanner --version 5.5.3
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool

@@ -42,16 +42,6 @@ jobs:
       - name: End sonar scan
         run: make end_sonar_scan_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
 
-      - name: Generate sonar report
-        run: make generate_sonar_report docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
-
-      - name: Upload sonar report artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: sonar-report
-          path: app/sonar-report
-        if: ${{ always() }}
-
       - name: Shut containers down
         run: make shut_containers_down_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
