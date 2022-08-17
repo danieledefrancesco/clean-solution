@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS prepare-build-env
 #Downloading dependencies
 RUN apt-get update
 RUN apt-get -y install default-jre
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
 RUN apt-get -y install nodejs make procps
 RUN node -v
 RUN npm -v

@@ -3,6 +3,8 @@ timeout=1m
 exitLoop=0
 i=1
 
+echo "Starting sonar is green check"
+
 while [ $i -le $tries ] && [ $exitLoop -eq 0 ]
 do
   healthCheck=$(curl -u ${SONAR_LOGIN}:${SONAR_PASSWORD} ${SONAR_URI}/api/system/health)

@@ -41,33 +41,6 @@ start_with_coverlet_watch:
 		--verbosity:detailed \
 		--output test-results/behavioral.opencover.xml > coverlet.log &
 
-sonar_scan:
-	dotnet sonarscanner begin \
-		/k:${SONAR_PROJECT_KEY} \
-		/d:sonar.cs.vstest.reportsPaths=**/*.trx \
-		/d:sonar.cs.opencover.reportsPaths=**/*.opencover.xml \
-		/d:sonar.login=${SONAR_LOGIN} \
-		/d:sonar.password=${SONAR_PASSWORD} \
-		/d:sonar.host.url=${SONAR_URI} \
-		/d:sonar.qualitygate.wait=true
-	dotnet build
-	dotnet test --filter FullyQualifiedName!~.Specs --settings settings/coverlet.runsettings --logger trx --results-directory "test-results"
-	reportgenerator "-reports:test-results/**/*.opencover.xml" "-targetdir:test-report"
-	dotnet sonarscanner end /d:sonar.login=${SONAR_LOGIN} /d:sonar.password=${SONAR_PASSWORD}
-	exitStatus=$?
-	sonar-report \
-		--sonarurl=${SONAR_URI} \
-		--project=${SONAR_PROJECT_KEY} \
-		--sonarcomponent=${SONAR_PROJECT_KEY} \
-		--application=${SONAR_PROJECT_KEY} \
-		--sinceleakperiod="false" \
-		--sonarusername=${SONAR_LOGIN} \
-		--sonarpassword=${SONAR_PASSWORD} \
-		--allbugs="true" \
-		--noSecurityHotspot="true" > ./sonar-report/sonar-report.html
-	echo "Exit status is ${exitStatus}"
-	exit ${exitStatus}
-
 MIFGRATION_NAME?=DEFAULT_MIGRATION
 add_migration:
 	dotnet ef migrations add $(MIGRATION_NAME) --project ./src/AspNetCore.Examples.ProductService.Infrastructure/AspNetCore.Examples.ProductService.Infrastructure.csproj

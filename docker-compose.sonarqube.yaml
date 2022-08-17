@@ -30,6 +30,7 @@ services:
       - "SONAR_URI=http://127.0.0.1:9000"
     volumes:
       - ./sonarqube/sonar-conf:/opt/sonarqube/conf
+      - ./sonarqube/scripts:/scripts
     healthcheck:
       test: /bin/bash /scripts/healthcheck.sh
       interval: 20s
