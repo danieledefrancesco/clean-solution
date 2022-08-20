@@ -10,12 +10,10 @@ namespace AspNetCore.Examples.ProductService.Handlers
     public class TransactionalOutboxEventHandler : IEventHandler
     {
         private readonly IEnqueueOutboxMessageCommand _enqueueOutboxMessageCommand;
-        private readonly DbContext _dbContext;
 
-        public TransactionalOutboxEventHandler(IEnqueueOutboxMessageCommand enqueueOutboxMessageCommand, DbContext dbContext)
+        public TransactionalOutboxEventHandler(IEnqueueOutboxMessageCommand enqueueOutboxMessageCommand)
         {
             _enqueueOutboxMessageCommand = enqueueOutboxMessageCommand;
-            _dbContext = dbContext;
         }
 
         public async Task RaiseEvent<T>(T @event) where T : EventBase
@@ -25,7 +23,6 @@ namespace AspNetCore.Examples.ProductService.Handlers
                 Event = @event
             };
             await _enqueueOutboxMessageCommand.EnqueueOutboxMessageAsync(outboxMessage, CancellationToken.None);
-            await _dbContext.SaveChangesAsync();
         }
     }
 }

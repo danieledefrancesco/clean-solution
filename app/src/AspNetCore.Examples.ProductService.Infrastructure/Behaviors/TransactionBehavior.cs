@@ -51,6 +51,7 @@ namespace AspNetCore.Examples.ProductService.Behaviors
                 return result;
             }
 
+            await _dbContext.SaveChangesAsync(cancellationToken);
             await _dbContext.Database.CommitTransactionAsync(cancellationToken);
             return result;
         }
