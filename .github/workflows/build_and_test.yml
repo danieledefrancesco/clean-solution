@@ -46,7 +46,7 @@ jobs:
         run: make shut_containers_down_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Run functional tests
-        run: make run_functional_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        run: make run_functional_tests docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Upload functional tests artifact
         uses: actions/upload-artifact@v3

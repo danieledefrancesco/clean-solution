@@ -2,8 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Events;
 using AspNetCore.Examples.ProductService.Handlers;
-using Azure.Storage.Queues;
-using Newtonsoft.Json;
 using ZapMicro.TransactionalOutbox.Handlers;
 
 namespace AspNetCore.Examples.ProductService.OutboxMessages

@@ -29,7 +29,7 @@ services:
   prod:
     build:
       context: app
-      target: dev
+      target: prod
       args:
         PROJECT_PATH: ${PROJECT_PATH}
         DLL_NAME: ${DLL_NAME}

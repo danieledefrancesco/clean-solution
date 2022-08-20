@@ -63,6 +63,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         [Then(@"the OnProductCreatedEvent is created in the queue")]
         public async Task ThenTheOnProductCreatedEventIsCreatedInTheQueue()
         {
+            await Task.Delay(TimeSpan.FromSeconds(5));
             var message = await Services.OnProductCreatedEventQueueClient.ReceiveMessageAsync();
             var settings = new JsonSerializerSettings
             {
