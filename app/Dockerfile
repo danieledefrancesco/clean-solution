@@ -32,7 +32,7 @@ COPY ./Makefile ./Makefile
 
 RUN apt-get update && apt-get install -y dnsutils curl
 
-RUN dotnet restore --disable-parallel
+RUN dotnet restore
 RUN dotnet build
 ARG PROJECT_PATH
 RUN dotnet publish ${PROJECT_PATH} -c Release -o out

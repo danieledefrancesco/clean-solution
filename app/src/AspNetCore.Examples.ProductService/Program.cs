@@ -51,8 +51,6 @@ app.MapControllers();
 
 app.MapHealthChecks("/healthcheck");
 
-//await Utils.CreateAzureStorageQueuesIfDontExist(app.Services);
-
 app.Run();
 
 
