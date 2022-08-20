@@ -1,15 +1,18 @@
 using System;
+using AspNetCore.Examples.ProductService.Events;
+using Azure.Storage.Queues;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace AspNetCore.Examples.ProductService.Specs
 {
-    public class Services
+    public static class Services
     {
         public static AppDbContext AppDbContext { get; private set; }
         public static IProductServiceClient ProductServiceClient { get; private set; }
         public static IWiremockAdminClient WiremockAdminClient { get; private set; }
 
+        public static QueueClient OnProductCreatedEventQueueClient { get; private set; }
         static Services()
         {
             Reset();
@@ -26,6 +29,10 @@ namespace AspNetCore.Examples.ProductService.Specs
                     NullValueHandling = NullValueHandling.Ignore
                 }
             }.For<IWiremockAdminClient>();
+            OnProductCreatedEventQueueClient = new QueueClient(Environment.GetEnvironmentVariable("QUEUE_STORAGE_CONNECTION_STRING"),
+                nameof(OnProductCreated).ToLower());
+            OnProductCreatedEventQueueClient.DeleteIfExists();
+            OnProductCreatedEventQueueClient.CreateIfNotExists();
         }
     }
 }

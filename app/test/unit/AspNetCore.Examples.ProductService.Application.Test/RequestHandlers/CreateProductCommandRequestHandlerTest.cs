@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Errors;
+using AspNetCore.Examples.ProductService.Handlers;
 using AspNetCore.Examples.ProductService.Repositories;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.ValueObjects;
@@ -15,12 +16,14 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
     {
         private CreateProductCommandRequestHandler _createProductCommandRequestHandler;
         private IProductRepository _productRepository;
+        private IEventHandler _eventHandler;
 
         [SetUp]
         public void SetUp()
         {
             _productRepository = Substitute.For<IProductRepository>();
-            _createProductCommandRequestHandler = new CreateProductCommandRequestHandler(_productRepository);
+            _eventHandler = Substitute.For<IEventHandler>();
+            _createProductCommandRequestHandler = new CreateProductCommandRequestHandler(_productRepository, _eventHandler);
         }
 
         [Test]

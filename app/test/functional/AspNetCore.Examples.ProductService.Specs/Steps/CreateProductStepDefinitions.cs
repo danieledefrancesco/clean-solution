@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AspNetCore.Examples.ProductService.Events;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using RestEase;
 using TechTalk.SpecFlow;
 
@@ -56,6 +58,18 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
             product.Should().NotBeNull();
             product!.Name.Value.Should().Be(TestData.CreateProductRequest.Name);
             product!.Price.Value.Should().Be(TestData.CreateProductRequest.Price);
+        }
+
+        [Then(@"the OnProductCreatedEvent is created in the queue")]
+        public async Task ThenTheOnProductCreatedEventIsCreatedInTheQueue()
+        {
+            var message = await Services.OnProductCreatedEventQueueClient.ReceiveMessageAsync();
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+            var @event = JsonConvert.DeserializeObject<OnProductCreated>(message.Value.Body.ToString());
+            @event!.CreatedProduct.Id.Should().Be(TestData.CreateProductRequest.Id);
         }
     }
 }

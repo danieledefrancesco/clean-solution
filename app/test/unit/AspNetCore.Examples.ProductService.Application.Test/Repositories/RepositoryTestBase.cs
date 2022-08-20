@@ -1,10 +1,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Common;
-using AspNetCore.Examples.ProductService.Persistence;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using NSubstitute;
 using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.Repositories

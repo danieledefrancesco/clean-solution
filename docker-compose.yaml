@@ -63,6 +63,7 @@ services:
     depends_on:
       - wiremock
       - sqlserver
+      - queues
       - dev
       - prod
   wiremock:
@@ -86,3 +87,10 @@ services:
     environment:
       SA_PASSWORD: "@_str0nG-p@ssw0rd!"
       ACCEPT_EULA: "Y"
+  queues:
+    build:
+      context: queue
+    ports:
+      - 9004:10000
+      - 9005:10001
+    command: "azurite-queue --loose --queueHost 0.0.0.0"

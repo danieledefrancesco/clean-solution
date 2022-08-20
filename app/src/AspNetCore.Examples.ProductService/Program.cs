@@ -27,7 +27,9 @@ builder.Services.AddAutoMapper(Assembly.GetCallingAssembly());
 builder.Services
     .AddApplicationServices(builder.Configuration)
     .AddEntityFrameworkForSqlServer()
-    .AddDefaultHttpClientFactory();
+    .AddDefaultHttpClientFactory()
+    .AddTransactionalOutbox()
+    .AddAzureStorageQueues(builder.Configuration);
             
 AddErrorHandlers(builder.Services);
 builder.Services.AddHealthChecks();
@@ -49,6 +51,7 @@ app.MapControllers();
 
 app.MapHealthChecks("/healthcheck");
 
+await Utils.CreateAzureStorageQueuesIfDontExist(app.Services);
 
 app.Run();
 

@@ -1,9 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using AspNetCore.Examples.ProductService.EventHandlers;
 using AspNetCore.Examples.ProductService.Factories;
+using AspNetCore.Examples.ProductService.Handlers;
+using Azure.Storage.Queues;
 using FluentAssertions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NSubstitute;
 using NUnit.Framework;
+using ZapMicro.TransactionalOutbox.Commands;
 
 namespace AspNetCore.Examples.ProductService
 {
@@ -17,9 +24,13 @@ namespace AspNetCore.Examples.ProductService
         [SetUp]
         public void SetUp()
         {
+            var configuration = Substitute.For<IConfiguration>();
+            configuration["QUEUE_STORAGE_CONNECTION_STRING"].Returns("");
             _services = new ServiceCollection();
             _services.AddEntityFrameworkForSqlServer();
             _services.AddDefaultHttpClientFactory();
+            _services.AddTransactionalOutbox();
+            _services.AddAzureStorageQueues(configuration);
             _serviceProvider = _services.BuildServiceProvider();
             _oldVariableValue = Environment.GetEnvironmentVariable(_connectionStringEnvironmentVariableName);
             Environment.SetEnvironmentVariable(_connectionStringEnvironmentVariableName, "ConnectionString");
@@ -52,6 +63,22 @@ namespace AspNetCore.Examples.ProductService
             _services.Should().Contain(x =>
                 x.ServiceType == typeof(IHttpClientFactory) &&
                 x.ImplementationType == typeof(DefaultHttpClientFactory));
+        }
+
+        [Test]
+        public void AddTransactionalOutbox_AddsTransactionalOutboxServices()
+        {
+            _services.Should().Contain(x => x.ServiceType == typeof(IEnqueueOutboxMessageCommand));
+            _services.Should().Contain(x =>
+                x.ServiceType == typeof(IEventHandler) &&
+                x.ImplementationType == typeof(TransactionalOutboxEventHandler));
+        }
+
+        [Test]
+        public void AddAzureStorageQueue_AddsQueueClient()
+        {
+            _services.Should().Contain(x =>
+                x.ServiceType == typeof(Func<QueueClient>));
         }
     }
 }
