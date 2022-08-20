@@ -75,14 +75,17 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Making a POST request to the /products endpoint with a valid CreateProductRequest" +
-            " body should successfully create the product")]
-        public virtual void MakingAPOSTRequestToTheProductsEndpointWithAValidCreateProductRequestBodyShouldSuccessfullyCreateTheProduct()
+        [NUnit.Framework.DescriptionAttribute("Making a POST ot PUT request to the /products endpoint with a valid CreateProduct" +
+            "Request body should successfully create the product")]
+        [NUnit.Framework.TestCaseAttribute("POST", null)]
+        [NUnit.Framework.TestCaseAttribute("PUT", null)]
+        public virtual void MakingAPOSTOtPUTRequestToTheProductsEndpointWithAValidCreateProductRequestBodyShouldSuccessfullyCreateTheProduct(string method, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST request to the /products endpoint with a valid CreateProductRequest" +
-                    " body should successfully create the product", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("method", method);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST ot PUT request to the /products endpoint with a valid CreateProduct" +
+                    "Request body should successfully create the product", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -107,7 +110,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         testRunner.Given("a create product request <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-        testRunner.When("I make a POST request to the /products endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
         testRunner.Then("the response status code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -131,13 +134,16 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Making a POST request to /products with an existing id should return a 409 respon" +
             "se")]
-        public virtual void MakingAPOSTRequestToProductsWithAnExistingIdShouldReturnA409Response()
+        [NUnit.Framework.TestCaseAttribute("POST", null)]
+        [NUnit.Framework.TestCaseAttribute("PUT", null)]
+        public virtual void MakingAPOSTRequestToProductsWithAnExistingIdShouldReturnA409Response(string method, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("method", method);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST request to /products with an existing id should return a 409 respon" +
                     "se", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 15
+#line 20
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -157,16 +163,16 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 16
+#line 21
         testRunner.Given("a product <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 22
         testRunner.And("a create product request <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
-        testRunner.When("I make a POST request to the /products endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+        testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 24
         testRunner.Then("the response status code is 409", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -176,16 +182,18 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Making a POST or PUT request to /products with an invalid name should return a 40" +
             "0 response")]
-        [NUnit.Framework.TestCaseAttribute("b1", "", null)]
-        public virtual void MakingAPOSTOrPUTRequestToProductsWithAnInvalidNameShouldReturnA400Response(string id, string name, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("b1", "", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("b1", "", "PUT", null)]
+        public virtual void MakingAPOSTOrPUTRequestToProductsWithAnInvalidNameShouldReturnA400Response(string id, string name, string method, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("id", id);
             argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("method", method);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST or PUT request to /products with an invalid name should return a 40" +
                     "0 response", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 21
+#line 31
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -205,13 +213,13 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 22
+#line 32
         testRunner.Given(string.Format("a create product request <<id>, {0}, 1>", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 23
-        testRunner.When("I make a POST request to the /products endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 33
+        testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 24
+#line 34
         testRunner.Then("the response status code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -221,21 +229,28 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Making a POST or PUT request to /products with an invalid id should return a 400 " +
             "response")]
-        [NUnit.Framework.TestCaseAttribute("", "Name", null)]
-        [NUnit.Framework.TestCaseAttribute("!-@", "Name", null)]
-        [NUnit.Framework.TestCaseAttribute("A!-@", "Name", null)]
-        [NUnit.Framework.TestCaseAttribute("1ABC", "Name", null)]
-        [NUnit.Framework.TestCaseAttribute("-ABC", "Name", null)]
-        [NUnit.Framework.TestCaseAttribute("_ABC", "Name", null)]
-        public virtual void MakingAPOSTOrPUTRequestToProductsWithAnInvalidIdShouldReturnA400Response(string id, string name, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("", "Name", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Name", "PUT", null)]
+        [NUnit.Framework.TestCaseAttribute("!-@", "Name", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("!-@", "Name", "PUT", null)]
+        [NUnit.Framework.TestCaseAttribute("A!-@", "Name", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("A!-@", "Name", "PUT", null)]
+        [NUnit.Framework.TestCaseAttribute("1ABC", "Name", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("1ABC", "Name", "PUT", null)]
+        [NUnit.Framework.TestCaseAttribute("-ABC", "Name", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("-ABC", "Name", "PUT", null)]
+        [NUnit.Framework.TestCaseAttribute("_ABC", "Name", "POST", null)]
+        [NUnit.Framework.TestCaseAttribute("_ABC", "Name", "PUT", null)]
+        public virtual void MakingAPOSTOrPUTRequestToProductsWithAnInvalidIdShouldReturnA400Response(string id, string name, string method, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("id", id);
             argumentsOfScenario.Add("name", name);
+            argumentsOfScenario.Add("method", method);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST or PUT request to /products with an invalid id should return a 400 " +
                     "response", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 30
+#line 41
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -255,13 +270,13 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 31
+#line 42
         testRunner.Given(string.Format("a create product request <<id>, {0}, 1>", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 32
-        testRunner.When("I make a POST request to the /products endpoint", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 43
+        testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 33
+#line 44
         testRunner.Then("the response status code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

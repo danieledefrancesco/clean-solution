@@ -26,8 +26,11 @@ jobs:
       - name: Build and tag
         run: make build_and_tag docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
+      - name: Start sonar scan
+        run: make start_sonar_scan_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        
       - name: Run unit tests
-        run: make run_unit_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        run: make run_unit_tests_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Upload unit tests artifact
         uses: actions/upload-artifact@v3
@@ -35,6 +38,12 @@ jobs:
           name: test-report
           path: app/test-report
         if: ${{ always() }}
+
+      - name: End sonar scan
+        run: make end_sonar_scan_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+
+      - name: Shut containers down
+        run: make shut_containers_down_ci docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
       - name: Run functional tests
         run: make run_functional_tests_dev docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}

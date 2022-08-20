@@ -5,6 +5,7 @@ The project also provides a template for a CI pipeline, built with github action
 - builds and tags the docker containers
 - runs the unit tests and uploads an artifact with the coverage report
 - runs the functional tests and uploads an artifact with the report
+- runs the sonarqube analysis
 - generates the swagger and uploads it as an artifact
 - pushes the containers to the docker registry
 
@@ -60,3 +61,8 @@ Runs the functional tests. The report will be stored in the `<project-root>/app/
 make generate_swagger
 ```
 Generates the swagger file. It will be stored in the `<project-root>/app/swagger-output` directory.
+### 6. Run the sonarqube analysis
+```
+make run_sonar_flow
+```
+Runs the sonarqube analysis. The results will be available at http://localhost:9000
