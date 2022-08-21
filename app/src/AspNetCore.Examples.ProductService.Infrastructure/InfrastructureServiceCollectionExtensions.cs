@@ -40,7 +40,7 @@ namespace AspNetCore.Examples.ProductService
             where T : EventBase
         {
             Func<QueueClient> clientFactory = () => new QueueClient(configuration["QUEUE_STORAGE_CONNECTION_STRING"],
-                nameof(T).ToLower());
+                typeof(T)!.Name!.ToLower());
             return services
                 .AddSingleton(clientFactory)
                 .AddScoped<IQueueHandler<T>>((sp) => new AzureStorageQueueHandler<T>(clientFactory()));

@@ -33,3 +33,6 @@ run_functional_tests:
 
 generate_swagger:
 	swagger tofile --yaml --host http://localhost:8000 --output swagger-output/swagger.yaml ${PROJECT_FOLDER_PATH}/bin/Debug/net6.0/${DLL_NAME} v1
+
+create_queue:
+	az storage queue create -n $(QUEUE_NAME) --connection-string "${QUEUE_STORAGE_CONNECTION_STRING}"
