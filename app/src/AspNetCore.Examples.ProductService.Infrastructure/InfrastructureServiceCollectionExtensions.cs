@@ -25,8 +25,12 @@ namespace AspNetCore.Examples.ProductService
         }
 
         public static IServiceCollection AddDefaultHttpClientFactory(this IServiceCollection services) =>
-            services.AddSingleton<IHttpClientFactory, DefaultHttpClientFactory>();
+            services.AddHttpClient();
 
+        public static IServiceCollection AddPriceCardService(this IServiceCollection services) =>
+            services.AddScoped<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>()
+                .AddScoped(sp => sp.GetRequiredService<IPriceCardServiceClientFactory>().Create());
+        
         public static IServiceCollection AddTransactionalOutbox(this IServiceCollection services) =>
             services.AddTransactionalOutbox<AppDbContext>(options => 
                 options.ConfigureDequeueOutboxMessagesConfiguration(new DequeueOutboxMessagesConfiguration())

@@ -19,28 +19,27 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
     {
         private GetProductByIdRequestHandler _getProductByIdRequestHandler;
         private IProductRepository _productRepository;
-        private IPriceCardServiceClientFactory _priceCardServiceClientFactory;
-        private PriceCardServiceClient _priceCardClient;
+        private PriceCardServiceClient _priceCardServiceClient;
 
         [SetUp]
         public void SetUp()
         {
             _productRepository = Substitute.For<IProductRepository>();
-            _priceCardServiceClientFactory = Substitute.For<IPriceCardServiceClientFactory>();
-            _priceCardClient = Substitute.For<PriceCardServiceClient>(new object[] { Substitute.For<HttpClient>()});
-            _priceCardServiceClientFactory.Create().Returns(_priceCardClient);
-            _getProductByIdRequestHandler = new GetProductByIdRequestHandler(_productRepository, _priceCardServiceClientFactory);
+            _priceCardServiceClient =
+                Substitute.For<PriceCardServiceClient>(new object[] { Substitute.For<HttpClient>() });
+            _getProductByIdRequestHandler =
+                new GetProductByIdRequestHandler(_productRepository, _priceCardServiceClient);
         }
 
         [Test]
         public void Handle_ReturnsNotFound_IfProductDoesntExist()
         {
             const string productId = "abc";
-            var mockedResult = Task.FromResult((Product) null);
+            var mockedResult = Task.FromResult((Product)null);
             _productRepository.GetById(productId).Returns(mockedResult);
 
             var request = new GetProductByIdRequest(productId);
-            
+
             var response = _getProductByIdRequestHandler
                 .Handle(request, default(CancellationToken))
                 .Result;
@@ -48,16 +47,15 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             response.IsT1.Should().BeTrue();
 
             response.AsT1.GetType().Should().Be<NotFoundError>();
-            
         }
-        
+
         [Test]
         public void Handle_ReturnsPriceCardNewPriceIsLowerThanZero_IfProductExists()
         {
             const string productId = "abc";
             const string productName = "name";
             const decimal productPrice = 10;
-            
+
             var cancellationToken = default(CancellationToken);
 
             var mockedPriceCardList = Task.FromResult(new PriceCardList()
@@ -72,19 +70,19 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                     }
                 }
             });
-            
+
             var mockedResult = Task.FromResult(new Product()
             {
                 Id = productId,
                 Name = ProductName.From(productName),
                 Price = ProductPrice.From(productPrice)
             });
-            
+
             _productRepository.GetById(productId).Returns(mockedResult);
-            _priceCardClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
+            _priceCardServiceClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
 
             var request = new GetProductByIdRequest(productId);
-            
+
             var response = _getProductByIdRequestHandler
                 .Handle(request, cancellationToken)
                 .Result;
@@ -93,40 +91,40 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             response.AsT1.Should().NotBeNull();
             response.AsT1.Should().BeOfType<PriceCardNewPriceLessThanZeroError>();
         }
-        
+
         [Test]
         public void Handle_ReturnsProduct_IfProductExists()
         {
             const string productId = "abc";
             const string productName = "name";
             const decimal productPrice = 10;
-            
+
             var cancellationToken = default(CancellationToken);
 
             var mockedPriceCardList = Task.FromResult(new PriceCardList()
             {
                 Items = new List<PriceCard>()
             });
-            
+
             var mockedResult = Task.FromResult(new Product()
             {
                 Id = productId,
                 Name = ProductName.From(productName),
                 Price = ProductPrice.From(productPrice)
             });
-            
+
             _productRepository.GetById(productId).Returns(mockedResult);
-            _priceCardClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
+            _priceCardServiceClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
 
             var request = new GetProductByIdRequest(productId);
-            
+
             var response = _getProductByIdRequestHandler
                 .Handle(request, cancellationToken)
                 .Result;
 
             response.IsT0.Should().BeTrue();
             response.AsT0.Should().NotBeNull();
-            
+
             var product = response.AsT0.Product;
             product.Should().NotBeNull();
             product.Id.Should().Be(productId);
@@ -135,7 +133,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             product.Price.Value.Should().Be(productPrice);
             product.FinalPrice.Value.Should().Be(productPrice);
         }
-        
+
         [Test]
         public void Handle_ReturnsProductWithPriceCardPrice_IfProductAndPriceCardExist()
         {
@@ -143,7 +141,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             const string productName = "name";
             const decimal productPrice = 10;
             const double priceCardPrice = 8;
-            
+
             var cancellationToken = default(CancellationToken);
 
             var mockedPriceCardList = Task.FromResult(new PriceCardList()
@@ -156,26 +154,26 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                     }
                 }
             });
-            
+
             var mockedResult = Task.FromResult(new Product()
             {
                 Id = productId,
                 Name = ProductName.From(productName),
                 Price = ProductPrice.From(productPrice)
             });
-            
+
             _productRepository.GetById(productId).Returns(mockedResult);
-            _priceCardClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
+            _priceCardServiceClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
 
             var request = new GetProductByIdRequest(productId);
-            
+
             var response = _getProductByIdRequestHandler
                 .Handle(request, cancellationToken)
                 .Result;
 
             response.IsT0.Should().BeTrue();
             response.AsT0.Should().NotBeNull();
-            
+
             var product = response.AsT0.Product;
             product.Should().NotBeNull();
             product.Id.Should().Be(productId);

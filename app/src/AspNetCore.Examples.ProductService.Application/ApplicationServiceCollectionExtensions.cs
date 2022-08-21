@@ -20,12 +20,8 @@ namespace AspNetCore.Examples.ProductService
             return services
                 .AddMediatR(CurrentAssembly)
                 .AddRepositories(CurrentAssembly)
-                .AddConfigurations(configuration)
-                .AddFactories();
+                .AddConfigurations(configuration);
         }
-
-        public static IServiceCollection AddFactories(this IServiceCollection services) =>
-            services.AddSingleton<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>();
 
         public static IServiceCollection AddRepositories(this IServiceCollection services, Assembly assembly)
         {
