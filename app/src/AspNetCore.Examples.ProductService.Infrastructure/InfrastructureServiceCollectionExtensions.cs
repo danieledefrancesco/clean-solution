@@ -10,6 +10,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
 using ZapMicro.TransactionalOutbox.Configurations;
 
 namespace AspNetCore.Examples.ProductService
@@ -24,13 +25,16 @@ namespace AspNetCore.Examples.ProductService
             return services;
         }
 
-        public static IServiceCollection AddDefaultHttpClientFactory(this IServiceCollection services) =>
-            services.AddHttpClient();
 
-        public static IServiceCollection AddPriceCardService(this IServiceCollection services) =>
+        public static IServiceCollection AddPriceCardService(this IServiceCollection services)
+        {
             services.AddScoped<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>()
-                .AddScoped(sp => sp.GetRequiredService<IPriceCardServiceClientFactory>().Create());
-        
+                .AddScoped(sp => sp.GetRequiredService<IPriceCardServiceClientFactory>().Create())
+                .AddHttpClient<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>()
+                .SetHandlerLifetime(TimeSpan.FromMinutes(5));
+            return services;
+        }
+
         public static IServiceCollection AddTransactionalOutbox(this IServiceCollection services) =>
             services.AddTransactionalOutbox<AppDbContext>(options => 
                 options.ConfigureDequeueOutboxMessagesConfiguration(new DequeueOutboxMessagesConfiguration())

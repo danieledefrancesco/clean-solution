@@ -1,5 +1,4 @@
 using System;
-using System.Net.Http;
 using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Handlers;
@@ -27,7 +26,6 @@ namespace AspNetCore.Examples.ProductService
             configuration["QUEUE_STORAGE_CONNECTION_STRING"].Returns("");
             _services = new ServiceCollection();
             _services.AddEntityFrameworkForSqlServer();
-            _services.AddDefaultHttpClientFactory();
             _services.AddPriceCardService();
             _services.AddTransactionalOutbox();
             _services.AddAzureStorageQueues(configuration);

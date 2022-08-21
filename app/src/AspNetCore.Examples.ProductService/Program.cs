@@ -27,7 +27,6 @@ builder.Services.AddAutoMapper(Assembly.GetCallingAssembly());
 builder.Services
     .AddApplicationServices(builder.Configuration)
     .AddEntityFrameworkForSqlServer()
-    .AddDefaultHttpClientFactory()
     .AddPriceCardService()
     .AddTransactionalOutbox()
     .AddAzureStorageQueues(builder.Configuration);
