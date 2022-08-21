@@ -1,4 +1,3 @@
-using Amazon.Runtime.Internal;
 using AspNetCore.Examples.ProductService.Errors;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;

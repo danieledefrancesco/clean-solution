@@ -15,7 +15,7 @@ namespace AspNetCore.Examples.ProductService.Repositories
         protected RepositoryBase(DbContext dbContext)
         {
             DbContext = dbContext;
-            Set = dbContext.Set<TEntity>();
+            Set = DbContext.Set<TEntity>();
         }
 
 

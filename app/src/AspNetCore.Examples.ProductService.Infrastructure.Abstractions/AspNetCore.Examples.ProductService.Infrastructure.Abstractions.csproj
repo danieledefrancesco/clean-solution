@@ -7,6 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AspNetCore.Examples.ProductService.Domain\AspNetCore.Examples.ProductService.Domain.csproj" />
+      <ProjectReference Include="..\AspNetCore.Examples.ProductService.PriceCardService\AspNetCore.Examples.ProductService.PriceCardService.csproj" />
     </ItemGroup>
 
 </Project>

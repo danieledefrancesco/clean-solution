@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Errors;
 using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Repositories;
@@ -14,12 +15,12 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
     public class GetProductByIdRequestHandler : IAppRequestHandler<GetProductByIdRequest, GetProductByIdResponse>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IPriceCardServiceClientFactory _priceCardServiceClientFactory;
+        private readonly PriceCardServiceClient _priceCardServiceClient;
 
-        public GetProductByIdRequestHandler(IProductRepository productRepository, IPriceCardServiceClientFactory priceCardServiceClientFactory)
+        public GetProductByIdRequestHandler(IProductRepository productRepository, PriceCardServiceClient priceCardServiceClient)
         {
             _productRepository = productRepository;
-            _priceCardServiceClientFactory = priceCardServiceClientFactory;
+            _priceCardServiceClient = priceCardServiceClient;
         }
 
         public async Task<OneOf<GetProductByIdResponse, IError>> Handle(GetProductByIdRequest request, CancellationToken cancellationToken)
@@ -34,7 +35,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                 };
             }
 
-            var priceCardList = await _priceCardServiceClientFactory.Create().ActiveAsync(product.Id, cancellationToken);
+            var priceCardList = await _priceCardServiceClient.ActiveAsync(product.Id, cancellationToken);
 
             if (!priceCardList.Items.Any())
             {

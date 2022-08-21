@@ -8,17 +8,17 @@ namespace AspNetCore.Examples.ProductService.Factories
     public class PriceCardServiceClientFactory: IPriceCardServiceClientFactory
     {
         private readonly IOptions<PriceCardServiceClientConfiguration> _config;
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _httpClient;
 
-        public PriceCardServiceClientFactory(IOptions<PriceCardServiceClientConfiguration> config, IHttpClientFactory httpClientFactory)
+        public PriceCardServiceClientFactory(IOptions<PriceCardServiceClientConfiguration> config, HttpClient httpClient)
         {
             _config = config;
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
         }
 
         public PriceCardServiceClient Create()
         {
-            var client = new PriceCardServiceClient(_httpClientFactory.CreateClient())
+            var client = new PriceCardServiceClient(_httpClient)
             {
                 BaseUrl = _config.Value.PriceCardServiceBaseUri
             };
