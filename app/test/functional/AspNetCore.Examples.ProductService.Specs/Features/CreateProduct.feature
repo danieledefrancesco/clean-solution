@@ -17,6 +17,20 @@ Link to a feature: [ProductService]($projectname$/Features/CreateProduct.feature
           | POST   |
           | PUT    |
 
+    Scenario Outline: Creating a new product should raise an OnProductCreated domain event
+        Given a create product request <product-id, product-name, 1>
+        When I make a <method> request to the /products endpoint
+        Then the response status code is 200
+        And the product id is product-id
+        And the product name is product-name
+        And the product price is 1
+        And the OnProductCreatedEvent is created in the queue
+
+        Examples:
+          | method |
+          | POST   |
+          | PUT    |
+
     Scenario Outline: Making a POST request to /products with an existing id should return a 409 response
         Given a product <product-id, product-name, 1>
         And a create product request <product-id, product-name, 1>

@@ -34,6 +34,10 @@ shut_containers_down_ci:
 run_sonar_flow: start_sonar_scan_ci run_unit_tests_ci end_sonar_scan_ci
 
 start_development_mode:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d sqlserver
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run dev make update_database
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d queues
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run dev bash -c "make create_queue QUEUE_NAME=onproductcreated"
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d
     
 stop_development_mode:
@@ -42,23 +46,13 @@ stop_development_mode:
 run_unit_tests_dev:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run dev make run_unit_tests
 
-run_functional_tests_dev:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run dev /bin/bash -c "make update_database"
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) down
-	
 run_unit_tests_ci:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make run_unit_tests
 	
-run_functional_tests_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T -d web make start_with_coverlet_watch
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) run dev /bin/bash -c "make update_database"
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make end_coverlet
-
-run_functional_tests_prod_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d
+run_functional_tests:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d sqlserver
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run dev /bin/bash -c "make update_database"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d web
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
 
 MIFGRATION_NAME?=DEFAULT_MIGRATION

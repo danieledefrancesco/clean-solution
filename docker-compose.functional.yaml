@@ -19,6 +19,7 @@ services:
       - "SPECS_PROJECT_NAME=${SPECS_PROJECT_NAME}"
       - "SPECS_DLL_NAME=${SPECS_DLL_NAME}"
       - "NET_VERSION=${NET_VERSION}"
+      - "QUEUE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://queues:10001/devstoreaccount1"
     volumes:
       - ./app/CleanSolution.sln:/app/CleanSolution.sln
       - ./app/Makefile:/app/Makefile

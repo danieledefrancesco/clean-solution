@@ -1,5 +1,4 @@
 using AspNetCore.Examples.ProductService.Entities;
-using AspNetCore.Examples.ProductService.Persistence;
 using AspNetCore.Examples.ProductService.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 

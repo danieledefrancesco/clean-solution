@@ -1,5 +1,8 @@
 using System;
+using System.Threading.Tasks;
+using Azure.Storage.Queues;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AspNetCore.Examples.ProductService
 {

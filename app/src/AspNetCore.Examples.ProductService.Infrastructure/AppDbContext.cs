@@ -1,10 +1,12 @@
 using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.ValueObjects;
 using Microsoft.EntityFrameworkCore;
+using ZapMicro.TransactionalOutbox.DbContexts;
+using ZapMicro.TransactionalOutbox.Entities;
 
 namespace AspNetCore.Examples.ProductService
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: DbContext, ITransactionalOutboxDbContext
     {
         public AppDbContext() : this(Utils.GetSqlServerDbContextOptions())
         {
@@ -16,6 +18,7 @@ namespace AspNetCore.Examples.ProductService
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<OutboxMessage> OutboxMessages { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,5 +38,6 @@ namespace AspNetCore.Examples.ProductService
                 .HasConversion(productPrice => productPrice.Value,
                     productPriceDecimal => ProductPrice.From(productPriceDecimal));
         }
+
     }
 }

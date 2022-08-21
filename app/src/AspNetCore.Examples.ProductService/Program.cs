@@ -27,7 +27,9 @@ builder.Services.AddAutoMapper(Assembly.GetCallingAssembly());
 builder.Services
     .AddApplicationServices(builder.Configuration)
     .AddEntityFrameworkForSqlServer()
-    .AddDefaultHttpClientFactory();
+    .AddDefaultHttpClientFactory()
+    .AddTransactionalOutbox()
+    .AddAzureStorageQueues(builder.Configuration);
             
 AddErrorHandlers(builder.Services);
 builder.Services.AddHealthChecks();
@@ -48,7 +50,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapHealthChecks("/healthcheck");
-
 
 app.Run();
 

@@ -132,17 +132,15 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Making a POST request to /products with an existing id should return a 409 respon" +
-            "se")]
+        [NUnit.Framework.DescriptionAttribute("Creating a new product should raise an OnProductCreated domain event")]
         [NUnit.Framework.TestCaseAttribute("POST", null)]
         [NUnit.Framework.TestCaseAttribute("PUT", null)]
-        public virtual void MakingAPOSTRequestToProductsWithAnExistingIdShouldReturnA409Response(string method, string[] exampleTags)
+        public virtual void CreatingANewProductShouldRaiseAnOnProductCreatedDomainEvent(string method, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("method", method);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST request to /products with an existing id should return a 409 respon" +
-                    "se", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating a new product should raise an OnProductCreated domain event", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 20
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -164,15 +162,72 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             {
                 this.ScenarioStart();
 #line 21
-        testRunner.Given("a product <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("a create product request <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
-        testRunner.And("a create product request <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 23
         testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 23
+        testRunner.Then("the response status code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
 #line 24
+        testRunner.And("the product id is product-id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+        testRunner.And("the product name is product-name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 26
+        testRunner.And("the product price is 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 27
+        testRunner.And("the OnProductCreatedEvent is created in the queue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Making a POST request to /products with an existing id should return a 409 respon" +
+            "se")]
+        [NUnit.Framework.TestCaseAttribute("POST", null)]
+        [NUnit.Framework.TestCaseAttribute("PUT", null)]
+        public virtual void MakingAPOSTRequestToProductsWithAnExistingIdShouldReturnA409Response(string method, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("method", method);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST request to /products with an existing id should return a 409 respon" +
+                    "se", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 34
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 35
+        testRunner.Given("a product <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 36
+        testRunner.And("a create product request <product-id, product-name, 1>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 37
+        testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 38
         testRunner.Then("the response status code is 409", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -193,7 +248,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             argumentsOfScenario.Add("method", method);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST or PUT request to /products with an invalid name should return a 40" +
                     "0 response", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 31
+#line 45
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -213,13 +268,13 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 32
+#line 46
         testRunner.Given(string.Format("a create product request <<id>, {0}, 1>", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 33
+#line 47
         testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 34
+#line 48
         testRunner.Then("the response status code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -250,7 +305,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             argumentsOfScenario.Add("method", method);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Making a POST or PUT request to /products with an invalid id should return a 400 " +
                     "response", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 41
+#line 55
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -270,13 +325,13 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
             else
             {
                 this.ScenarioStart();
-#line 42
+#line 56
         testRunner.Given(string.Format("a create product request <<id>, {0}, 1>", name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 43
+#line 57
         testRunner.When(string.Format("I make a {0} request to the /products endpoint", method), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 44
+#line 58
         testRunner.Then("the response status code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -33,10 +33,10 @@ namespace AspNetCore.Examples.ProductService.Repositories
             await Delete(entity);
         }
 
-        public async Task Delete(TEntity entity)
+        public Task Delete(TEntity entity)
         {
             Set.Remove(entity);
-            await DbContext.SaveChangesAsync();
+            return Task.CompletedTask;
         } 
 
         public async Task<TEntity> Insert(TEntity entity)
@@ -44,15 +44,14 @@ namespace AspNetCore.Examples.ProductService.Repositories
             entity.CreatedAt = DateTime.Now;
             entity.LastModifiedAt = entity.CreatedAt;
             var addResult = await Set.AddAsync(entity);
-            await DbContext.SaveChangesAsync();
             return addResult.Entity;
         }
 
-        public async Task Update(TEntity entity)
+        public Task Update(TEntity entity)
         {
             entity.LastModifiedAt = DateTime.Now;
             Set.Update(entity);
-            await DbContext.SaveChangesAsync();
+            return Task.CompletedTask;
         }
     }
 }
