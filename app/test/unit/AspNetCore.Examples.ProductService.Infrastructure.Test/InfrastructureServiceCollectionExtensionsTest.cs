@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using AspNetCore.Examples.ProductService.EventHandlers;
+using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Handlers;
 using Azure.Storage.Queues;
@@ -29,6 +28,7 @@ namespace AspNetCore.Examples.ProductService
             _services = new ServiceCollection();
             _services.AddEntityFrameworkForSqlServer();
             _services.AddDefaultHttpClientFactory();
+            _services.AddPriceCardService();
             _services.AddTransactionalOutbox();
             _services.AddAzureStorageQueues(configuration);
             _serviceProvider = _services.BuildServiceProvider();
@@ -58,11 +58,12 @@ namespace AspNetCore.Examples.ProductService
 
        
         [Test]
-        public void AddDefaultHttpClientFactory_AddsDefaultHttpClientFactoryConfiguration()
+        public void AddPriceCardService_AddsClientAndFactory()
         {
             _services.Should().Contain(x =>
-                x.ServiceType == typeof(IHttpClientFactory) &&
-                x.ImplementationType == typeof(DefaultHttpClientFactory));
+                x.ServiceType == typeof(PriceCardServiceClient));
+            _services.Should().Contain(x =>
+                x.ServiceType == typeof(IPriceCardServiceClientFactory));
         }
 
         [Test]
