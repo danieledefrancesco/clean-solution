@@ -10,7 +10,8 @@
 ## Overview
 The following diagram illustrates the architecture overview of the context where the product service operates.
 
-![Architecture overview](./markdown-assets/architecture-overview.svg)***Figure 1**: Architecture overview*
+![Architecture overview](./markdown-assets/architecture-overview.svg)
+***Figure 1**: Architecture overview*
 
 - The Product Service is implemented in an AspNet 6 Web API application
 - The Price Card Service is not implemented within this repository and is virtualized through Wiremock.
@@ -28,7 +29,8 @@ The artifacts also provide a *swagger.yaml* file stored in the *swagger* artifac
 
 The following sequence diagram illustrates the get product by id operation.
 
-![Get product by id](./markdown-assets/get-product-by-id.svg)***Figure 2**: Get a product by id sequence diagram*
+![Get product by id](./markdown-assets/get-product-by-id.svg)
+***Figure 2**: Get a product by id sequence diagram*
 
 
 In order to execute a *get product by id request* use the following curl command:
@@ -37,6 +39,11 @@ curl --location --request GET 'http://localhost:8000/products/{id}'
 ```
 
 ### Create a product
+
+The following sequence diagram illustrates the create product operation.
+
+![Get product by id](./markdown-assets/create-product.svg)
+***Figure 2**: Create product sequence diagram*
 
 
 
