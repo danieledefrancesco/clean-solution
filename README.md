@@ -9,6 +9,12 @@ The project also provides a template for a CI pipeline, built with github action
 - generates the swagger and uploads it as an artifact
 - pushes the containers to the docker registry
 
+## Table of contents
+
+1. [Dependencies](#dependencies)
+2. [Useful commands](#useful-commands)
+3. [Architecture](#architecture)
+
 ## Dependencies
 
 In order to run the project you need:
@@ -66,3 +72,7 @@ Generates the swagger file. It will be stored in the `<project-root>/app/swagger
 make run_sonar_flow
 ```
 Runs the sonarqube analysis. The results will be available at http://localhost:9000
+
+## Architecture
+
+For more details about the architecture refer [here](./ARCHITECTURE.md).
