@@ -14,7 +14,7 @@ version=latest
 branch_name?=main
 
 build_and_tag:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) build
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) build dev prod functional
 
 
 start_sonar_scan_ci:	
@@ -77,12 +77,19 @@ save_prod_image:
 	mkdir -p tmp-images
 	docker save --output tmp-images/prod.tar $(docker_username)/$(DOCKER_IMAGE_PREFIX)-prod:$(version)
 
-save_all_images: save_dev_image save_prod_image
+save_functional_image:
+	mkdir -p tmp-images
+	docker save --output tmp-images/functional.tar $(docker_username)/$(DOCKER_IMAGE_PREFIX)-functional:$(version)
+
+save_all_images: save_dev_image save_prod_image save_functional_image
 
 load_dev_image:
 	docker load < tmp-images/dev.tar
 
 load_prod_image:
 	docker load < tmp-images/prod.tar
+
+load_functional_image:
+	docker load < tmp-images/functional.tar
 
 load_all_images: load_dev_image load_prod_image

@@ -69,6 +69,7 @@ services:
   wiremock:
     domainname: app
     container_name: wiremock
+    image: "${WEB_IMAGE_NAME}-wiremock:${VERSION}"
     build:
       context: wiremock
     ports:
@@ -82,6 +83,7 @@ services:
     container_name: sqlserver
     build:
       context: sqlserver
+    image: "${WEB_IMAGE_NAME}-sqlserver:${VERSION}"
     ports:
       - 9002:1433
     environment:
@@ -90,6 +92,7 @@ services:
   queues:
     build:
       context: queue
+    image: "${WEB_IMAGE_NAME}-queues:${VERSION}"
     ports:
       - 9004:10000
       - 9005:10001
