@@ -138,7 +138,7 @@ jobs:
         run: make load_all_images docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
 
       - name: Generate swagger
-        run: make generate_swagger
+        run: make generate_swagger docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
 
       - name: Upload swagger artifact
         uses: actions/upload-artifact@v3
