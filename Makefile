@@ -70,9 +70,11 @@ generate_swagger:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run dev make generate_swagger
 
 save_dev_image:
+	mkdir -p tmp-images
 	docker save --output tmp-images/dev.tar $(docker_username)/$(DOCKER_IMAGE_PREFIX)-dev:$(version)
 
 save_prod_image:
+	mkdir -p tmp-images
 	docker save --output tmp-images/prod.tar $(docker_username)/$(DOCKER_IMAGE_PREFIX)-prod:$(version)
 
 save_all_images: save_dev_image save_prod_image
