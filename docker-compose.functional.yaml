@@ -2,9 +2,8 @@ version: '3.7'
 
 services:
   functional:
-    container_name: functional
     domainname: app
-    image: functional
+    image: "${WEB_IMAGE_NAME}-functional:${VERSION}"
     build:
       context: app
       target: functional
