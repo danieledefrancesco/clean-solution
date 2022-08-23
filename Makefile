@@ -80,9 +80,9 @@ save_prod_image:
 save_all_images: save_dev_image save_prod_image
 
 load_dev_image:
-	docker load tmp-images/dev.tar
+	docker load < tmp-images/dev.tar
 
 load_prod_image:
-	docker load tmp-images/prod.tar
+	docker load < tmp-images/prod.tar
 
 load_all_images: load_dev_image load_prod_image
