@@ -136,9 +136,6 @@ jobs:
 
       - name: Load images
         run: make load_all_images docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
-        
-      - name: Run functional tests
-        run: make run_functional_tests docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
 
       - name: Generate swagger
         run: make generate_swagger
