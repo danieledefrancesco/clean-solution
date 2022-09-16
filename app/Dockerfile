@@ -40,7 +40,7 @@ RUN for file in $(ls *.csproj); do mkdir -p test/unit/${file%.*}/ && mv $file te
 COPY test/functional/*/*.csproj ./
 RUN for file in $(ls *.csproj); do mkdir -p test/functional/${file%.*}/ && mv $file test/functional/${file%.*}/; done
 
-RUN dotnet restore
+RUN dotnet restore --disable-parallel
 
 FROM restore as build-env
 

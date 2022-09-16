@@ -1,6 +1,6 @@
 using AspNetCore.Examples.ProductService.Errors;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
@@ -13,9 +13,6 @@ namespace AspNetCore.Examples.ProductService.ErrorHandlers
             _mapper = mapper;
         }
 
-        public override IActionResult HandleError(IError error)
-        {
-            return new NotFoundObjectResult(_mapper.Map<ErrorDto>(error));
-        }
+        public override IResult HandleError(IError error) => Results.NotFound(_mapper.Map<ErrorDto>(error));
     }
 }

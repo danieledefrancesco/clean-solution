@@ -27,26 +27,5 @@ namespace AspNetCore.Examples.ProductService.Profiles
                 .Should()
                 .Be(product.Name.Value);
         }
-        
-        [Test]
-        public void CreateProductRequestDto_ToProduct_IsMappedCorrectly()
-        {
-            var createProductRequestDto = new CreateProductRequestDto
-            {
-                Id = "Id",
-                Name = "Name"
-            };
-
-            var product = _mapper.Map<Product>(createProductRequestDto);
-
-            product.Id
-                .Should()
-                .Be(createProductRequestDto.Id);
-            
-            product.Name
-                .Should()
-                .Be(ProductName.From(createProductRequestDto.Name));
-        }
-
     }
 }

@@ -1,6 +1,6 @@
 using AspNetCore.Examples.ProductService.Errors;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
@@ -13,12 +13,6 @@ namespace AspNetCore.Examples.ProductService.ErrorHandlers
             _mapper = mapper;
         }
 
-        public override IActionResult HandleError(IError error)
-        {
-            return new ObjectResult(_mapper.Map<ErrorDto>(error))
-            {
-                StatusCode = 409
-            };
-        }
+        public override IResult HandleError(IError error) => Results.Conflict(_mapper.Map<ErrorDto>(error));
     }
 }
