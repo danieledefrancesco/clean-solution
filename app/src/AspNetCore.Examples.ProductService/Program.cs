@@ -1,16 +1,8 @@
 using System.Reflection;
-using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService;
-using AspNetCore.Examples.ProductService.Endpoints;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
-using AspNetCore.Examples.ProductService.RequestHandlers;
-using AspNetCore.Examples.ProductService.Requests;
-using AspNetCore.Examples.ProductService.Validators;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Swashbuckle.AspNetCore.Swagger;
@@ -55,7 +47,7 @@ app.UseAuthorization();
 
 app.MapHealthChecks("/healthcheck");
 
-MapEndpoints(app);
+app.MapEndpoints();
 
 app.Run();
 
@@ -69,14 +61,5 @@ void AddErrorHandlers(IServiceCollection services)
     services.AddScoped<IErrorHandler, DefaultErrorHandler>();
 }
 
-void MapEndpoints(WebApplication webApp)
-{
-    MapEndpoint(webApp, new GetProductEndpoint());
-    MapEndpoint(webApp, new CreateProductEndpoint());
-}
 
-void MapEndpoint(WebApplication webApp, IEndpoint endpoint)
-{
-    webApp.MapMethods(endpoint.Patten, endpoint.Methods, endpoint.Delegate);
-}
 
