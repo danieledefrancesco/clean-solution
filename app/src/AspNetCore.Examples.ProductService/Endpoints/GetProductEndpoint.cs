@@ -18,11 +18,11 @@ namespace AspNetCore.Examples.ProductService.Endpoints
         public override string[] Methods => new[] { "GET" };
         public override Delegate Delegate =>
             (
-                    [FromBody] request,
-                    [FromServices] mapper,
-                    [FromServices] mediator,
-                    [FromServices] factory,
-                    [FromServices] validator) =>
+                    [FromBody] GetProductRequestDto request,
+                    [FromServices] IMapper mapper,
+                    [FromServices] IMediator mediator,
+                    [FromServices] IErrorHandlerFactory factory,
+                    [FromServices] IValidator<GetProductRequestDto> validator) =>
                 Handle(request, mapper, mediator, factory, validator);
         internal override IResult CreateResult(ProductDto response) => Results.Ok(response);
     }
