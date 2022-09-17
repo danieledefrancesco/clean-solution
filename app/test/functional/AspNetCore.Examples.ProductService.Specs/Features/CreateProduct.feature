@@ -6,7 +6,7 @@ Link to a feature: [ProductService]($projectname$/Features/CreateProduct.feature
     Scenario Outline: Making a POST ot PUT request to the /products endpoint with a valid CreateProductRequest body should successfully create the product
         Given a create product request <product-id, product-name, 1>
         When I make a <method> request to the /products endpoint
-        Then the response status code is 200
+        Then the response status code is 201
         And the product id is product-id
         And the product name is product-name
         And the product price is 1
@@ -20,7 +20,7 @@ Link to a feature: [ProductService]($projectname$/Features/CreateProduct.feature
     Scenario Outline: Creating a new product should raise an OnProductCreated domain event
         Given a create product request <product-id, product-name, 1>
         When I make a <method> request to the /products endpoint
-        Then the response status code is 200
+        Then the response status code is 201
         And the product id is product-id
         And the product name is product-name
         And the product price is 1

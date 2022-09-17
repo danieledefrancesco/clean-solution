@@ -6,6 +6,7 @@ WEB_PROD_IMAGE_NAME=${DOCKER_IMAGE_PREFIX}${WEB_PROD_SUFFIX}
 
 LOCAL_DEV_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose --env-file ./.env
 LOCAL_TEST_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.functional.yaml --env-file ./.env
+LOCAL_PROD_DOCKER_COMPOSE_COMMAND=WEB_ENV=prod docker-compose --env-file ./.env
 CI_DEV_DOCKER_COMPOSE_COMMAND=WEB_ENV=dev docker-compose -f docker-compose.yaml -f docker-compose.functional.yaml -f docker-compose.sonarqube.yaml --env-file ./.env
 CI_PROD_DOCKER_COMPOSE_COMMAND=WEB_ENV=prod docker-compose -f docker-compose.yaml -f docker-compose.functional.yaml --env-file ./.env
 
@@ -39,6 +40,13 @@ start_development_mode:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d queues
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run dev bash -c "make create_queue QUEUE_NAME=onproductcreated"
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) up -d
+	
+start_production_mode:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_PROD_DOCKER_COMPOSE_COMMAND) up -d sqlserver
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_PROD_DOCKER_COMPOSE_COMMAND) run dev make update_database
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_PROD_DOCKER_COMPOSE_COMMAND) up -d queues
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_PROD_DOCKER_COMPOSE_COMMAND) run dev bash -c "make create_queue QUEUE_NAME=onproductcreated"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_PROD_DOCKER_COMPOSE_COMMAND) up -d
     
 stop_development_mode:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) down

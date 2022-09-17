@@ -1,11 +1,11 @@
 using AspNetCore.Examples.ProductService.Errors;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
     public interface IErrorHandler
     {
         bool Supports(IError error);
-        IActionResult HandleError(IError error);
+        IResult HandleError(IError error);
     }
 }

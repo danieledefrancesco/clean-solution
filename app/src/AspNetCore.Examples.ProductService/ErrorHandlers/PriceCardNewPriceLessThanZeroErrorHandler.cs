@@ -1,6 +1,6 @@
 using AspNetCore.Examples.ProductService.Errors;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
@@ -14,12 +14,7 @@ namespace AspNetCore.Examples.ProductService.ErrorHandlers
         }
 
 
-        public override IActionResult HandleError(IError error)
-        {
-            return new ObjectResult(_mapper.Map<ErrorDto>(error))
-            {
-                StatusCode = 422
-            };
-        }
+        public override IResult HandleError(IError error) =>
+            Results.UnprocessableEntity(_mapper.Map<ErrorDto>(error));
     }
 }

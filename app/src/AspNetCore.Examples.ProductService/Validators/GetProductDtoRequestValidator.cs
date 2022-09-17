@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace AspNetCore.Examples.ProductService.Validators
 {
-    public class GetProductDtoRequestValidator : AbstractValidator<GetProductDtoRequest>
+    public class GetProductDtoRequestValidator : AbstractValidator<GetProductRequestDto>
     {
         public GetProductDtoRequestValidator()
         {
