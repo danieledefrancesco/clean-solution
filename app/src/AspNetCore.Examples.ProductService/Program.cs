@@ -2,6 +2,7 @@ using System.Reflection;
 using AspNetCore.Examples.ProductService;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using FluentValidation;
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen(options =>
   options.AddFluentValidationRulesScoped();  
 });
 builder.Services.AddValidatorsFromAssembly(Assembly.GetCallingAssembly());
+builder.Services.AddFluentValidationRulesToSwagger();
             
 builder.Services.AddAutoMapper(Assembly.GetCallingAssembly());
             

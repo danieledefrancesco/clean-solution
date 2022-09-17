@@ -18,7 +18,7 @@ namespace AspNetCore.Examples.ProductService.Endpoints
         public override string[] Methods => new[] { "GET" };
         public override Delegate Delegate =>
             (
-                    [FromBody] GetProductRequestDto request,
+                    GetProductRequestDto request,
                     [FromServices] IMapper mapper,
                     [FromServices] IMediator mediator,
                     [FromServices] IErrorHandlerFactory factory,
