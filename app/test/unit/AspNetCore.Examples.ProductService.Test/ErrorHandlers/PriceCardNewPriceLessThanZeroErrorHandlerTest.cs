@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class PriceCardNewPriceLessThanZeroErrorHandlerTest: ErrorHandlerTestBase<PriceCardNewPriceLessThanZeroErrorHandler, PriceCardNewPriceLessThanZeroError>
+    public sealed class PriceCardNewPriceLessThanZeroErrorHandlerTest: ErrorHandlerTestBase<PriceCardNewPriceLessThanZeroErrorHandler, PriceCardNewPriceLessThanZeroError>
     {
         private IMapper _mapper;
         protected override PriceCardNewPriceLessThanZeroErrorHandler ErrorHandler { get; set; }

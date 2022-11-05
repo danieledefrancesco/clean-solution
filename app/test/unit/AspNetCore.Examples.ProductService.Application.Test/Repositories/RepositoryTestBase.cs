@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Common;
+using AspNetCore.Examples.ProductService.Entities;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
@@ -8,12 +8,12 @@ using NUnit.Framework;
 namespace AspNetCore.Examples.ProductService.Repositories
 {
     public abstract class RepositoryTestBase<TEntity, TId>
-        where TEntity : EntityBase<TId>
+        where TEntity : class, IAggregateRoot<TId>
         where TId : class
     {
-        protected RepositoryBase<TEntity, TId> _repository;
-        protected DbContext _dbContext;
-        protected DbSet<TEntity> _dbSet;
+        private RepositoryBase<TEntity, TId> _repository;
+        private DbContext _dbContext;
+        private DbSet<TEntity> _dbSet;
 
         [SetUp]
         public virtual void SetUp()
@@ -121,16 +121,6 @@ namespace AspNetCore.Examples.ProductService.Repositories
             (await _dbSet.CountAsync())
                 .Should()
                 .Be(1);
-
-            entityToInsert
-                .CreatedAt
-                .Should()
-                .NotBe(default);
-
-            entityToInsert
-                .LastModifiedAt
-                .Should()
-                .Be(entityToInsert.CreatedAt);
         }
 
         [Test]
@@ -145,11 +135,6 @@ namespace AspNetCore.Examples.ProductService.Repositories
                 .Update(entityToUpdate);
             
             await _dbContext.SaveChangesAsync();
-
-            entityToUpdate
-                .LastModifiedAt
-                .Should()
-                .NotBe(default);
         }
 
 

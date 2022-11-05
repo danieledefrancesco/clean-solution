@@ -3,7 +3,7 @@ using AutoMapper;
 
 namespace AspNetCore.Examples.ProductService.Profiles
 {
-    public class ErrorProfile : Profile
+    public sealed class ErrorProfile : Profile
     {
         public ErrorProfile()
         {

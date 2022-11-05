@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace AspNetCore.Examples.ProductService.Specs.Wiremock
 {
-    public class Request
+    public sealed class Request
     {
         public string Method { get; set; }
         public string Url { get; set; }

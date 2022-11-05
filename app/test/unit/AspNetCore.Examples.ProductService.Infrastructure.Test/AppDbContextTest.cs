@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService
 {
-    public class AppDbContextTest
+    public sealed class AppDbContextTest
     {
         private string _oldEnvironmentVariableName;
 

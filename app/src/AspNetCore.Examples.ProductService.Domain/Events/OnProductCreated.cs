@@ -1,9 +1,20 @@
-using AspNetCore.Examples.ProductService.Entities;
+using System;
+using AspNetCore.Examples.ProductService.ValueObjects;
 
 namespace AspNetCore.Examples.ProductService.Events
 {
-    public class OnProductCreated : EventBase
+    public sealed class OnProductCreated : DomainEventBase
     {
-        public Product CreatedProduct { get; set; }
+        public OnProductCreated(Guid id, ProductId productId, ProductName productName, ProductPrice productPrice)
+        {
+            Id = id;
+            ProductId = productId;
+            ProductName = productName;
+            ProductPrice = productPrice;
+        }
+
+        public ProductId ProductId { get; }
+        public ProductName ProductName { get; }
+        public ProductPrice ProductPrice { get; }
     }
 }

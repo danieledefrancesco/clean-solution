@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ValueObjects
 {
-    public class ProductNameTest
+    public sealed class ProductNameTest
     {
         [TestCase("anything")]
         public void From_ShouldNotThrowException_IfProductNameIsNotNullOrWhiteSpace(string productNameValue)

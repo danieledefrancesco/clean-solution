@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class AlreadyExistsErrorHandlerTest : ErrorHandlerTestBase<AlreadyExistsErrorHandler, AlreadyExistsError>
+    public sealed class AlreadyExistsErrorHandlerTest : ErrorHandlerTestBase<AlreadyExistsErrorHandler, AlreadyExistsError>
     {
         private IMapper _mapper;
 

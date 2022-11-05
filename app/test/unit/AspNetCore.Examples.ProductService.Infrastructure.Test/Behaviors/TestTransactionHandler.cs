@@ -7,7 +7,7 @@ using OneOf;
 namespace AspNetCore.Examples.ProductService.Behaviors
 {
     [Transaction]
-    public class TestTransactionHandler: IRequestHandler<TestRequest, IOneOf>
+    public sealed class TestTransactionHandler: IRequestHandler<TestRequest, IOneOf>
     {
         public Task<IOneOf> Handle(TestRequest request, CancellationToken cancellationToken)
         {

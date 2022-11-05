@@ -6,7 +6,7 @@ using ZapMicro.TransactionalOutbox.Entities;
 
 namespace AspNetCore.Examples.ProductService
 {
-    public class AppDbContext: DbContext, ITransactionalOutboxDbContext
+    public sealed class AppDbContext: DbContext, ITransactionalOutboxDbContext
     {
         public AppDbContext() : this(Utils.GetSqlServerDbContextOptions())
         {
@@ -23,10 +23,11 @@ namespace AspNetCore.Examples.ProductService
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Product>()
-                .Ignore(product => product.FinalPrice)
-                .HasKey(product => product.Id);
             
+            modelBuilder.Entity<Product>()
+                .Property(product => product.Id)
+                .HasConversion(productId => productId.Value,
+                    productIdString => ProductId.From(productIdString));
             
             modelBuilder.Entity<Product>()
                 .Property(product => product.Name)
@@ -37,7 +38,9 @@ namespace AspNetCore.Examples.ProductService
                 .Property(product => product.Price)
                 .HasConversion(productPrice => productPrice.Value,
                     productPriceDecimal => ProductPrice.From(productPriceDecimal));
+            
+            modelBuilder.Entity<Product>()
+                .HasKey(product => product.Id);
         }
-
     }
 }

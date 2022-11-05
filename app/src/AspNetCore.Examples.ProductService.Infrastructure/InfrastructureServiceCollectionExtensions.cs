@@ -1,5 +1,4 @@
 using System;
-using System.Net.Http;
 using AspNetCore.Examples.ProductService.Behaviors;
 using AspNetCore.Examples.ProductService.Events;
 using AspNetCore.Examples.ProductService.Factories;
@@ -10,14 +9,21 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Polly;
 using ZapMicro.TransactionalOutbox.Configurations;
 
 namespace AspNetCore.Examples.ProductService
 {
     public static class InfrastructureServiceCollectionExtensions
     {
-        public static IServiceCollection AddEntityFrameworkForSqlServer(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services,
+            IConfiguration configuration) => services
+                .AddEntityFrameworkForSqlServer()
+                .AddPriceCardService()
+                .AddTransactionalOutbox()
+                .AddAzureStorageQueues(configuration);
+        
+        
+        private static IServiceCollection AddEntityFrameworkForSqlServer(this IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING")!));
             services.AddScoped<DbContext>(sp => sp.GetRequiredService<AppDbContext>());
@@ -26,7 +32,7 @@ namespace AspNetCore.Examples.ProductService
         }
 
 
-        public static IServiceCollection AddPriceCardService(this IServiceCollection services)
+        private static IServiceCollection AddPriceCardService(this IServiceCollection services)
         {
             services.AddScoped<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>()
                 .AddScoped(sp => sp.GetRequiredService<IPriceCardServiceClientFactory>().Create())
@@ -35,23 +41,21 @@ namespace AspNetCore.Examples.ProductService
             return services;
         }
 
-        public static IServiceCollection AddTransactionalOutbox(this IServiceCollection services) =>
+        private static IServiceCollection AddTransactionalOutbox(this IServiceCollection services) =>
             services.AddTransactionalOutbox<AppDbContext>(options => 
                 options.ConfigureDequeueOutboxMessagesConfiguration(new DequeueOutboxMessagesConfiguration())
-                    .ConfigureOutboxMessageHandler<EventOutboxMessageHandler<OnProductCreated>, EventOutboxMessage<OnProductCreated>>())
-                .AddScoped<IEventHandler, TransactionalOutboxEventHandler>();
+                    .ConfigureOutboxMessageHandler<EventOutboxMessageHandler<OnProductCreatedEventDto>, EventOutboxMessage<OnProductCreatedEventDto>>())
+                .AddScoped<INotificationHandler<OnProductCreated>, TransactionalOutboxEventHandler<OnProductCreated, OnProductCreatedEventDto>>();
 
-        public static IServiceCollection AddAzureStorageQueues(this IServiceCollection services, IConfiguration configuration) =>
-            services.AddAzureStorageQueueForEvent<OnProductCreated>(configuration);
+        private static IServiceCollection AddAzureStorageQueues(this IServiceCollection services, IConfiguration configuration) =>
+            services.AddAzureStorageQueueForEvent<OnProductCreated, OnProductCreatedEventDto>(configuration);
 
-        private static IServiceCollection AddAzureStorageQueueForEvent<T>(this IServiceCollection services, IConfiguration configuration)
-            where T : EventBase
+        private static IServiceCollection AddAzureStorageQueueForEvent<TEvent, TDto>(this IServiceCollection services, IConfiguration configuration)
         {
-            Func<QueueClient> clientFactory = () => new QueueClient(configuration["QUEUE_STORAGE_CONNECTION_STRING"],
-                typeof(T)!.Name!.ToLower());
+            QueueClient ClientFactory() => new (configuration["QUEUE_STORAGE_CONNECTION_STRING"], typeof(TEvent)!.Name!.ToLower());
             return services
-                .AddSingleton(clientFactory)
-                .AddScoped<IQueueHandler<T>>((sp) => new AzureStorageQueueHandler<T>(clientFactory()));
+                .AddSingleton((Func<QueueClient>)ClientFactory)
+                .AddScoped<IQueueHandler<TDto>>((_) => new AzureStorageQueueHandler<TDto>(ClientFactory()));
         }
     }
 }

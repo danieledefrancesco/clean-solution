@@ -48,6 +48,10 @@ jobs:
       - name: Run functional tests
         run: make run_functional_tests docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
         
+      - name: Generate functional tests report
+        run: make generate_functional_tests_report docker_username=${{ secrets.DOCKER_USERNAME }} version=alpha-${{github.run_number}}
+        if: ${{ always() }}
+        
       - name: Upload functional tests artifact
         uses: actions/upload-artifact@v3
         with:

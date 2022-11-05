@@ -1,15 +1,16 @@
-using System;
 using System.Collections.Generic;
 
-namespace AspNetCore.Examples.ProductService.Common
+namespace AspNetCore.Examples.ProductService.Entities
 {
     public abstract class EntityBase<T>
         where T : class
     {
-        public T Id { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? LastModifiedAt { get; set; }
+        protected EntityBase(T id)
+        {
+            Id = id;
+        }
 
+        public T Id { get; }
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

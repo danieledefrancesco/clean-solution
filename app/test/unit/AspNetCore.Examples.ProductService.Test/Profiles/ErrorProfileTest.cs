@@ -1,6 +1,6 @@
 namespace AspNetCore.Examples.ProductService.Profiles
 {
-    public class ErrorProfileTest: ProfileTestBase<ErrorProfile>
+    public sealed class ErrorProfileTest: ProfileTestBase<ErrorProfile>
     {
         
     }

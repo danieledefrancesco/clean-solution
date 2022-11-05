@@ -1,6 +1,6 @@
 namespace AspNetCore.Examples.ProductService.Errors
 {
-    public class NotFoundError : ErrorBase
+    public sealed class NotFoundError : ErrorBase
     {
         
     }

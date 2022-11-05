@@ -10,22 +10,22 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.QueueHandlers
 {
-    public class AzureStorageQueueHandlerTest
+    public sealed class AzureStorageQueueHandlerTest
     {
         private QueueClient _queueClient;
-        private AzureStorageQueueHandler<TestEvent> _queueHandler;
+        private AzureStorageQueueHandler<TestDomainEvent> _queueHandler;
 
         [SetUp]
         public void SetUp()
         {
             _queueClient = Substitute.For<QueueClient>();
-            _queueHandler = new AzureStorageQueueHandler<TestEvent>(_queueClient);
+            _queueHandler = new AzureStorageQueueHandler<TestDomainEvent>(_queueClient);
         }
 
         [Test]
         public async Task SendMessageAsync_DoesntThrowException()
         {
-            var @event = new TestEvent();
+            var @event = new TestDomainEvent();
             Func<Task> act = () => _queueHandler.SendMessageAsync(@event, CancellationToken.None);
             await act.Should().NotThrowAsync();
         }

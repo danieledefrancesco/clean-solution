@@ -1,4 +1,3 @@
-using AspNetCore.Examples.ProductService.Common;
 using FluentAssertions;
 using NUnit.Framework;
 

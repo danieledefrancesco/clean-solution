@@ -12,7 +12,7 @@ using OneOf;
 
 namespace AspNetCore.Examples.ProductService.Controllers
 {
-    public class AppControllerBaseTest
+    public sealed class AppControllerBaseTest
     {
         private AppControllerBase _appControllerBase;
         private IErrorHandlerFactory _errorHandlerFactory;

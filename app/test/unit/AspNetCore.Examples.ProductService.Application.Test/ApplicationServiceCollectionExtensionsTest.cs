@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService
 {
-    public class ApplicationServiceCollectionExtensionsTest
+    public sealed class ApplicationServiceCollectionExtensionsTest
     {
         private IServiceCollection _services;
         private IConfiguration _configuration;
@@ -16,7 +16,7 @@ namespace AspNetCore.Examples.ProductService
         {
             _configuration = new ConfigurationBuilder()
                 .Build();
-            _services = new ServiceCollection().AddApplicationServices(_configuration);
+            _services = new ServiceCollection().AddApplicationLayer(_configuration);
         }
 
         [Test]

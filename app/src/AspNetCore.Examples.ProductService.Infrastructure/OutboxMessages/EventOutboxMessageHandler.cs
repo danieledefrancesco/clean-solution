@@ -1,12 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Events;
 using AspNetCore.Examples.ProductService.Handlers;
 using ZapMicro.TransactionalOutbox.Handlers;
 
 namespace AspNetCore.Examples.ProductService.OutboxMessages
 {
-    public class EventOutboxMessageHandler<T>: OutboxMessageHandlerBase<EventOutboxMessage<T>> where T : EventBase
+    public sealed class EventOutboxMessageHandler<T>: OutboxMessageHandlerBase<EventOutboxMessage<T>>
     {
         private readonly IQueueHandler<T> _queueHandler;
 

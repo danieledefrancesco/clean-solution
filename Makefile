@@ -55,6 +55,16 @@ run_functional_tests:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d web
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
 
+run_functional_tests_dev:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d sqlserver
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run dev /bin/bash -c "make update_database"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d web
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) exec web /bin/bash -c "make wait_app_is_started"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
+
+generate_functional_tests_report:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make generate_functional_tests_report"
+
 MIFGRATION_NAME?=DEFAULT_MIGRATION
 add_migration_local:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_DEV_DOCKER_COMPOSE_COMMAND) run web /bin/bash -c "make add_migration MIGRATION_NAME=$(MIGRATION_NAME)"

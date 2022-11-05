@@ -5,8 +5,8 @@ namespace AspNetCore.Examples.ProductService.Profiles
 {
     public abstract class ProfileTestBase<T> where T : Profile, new()
     {
-        protected MapperConfiguration _mapperConfiguration;
-        protected IMapper _mapper;
+        private MapperConfiguration _mapperConfiguration;
+        private IMapper _mapper;
 
         [SetUp]
         public void SetUp()

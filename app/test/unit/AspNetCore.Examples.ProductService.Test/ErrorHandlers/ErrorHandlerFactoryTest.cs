@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class ErrorHandlerFactoryTest
+    public sealed class ErrorHandlerFactoryTest
     {
         [Test]
         public void GetSupportingHandler_ReturnsAnHandler_IfSupportingHandlerExists()

@@ -1,8 +1,9 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Errors;
-using AspNetCore.Examples.ProductService.Handlers;
+using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Repositories;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.ValueObjects;
@@ -12,36 +13,33 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.RequestHandlers
 {
-    public class CreateProductCommandRequestHandlerTest
+    public sealed class CreateProductCommandRequestHandlerTest
     {
         private CreateProductCommandRequestHandler _createProductCommandRequestHandler;
         private IProductRepository _productRepository;
-        private IEventHandler _eventHandler;
+        private IProductsFactory _productsFactory;
 
         [SetUp]
         public void SetUp()
         {
             _productRepository = Substitute.For<IProductRepository>();
-            _eventHandler = Substitute.For<IEventHandler>();
-            _createProductCommandRequestHandler = new CreateProductCommandRequestHandler(_productRepository, _eventHandler);
+            _productsFactory = Substitute.For<IProductsFactory>();
+            _createProductCommandRequestHandler = new CreateProductCommandRequestHandler(_productRepository, _productsFactory);
         }
 
         [Test]
-        public void CreateProduct_ReturnsAlreadyExists_IfProductAlreadyExists()
+        public async Task CreateProduct_ReturnsAlreadyExists_IfProductAlreadyExists()
         {
-            const string existingProductId = "p1";
-            const string existingProductName = "Product 1";
-            var existingProduct = new Product()
-            {
-                Id = existingProductId,
-                Name = ProductName.From(existingProductName)
-            };
+            var existingProductId = ProductId.From("p1");
+            var existingProductName = ProductName.From("Product 1");
+            var existingProductPrice = ProductPrice.From(1);
+            
+            var existingProduct = new Product(existingProductId);
 
             _productRepository.ExistsById(existingProductId).Returns(Task.FromResult(true));
             
-            var response = _createProductCommandRequestHandler
-                .Handle(new CreateProductCommandRequest(existingProduct), CancellationToken.None)
-                .Result;
+            var response = await _createProductCommandRequestHandler
+                .Handle(new CreateProductCommandRequest(existingProductId, existingProductName, existingProductPrice), CancellationToken.None);
             
             response
                 .IsT1
@@ -56,22 +54,21 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
         }
         
         [Test]
-        public void CreateProduct_ReturnsCreateProductCommandResponse_IfProductDoesntExist()
+        public async Task CreateProduct_ReturnsCreateProductCommandResponse_IfProductDoesntExist()
         {
-            const string productId = "p1";
-            const string productName = "Product 1";
-            var product = new Product()
+            var productId = ProductId.From("p1");
+            var productName = ProductName.From("Product 1");
+            var productPrice = ProductPrice.From(1);
+            var product = new Product(productId)
             {
-                Id = productId,
-                Name = ProductName.From(productName)
+                Name = productName,
+                Price = productPrice
             };
 
-            var completedTask = Task.CompletedTask;
-            _productRepository.ClearReceivedCalls();
+            _productsFactory.CreateProduct(Arg.Any<ProductId>(), Arg.Any<Action<Product>>()).Returns(product);
             
-            var response = _createProductCommandRequestHandler
-                .Handle(new CreateProductCommandRequest(product), CancellationToken.None)
-                .Result;
+            var response = await _createProductCommandRequestHandler
+                .Handle(new CreateProductCommandRequest(productId, productName, productPrice), CancellationToken.None);
             
             response
                 .IsT0
@@ -83,11 +80,6 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                 .CreatedProduct
                 .Should()
                 .Be(product);
-
-            _productRepository
-                .Received(1)
-                .Insert(product);
-
         }
     }
 }

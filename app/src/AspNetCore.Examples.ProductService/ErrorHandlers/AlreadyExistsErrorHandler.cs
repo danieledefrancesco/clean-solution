@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class AlreadyExistsErrorHandler : ErrorHandlerBase<AlreadyExistsError>
+    public sealed class AlreadyExistsErrorHandler : ErrorHandlerBase<AlreadyExistsError>
     {
         private readonly IMapper _mapper;
 
