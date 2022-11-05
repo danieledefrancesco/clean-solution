@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Events;
 
 namespace AspNetCore.Examples.ProductService.Handlers
 {

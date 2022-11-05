@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using AspNetCore.Examples.ProductService.Events;
 
 namespace AspNetCore.Examples.ProductService.Entities
 {

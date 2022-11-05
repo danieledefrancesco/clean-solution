@@ -1,4 +1,3 @@
-using AspNetCore.Examples.ProductService.Events;
 using ZapMicro.TransactionalOutbox.Messages;
 
 namespace AspNetCore.Examples.ProductService.OutboxMessages

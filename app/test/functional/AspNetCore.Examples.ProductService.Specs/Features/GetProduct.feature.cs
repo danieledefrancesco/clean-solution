@@ -35,8 +35,8 @@ namespace AspNetCore.Examples.ProductService.Specs.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetProduct", "API for querying the products\r\n\r\nLink to a feature: [ProductService]($projectname" +
-                    "$/Features/GetProduct.feature)", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "GetProduct", "API for querying the products\n\nLink to a feature: [ProductService]($projectname$/" +
+                    "Features/GetProduct.feature)", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

@@ -17,7 +17,7 @@ namespace AspNetCore.Examples.ProductService
     {
         public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services,
             IConfiguration configuration) => services
-                .AddEntityFrameworkSqlServer()
+                .AddEntityFrameworkForSqlServer()
                 .AddPriceCardService()
                 .AddTransactionalOutbox()
                 .AddAzureStorageQueues(configuration);

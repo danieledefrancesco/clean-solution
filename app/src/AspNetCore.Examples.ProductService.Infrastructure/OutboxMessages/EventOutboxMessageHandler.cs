@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Events;
 using AspNetCore.Examples.ProductService.Handlers;
 using ZapMicro.TransactionalOutbox.Handlers;
 

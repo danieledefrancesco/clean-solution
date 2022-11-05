@@ -9,7 +9,7 @@ namespace AspNetCore.Examples.ProductService.Entities
         protected AggregateRootBase(T id) : base(id)
         {
         }
-        private readonly List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
+        private readonly List<IDomainEvent> _domainEvents = new ();
         public IEnumerable<IDomainEvent> DomainEvents => _domainEvents.ToImmutableList();
         public void AddDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);
         public void ClearDomainEvents() => _domainEvents.Clear();

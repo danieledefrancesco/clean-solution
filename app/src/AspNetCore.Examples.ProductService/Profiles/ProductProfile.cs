@@ -1,5 +1,3 @@
-using System;
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Events;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.Responses;

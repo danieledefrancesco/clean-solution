@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Errors;
-using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Repositories;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.Responses;
@@ -37,7 +36,13 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
             }
             
             var priceCardList = await _priceCardServiceClient.ActiveAsync(product.Id, cancellationToken);
-            var priceCard = priceCardList.Items.FirstOrDefault();
+
+            if (!priceCardList.Items.Any())
+            {
+                return new GetProductWithPriceCardByIdResponse(product.ApplyPriceCard(null));
+            }
+            
+            var priceCard = priceCardList.Items.First();
             if (priceCard is { NewPrice: < 0 })
             {
                 return new PriceCardNewPriceLessThanZeroError
@@ -46,8 +51,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
                 };
 
             }
-            ProductPriceCard? productPriceCard = priceCard == null
-                ? null : new ProductPriceCard(priceCard.Id, ProductPrice.From(Convert.ToDecimal(priceCard.NewPrice)));
+            var productPriceCard = new ProductPriceCard(priceCard.Id, ProductPrice.From(Convert.ToDecimal(priceCard.NewPrice)));
 
             return new GetProductWithPriceCardByIdResponse(product.ApplyPriceCard(productPriceCard));
         }

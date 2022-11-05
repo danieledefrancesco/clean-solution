@@ -1,4 +1,3 @@
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Responses;
 using AspNetCore.Examples.ProductService.ValueObjects;
 
