@@ -21,7 +21,7 @@ namespace AspNetCore.Examples.ProductService
                 .AddMediatR(CurrentAssembly)
                 .AddRepositories(CurrentAssembly)
                 .AddConfigurations(configuration)
-                .AddScoped<IProductsFactory, ProductFactory>();
+                .AddScoped<IProductsFactory, ProductsFactory>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection services, Assembly assembly)
