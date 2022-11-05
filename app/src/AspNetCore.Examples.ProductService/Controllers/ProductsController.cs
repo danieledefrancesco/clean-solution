@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.Responses;
@@ -11,7 +10,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductsController : AppControllerBase
+    public sealed class ProductsController : AppControllerBase
     {
         private readonly IMapper _mapper;
 
@@ -24,23 +23,22 @@ namespace AspNetCore.Examples.ProductService.Controllers
         }
 
         [HttpGet("{id}")]
-        public Task<IActionResult> Get([FromRoute] GetProductDtoRequest getProductDtoRequest)
+        public Task<IActionResult> Get([FromRoute] GetProductWithPriceCardByIdRequestDto getProductWithPriceCardByIdRequestDto)
         {
-            var getProductByIdRequest = _mapper.Map<GetProductByIdRequest>(getProductDtoRequest);
-            return MediatorResponse<GetProductByIdRequest, GetProductByIdResponse>(
+            var getProductByIdRequest = _mapper.Map<GetProductWithPriceCardByIdRequest>(getProductWithPriceCardByIdRequestDto);
+            return MediatorResponse<GetProductWithPriceCardByIdRequest, GetProductWithPriceCardByIdResponse>(
                 getProductByIdRequest,
-                response => _mapper.Map<ProductDto>(response.Product));
+                response => _mapper.Map<ProductDto>(response));
         }
 
         [HttpPost]
         [HttpPut]
         public Task<IActionResult> Insert([FromBody] CreateProductRequestDto createProductRequest)
         {
-            var domainProduct = _mapper.Map<Product>(createProductRequest);
-            var createProductCommandRequest = new CreateProductCommandRequest(domainProduct);
+            var createProductCommandRequest = _mapper.Map<CreateProductCommandRequest>(createProductRequest);
             return MediatorResponse<CreateProductCommandRequest, CreateProductCommandResponse>(
                 createProductCommandRequest,
-                response => _mapper.Map<ProductDto>(response.CreatedProduct));
+                response => _mapper.Map<ProductDto>(response));
         }
 
     }

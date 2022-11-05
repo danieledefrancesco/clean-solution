@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.Validators
 {
-    public class GetProductDtoRequestValidatorTest
+    public sealed class GetProductDtoRequestValidatorTest
     {
         private GetProductDtoRequestValidator _getProductDtoRequestValidator;
 
@@ -20,7 +20,7 @@ namespace AspNetCore.Examples.ProductService.Validators
         [TestCase("A-902_ sb")]
         public void GetProductDTORequestValidator_ThrowsNoError_IfProductIdIsValid(string id)
         {
-            var getProductDtoRequest = new GetProductDtoRequest()
+            var getProductDtoRequest = new GetProductWithPriceCardByIdRequestDto()
             {
                 ProductId = id
             };
@@ -46,7 +46,7 @@ namespace AspNetCore.Examples.ProductService.Validators
         [TestCase(" ")]
         public void GetProductDTORequestValidator_ThrowsError_IfProductIdIsInvalid(string id)
         {
-            var getProductDtoRequest = new GetProductDtoRequest()
+            var getProductDtoRequest = new GetProductWithPriceCardByIdRequestDto()
             {
                 ProductId = id
             };

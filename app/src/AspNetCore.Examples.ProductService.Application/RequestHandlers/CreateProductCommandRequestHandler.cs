@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Attributes;
 using AspNetCore.Examples.ProductService.Errors;
 using AspNetCore.Examples.ProductService.Events;
+using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Handlers;
 using AspNetCore.Examples.ProductService.Repositories;
 using AspNetCore.Examples.ProductService.Requests;
@@ -12,36 +13,36 @@ using OneOf;
 namespace AspNetCore.Examples.ProductService.RequestHandlers
 {
     [Transaction]
-    public class CreateProductCommandRequestHandler : IAppRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
+    public sealed class CreateProductCommandRequestHandler : IAppRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IEventHandler _eventHandler;
+        private readonly IProductsFactory _productsFactory;
 
-        public CreateProductCommandRequestHandler(IProductRepository productRepository, IEventHandler eventHandler)
+        public CreateProductCommandRequestHandler(IProductRepository productRepository, IProductsFactory productsFactory)
         {
             _productRepository = productRepository;
-            _eventHandler = eventHandler;
+            _productsFactory = productsFactory;
         }
 
         public async Task<OneOf<CreateProductCommandResponse, IError>> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
-        {
-            var productToCreate = request.ProductToCreate;
-            var productId = productToCreate.Id;
-            var productExists = await _productRepository.ExistsById(productId);
-
+        {;
+            var productExists = await _productRepository.ExistsById(request.ProductId);
             if (productExists)
             {
-                return new AlreadyExistsError()
+                return new AlreadyExistsError
                 {
-                    Message = $"The product {productId} already exists"
+                    Message = $"The product {request.ProductId} already exists"
                 };
             }
+            
+            var productToCreate = _productsFactory.CreateProduct(request.ProductId, p =>
+            {
+                p.Name = request.ProductName;
+                p.Price = request.ProductPrice;
+            });
 
             await _productRepository.Insert(productToCreate);
-            await _eventHandler.RaiseEvent(new OnProductCreated
-            {
-                CreatedProduct = productToCreate
-            });
+
             return new CreateProductCommandResponse(productToCreate);
         }
     }

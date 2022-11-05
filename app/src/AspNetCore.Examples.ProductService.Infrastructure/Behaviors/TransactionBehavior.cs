@@ -4,24 +4,28 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Attributes;
+using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Errors;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using OneOf;
 
 namespace AspNetCore.Examples.ProductService.Behaviors
 {
-    public class TransactionBehavior<TRequest,TResponse>: IPipelineBehavior<TRequest,TResponse>
+    public sealed class TransactionBehavior<TRequest,TResponse>: IPipelineBehavior<TRequest,TResponse>
         where TRequest : IRequest<TResponse>
         where TResponse : IOneOf
     {
         private readonly IRequestHandler<TRequest, TResponse> _requestHandler;
         private readonly DbContext _dbContext;
+        private readonly IMediator _mediator;
 
-        public TransactionBehavior(IRequestHandler<TRequest, TResponse> requestHandler, DbContext dbContext)
+        public TransactionBehavior(IRequestHandler<TRequest, TResponse> requestHandler, DbContext dbContext, IMediator mediator)
         {
             _requestHandler = requestHandler;
             _dbContext = dbContext;
+            _mediator = mediator;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
@@ -51,10 +55,22 @@ namespace AspNetCore.Examples.ProductService.Behaviors
                 return result;
             }
 
+            await RaiseDomainEvents(cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
             await _dbContext.Database.CommitTransactionAsync(cancellationToken);
             return result;
         }
+
+        private Task RaiseDomainEvents(CancellationToken cancellationToken)
+        {
+            var changedEntities = 
+                _dbContext.ChangeTracker?.Entries<IAggregateRoot>()?.ToList() ?? Enumerable.Empty<EntityEntry<IAggregateRoot>>();
+            var tasks = changedEntities
+                .SelectMany(e => e.Entity.DomainEvents
+                    .Select(domainEvent => _mediator.Publish(domainEvent, cancellationToken)));
+            return Task.WhenAll(tasks);
+        }
+
 
         private bool RequestHandlerHasTransactionAttribute()
         {

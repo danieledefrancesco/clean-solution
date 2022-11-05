@@ -1,23 +1,22 @@
+using AspNetCore.Examples.ProductService.ValueObjects;
+
 namespace AspNetCore.Examples.ProductService.Entities
 {
-    public class ProductTest : EntityTestBase<Product, string>
+    public sealed class ProductTest : EntityTestBase<Product, ProductId>
     {
-        protected override string CreateId()
+        protected override ProductId CreateId()
         {
-            return "id";
+            return ProductId.From("id");
         }
 
-        protected override string CreateDifferentId()
+        protected override ProductId CreateDifferentId()
         {
-            return "another_id";
+            return ProductId.From("another_id");
         }
 
-        protected override Product CreateEntityById(string id)
+        protected override Product CreateEntityById(ProductId id)
         {
-            return new Product()
-            {
-                Id = id
-            };
+            return new Product(id);
         }
     }
 }

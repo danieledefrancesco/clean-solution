@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ValueObjects
 {
-    public class ProductPriceTest
+    public sealed class ProductPriceTest
     {
         [TestCase(1)]
         [TestCase(0)]

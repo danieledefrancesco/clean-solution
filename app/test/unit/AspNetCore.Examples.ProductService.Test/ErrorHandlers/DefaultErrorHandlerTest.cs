@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class DefaultErrorHandlerTest: ErrorHandlerTestBase<DefaultErrorHandler>
+    public sealed class DefaultErrorHandlerTest: ErrorHandlerTestBase<DefaultErrorHandler>
     {
         private IMapper _mapper;
         protected override DefaultErrorHandler ErrorHandler { get; set; }

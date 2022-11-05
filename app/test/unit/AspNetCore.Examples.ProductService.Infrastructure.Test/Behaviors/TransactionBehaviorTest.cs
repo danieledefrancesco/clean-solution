@@ -12,12 +12,13 @@ using OneOf;
 
 namespace AspNetCore.Examples.ProductService.Behaviors
 {
-    public class TransactionBehaviorTest
+    public sealed class TransactionBehaviorTest
     {
         private DbContext _dbContext;
         private DatabaseFacade _database;
         private IOneOf _oneOf;
         private RequestHandlerDelegate<IOneOf> _delegate;
+        private IMediator _mediator;
 
         [SetUp]
         public void SetUp()
@@ -27,15 +28,16 @@ namespace AspNetCore.Examples.ProductService.Behaviors
             _dbContext.Database.Returns(_database);
             _oneOf = Substitute.For<IOneOf>();
             _delegate = () => Task.FromResult(_oneOf);
+            _mediator = Substitute.For<IMediator>();
         }
         private TransactionBehavior<TestRequest, IOneOf> CreateBehaviorWithTransactionRequestHandler()
         {
-            return new TransactionBehavior<TestRequest, IOneOf>(new TestTransactionHandler(), _dbContext);
+            return new TransactionBehavior<TestRequest, IOneOf>(new TestTransactionHandler(), _dbContext, _mediator);
         }
 
         private TransactionBehavior<TestRequest, IOneOf> CreateBehaviorWithRequestHandler()
         {
-            return new TransactionBehavior<TestRequest, IOneOf>(new TestHandler(), _dbContext);
+            return new TransactionBehavior<TestRequest, IOneOf>(new TestHandler(), _dbContext, _mediator);
         }
 
         [Test]
@@ -48,7 +50,7 @@ namespace AspNetCore.Examples.ProductService.Behaviors
         }
         
         [Test]
-        public async Task Handle_BeginsAndCommitsTransactionAndReturnsDelegateResponse_IfHandlertHaveTransactionAttributeAndDoesntReturnError()
+        public async Task Handle_BeginsAndCommitsTransactionAndReturnsDelegateResponse_IfHandlerHaveTransactionAttributeAndDoesntReturnError()
         {
             var transactionBehavior = CreateBehaviorWithTransactionRequestHandler();
             var oneOfValue = new object();
@@ -58,7 +60,7 @@ namespace AspNetCore.Examples.ProductService.Behaviors
             await _database.Received(1).BeginTransactionAsync();
             await _database.Received(1).CommitTransactionAsync();
         }
-        
+
         [Test]
         public async Task Handle_RollsBackTransactionAndReturnsDelegateResponse_IfHandlerHaveTransactionAttributeAndReturnsError()
         {

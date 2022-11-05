@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Entities;
@@ -9,15 +10,16 @@ using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework.Internal;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Bindings;
 using ApiException = RestEase.ApiException;
 
 namespace AspNetCore.Examples.ProductService.Specs.Steps
 {
     [Binding]
-    public class GenericProductsStepDefinitions
+    public sealed class GenericProductsStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
-
+        
         public GenericProductsStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
@@ -26,9 +28,8 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         [Given("a product <(.+), (.+), (.*)>")]
         public async Task GivenAProduct(string id, string name, decimal price)
         {
-            await Services.AppDbContext.Products.AddAsync(new Product
+            await Services.AppDbContext.Products.AddAsync(new Product(ProductId.From(id))
             {
-                Id = id,
                 Name = ProductName.From(name),
                 Price = ProductPrice.From(price)
             });

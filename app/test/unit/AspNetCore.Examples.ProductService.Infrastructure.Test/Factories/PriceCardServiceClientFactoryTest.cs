@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.Factories
 {
-    public class PriceCardServiceClientFactoryTest
+    public sealed class PriceCardServiceClientFactoryTest
     {
         private PriceCardServiceClientFactory _priceCardServiceClientFactory;
         private IOptions<PriceCardServiceClientConfiguration> _options;

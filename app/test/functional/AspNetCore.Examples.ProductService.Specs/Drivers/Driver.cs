@@ -2,7 +2,7 @@ using System;
 
 namespace AspNetCore.Examples.ProductService.Specs.Drivers
 {
-    public class Driver
+    public sealed class Driver
     {
     }
 }

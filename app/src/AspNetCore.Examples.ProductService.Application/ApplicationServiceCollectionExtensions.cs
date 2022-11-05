@@ -14,13 +14,14 @@ namespace AspNetCore.Examples.ProductService
     public static class ApplicationServiceCollectionExtensions
     {
         private static Assembly CurrentAssembly => typeof(ApplicationServiceCollectionExtensions).Assembly;
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
+        public static IServiceCollection AddApplicationLayer(this IServiceCollection services,
             IConfiguration configuration)
         {
             return services
                 .AddMediatR(CurrentAssembly)
                 .AddRepositories(CurrentAssembly)
-                .AddConfigurations(configuration);
+                .AddConfigurations(configuration)
+                .AddScoped<IProductsFactory, ProductFactory>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection services, Assembly assembly)

@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Common;
+using AspNetCore.Examples.ProductService.Entities;
 
 namespace AspNetCore.Examples.ProductService.Repositories
 {
     public interface IRepository<TEntity, in TId> 
-        where TEntity : EntityBase<TId>
+        where TEntity : IAggregateRoot<TId>
         where TId : class
     {
         Task<bool> ExistsById(TId id);

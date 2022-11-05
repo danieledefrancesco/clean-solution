@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class NotFoundErrorHandler : ErrorHandlerBase<NotFoundError>
+    public sealed class NotFoundErrorHandler : ErrorHandlerBase<NotFoundError>
     {
         private readonly IMapper _mapper;
 

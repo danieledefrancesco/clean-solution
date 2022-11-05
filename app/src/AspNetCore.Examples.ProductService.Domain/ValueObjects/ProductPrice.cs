@@ -3,7 +3,7 @@ using ValueOf;
 
 namespace AspNetCore.Examples.ProductService.ValueObjects
 {
-    public class ProductPrice : ValueOf<decimal, ProductPrice>
+    public sealed class ProductPrice : ValueOf<decimal, ProductPrice>
     {
         protected override void Validate()
         {

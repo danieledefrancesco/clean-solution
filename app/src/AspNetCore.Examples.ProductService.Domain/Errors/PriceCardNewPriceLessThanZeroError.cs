@@ -1,6 +1,6 @@
 namespace AspNetCore.Examples.ProductService.Errors
 {
-    public class PriceCardNewPriceLessThanZeroError : ErrorBase
+    public sealed class PriceCardNewPriceLessThanZeroError : ErrorBase
     {
     }
 }

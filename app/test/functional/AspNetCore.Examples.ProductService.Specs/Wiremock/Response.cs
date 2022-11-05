@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace AspNetCore.Examples.ProductService.Specs.Wiremock
 {
-    public class Response
+    public sealed class Response
     {
         public int Status { get; set; }
         public string StatusMessage { get; set; }

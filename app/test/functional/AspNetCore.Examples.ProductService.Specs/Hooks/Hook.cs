@@ -6,7 +6,7 @@ using TechTalk.SpecFlow;
 namespace AspNetCore.Examples.ProductService.Specs.Hooks
 {
     [Binding]
-    public class Hooks
+    public sealed class Hooks
     {
         [BeforeScenario]
         public async Task ClearDatabase()

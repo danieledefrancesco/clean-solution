@@ -1,15 +1,20 @@
 using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Responses;
+using AspNetCore.Examples.ProductService.ValueObjects;
 
 namespace AspNetCore.Examples.ProductService.Requests
 {
-    public class CreateProductCommandRequest : IAppRequest<CreateProductCommandResponse>
+    public sealed class CreateProductCommandRequest : IAppRequest<CreateProductCommandResponse>
     {
-        public Product ProductToCreate { get; }
-
-        public CreateProductCommandRequest(Product productToCreate)
+        public CreateProductCommandRequest(ProductId productId, ProductName productName, ProductPrice productPrice)
         {
-            ProductToCreate = productToCreate;
+            ProductId = productId;
+            ProductName = productName;
+            ProductPrice = productPrice;
         }
+
+        public ProductId ProductId { get; }
+        public ProductName ProductName { get; }
+        public ProductPrice ProductPrice { get; }
     }
 }

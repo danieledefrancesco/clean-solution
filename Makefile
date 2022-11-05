@@ -20,13 +20,13 @@ build_and_tag:
 start_sonar_scan_ci:	
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) up -d
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T sonarqube bash /scripts/create_sonar_project.sh
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web /bin/bash -c "make begin_sonar_scan BRANCH_NAME=$(branch_name)"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T dev /bin/bash -c "make begin_sonar_scan BRANCH_NAME=$(branch_name)"
 	
 end_sonar_scan_ci:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make end_sonar_scan
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T dev make end_sonar_scan
 	
 generate_sonar_report:
-	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T web make generate_sonar_report
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) exec -T dev make generate_sonar_report
 
 shut_containers_down_ci:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_DEV_DOCKER_COMPOSE_COMMAND) down
@@ -54,6 +54,16 @@ run_functional_tests:
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run dev /bin/bash -c "make update_database"
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) up -d web
 	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
+
+run_functional_tests_dev:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d sqlserver
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run dev /bin/bash -c "make update_database"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) up -d web
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) exec web /bin/bash -c "make wait_app_is_started"
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(LOCAL_TEST_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make run_functional_tests"
+
+generate_functional_tests_report:
+	WEB_IMAGE_NAME="$(docker_username)/$(DOCKER_IMAGE_PREFIX)" VERSION="$(version)" $(CI_PROD_DOCKER_COMPOSE_COMMAND) run functional /bin/bash -c "make generate_functional_tests_report"
 
 MIFGRATION_NAME?=DEFAULT_MIGRATION
 add_migration_local:

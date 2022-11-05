@@ -14,7 +14,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.Controllers
 {
-    public class ProductsControllerTest
+    public sealed class ProductsControllerTest
     {
         private ProductsController _productsController;
         private IErrorHandlerFactory _errorHandlerFactory;
@@ -37,18 +37,15 @@ namespace AspNetCore.Examples.ProductService.Controllers
             const decimal productPrice = 1;
             const string productName = "name";
 
-            var product = new Product
+            var product = new Product(ProductId.From(productId))
             {
-                Id = productId,
-                CreatedAt = DateTime.Now,
-                LastModifiedAt = DateTime.Now,
                 Price = ProductPrice.From(productPrice),
                 Name = ProductName.From(productName)
             };
 
-            var getProductByIdResponse = new GetProductByIdResponse(product);
+            var getProductByIdResponse = new GetProductWithPriceCardByIdResponse(new ProductWithPriceCard(product, null));
 
-            _mediator.Send(Arg.Any<GetProductByIdRequest>(), Arg.Any<CancellationToken>()).Returns(getProductByIdResponse);
+            _mediator.Send(Arg.Any<GetProductWithPriceCardByIdRequest>(), Arg.Any<CancellationToken>()).Returns(getProductByIdResponse);
 
             var productDto = new ProductDto()
             {
@@ -57,12 +54,14 @@ namespace AspNetCore.Examples.ProductService.Controllers
                 Price = product.Price.Value
             };
 
-            _mapper.Map<ProductDto>(product).Returns(productDto);
 
-            var getProductDtoRequest = new GetProductDtoRequest
+            var getProductDtoRequest = new GetProductWithPriceCardByIdRequestDto
             {
                 ProductId = productId
             };
+            
+            _mapper.Map<ProductDto>(getProductByIdResponse).Returns(productDto);
+
             
             var actionResult = _productsController.Get(getProductDtoRequest).Result;
 
@@ -86,14 +85,14 @@ namespace AspNetCore.Examples.ProductService.Controllers
                 Price = productPrice,
                 Name = productName
             };
+
+            var createProductRequest = new CreateProductCommandRequest(ProductId.From(productId),
+                ProductName.From(productName), ProductPrice.From(productPrice));
             
-            var product = new Product
+            var product = new Product(ProductId.From(productId))
             {
-                Id = productId,
                 Name = ProductName.From(createProductRequestDto.Name),
-                Price = ProductPrice.From(createProductRequestDto.Price),
-                CreatedAt = DateTime.Now,
-                LastModifiedAt = DateTime.Now
+                Price = ProductPrice.From(createProductRequestDto.Price)
             };
             
             var productDto = new ProductDto
@@ -107,8 +106,8 @@ namespace AspNetCore.Examples.ProductService.Controllers
 
             _mediator.Send(Arg.Any<CreateProductCommandRequest>(), Arg.Any<CancellationToken>()).Returns(createProductResponse);
             
-            _mapper.Map<ProductDto>(product).Returns(productDto);
-            _mapper.Map<Product>(createProductRequestDto).Returns(product);
+            _mapper.Map<ProductDto>(createProductResponse).Returns(productDto);
+            _mapper.Map<CreateProductCommandRequest>(createProductRequestDto).Returns(createProductRequest);
             
             var actionResult = _productsController.Insert(createProductRequestDto).Result;
 

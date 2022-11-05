@@ -6,6 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="MediatR" Version="9.0.0" />
+      <PackageReference Include="OneOf" Version="3.0.178" />
       <PackageReference Include="ValueOf" Version="1.0.17" />
     </ItemGroup>
 

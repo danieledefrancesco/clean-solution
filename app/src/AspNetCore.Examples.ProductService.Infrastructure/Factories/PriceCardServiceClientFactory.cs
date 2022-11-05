@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace AspNetCore.Examples.ProductService.Factories
 {
-    public class PriceCardServiceClientFactory: IPriceCardServiceClientFactory
+    public sealed class PriceCardServiceClientFactory: IPriceCardServiceClientFactory
     {
         private readonly IOptions<PriceCardServiceClientConfiguration> _config;
         private readonly HttpClient _httpClient;

@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class NotFoundErrorHandlerTest: ErrorHandlerTestBase<NotFoundErrorHandler, NotFoundError>
+    public sealed class NotFoundErrorHandlerTest: ErrorHandlerTestBase<NotFoundErrorHandler, NotFoundError>
     {
         private IMapper _mapper;
         protected override NotFoundErrorHandler ErrorHandler { get; set; }

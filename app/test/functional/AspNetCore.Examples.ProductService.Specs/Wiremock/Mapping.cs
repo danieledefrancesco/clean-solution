@@ -1,6 +1,6 @@
 namespace AspNetCore.Examples.ProductService.Specs.Wiremock
 {
-    public class Mapping
+    public sealed class Mapping
     {
         public string Id { get; set; }
         public Request Request { get; set; }

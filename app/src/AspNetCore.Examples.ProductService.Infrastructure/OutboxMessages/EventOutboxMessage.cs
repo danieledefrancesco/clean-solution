@@ -3,8 +3,8 @@ using ZapMicro.TransactionalOutbox.Messages;
 
 namespace AspNetCore.Examples.ProductService.OutboxMessages
 {
-    public class EventOutboxMessage<T> : IOutboxMessage where T : EventBase
+    public sealed class EventOutboxMessage<T> : IOutboxMessage
     {
-        public T Event { get; set; }
+        public T Event { get; init; }
     }
 }

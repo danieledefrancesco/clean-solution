@@ -2,7 +2,7 @@ using AspNetCore.Examples.ProductService.Events;
 
 namespace AspNetCore.Examples.ProductService
 {
-    public class TestEvent: EventBase
+    public sealed class TestDomainEvent: DomainEventBase
     {
         
     }

@@ -4,7 +4,7 @@ using AspNetCore.Examples.ProductService.Errors;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class ErrorHandlerFactory : IErrorHandlerFactory
+    public sealed class ErrorHandlerFactory : IErrorHandlerFactory
     {
         private readonly IEnumerable<IErrorHandler> _errorHandlers;
 

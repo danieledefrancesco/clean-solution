@@ -4,7 +4,7 @@ using AspNetCore.Examples.ProductService.Events;
 
 namespace AspNetCore.Examples.ProductService.Handlers
 {
-    public interface IQueueHandler<in T> where T : EventBase
+    public interface IQueueHandler<in T>
     {
         Task SendMessageAsync(T @event, CancellationToken token);
     }

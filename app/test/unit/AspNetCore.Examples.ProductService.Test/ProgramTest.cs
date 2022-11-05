@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService
 {
-    public class ProgramTest
+    public sealed class ProgramTest
     {
         /**
         [Test]

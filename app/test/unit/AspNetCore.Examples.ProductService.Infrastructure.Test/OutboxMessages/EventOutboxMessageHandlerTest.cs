@@ -9,24 +9,24 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.OutboxMessages
 {
-    public class EventOutboxMessageHandlerTest
+    public sealed class EventOutboxMessageHandlerTest
     {
-        private IQueueHandler<TestEvent> _queueHandler;
-        private EventOutboxMessageHandler<TestEvent> _eventOutboxMessageHandler;
+        private IQueueHandler<TestDomainEvent> _queueHandler;
+        private EventOutboxMessageHandler<TestDomainEvent> _eventOutboxMessageHandler;
 
         [SetUp]
         public void SetUp()
         {
-            _queueHandler = Substitute.For<IQueueHandler<TestEvent>>();
-            _eventOutboxMessageHandler = new EventOutboxMessageHandler<TestEvent>(_queueHandler);
+            _queueHandler = Substitute.For<IQueueHandler<TestDomainEvent>>();
+            _eventOutboxMessageHandler = new EventOutboxMessageHandler<TestDomainEvent>(_queueHandler);
         }
 
         [Test]
         public async Task OnOutboxMessageCreated_DoesntThrowException()
         {
-            var outboxMessage = new EventOutboxMessage<TestEvent>
+            var outboxMessage = new EventOutboxMessage<TestDomainEvent>
             {
-                Event = new TestEvent()
+                Event = new TestDomainEvent()
             };
             Func<Task> act = () =>
                 _eventOutboxMessageHandler.OnOutboxMessageCreated(outboxMessage, CancellationToken.None).AsTask();

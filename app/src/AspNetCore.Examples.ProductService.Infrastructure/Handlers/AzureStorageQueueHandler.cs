@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace AspNetCore.Examples.ProductService.Handlers
 {
-    public class AzureStorageQueueHandler<T> : IQueueHandler<T> where T : EventBase
+    public sealed class AzureStorageQueueHandler<T> : IQueueHandler<T>
     {
         private readonly QueueClient _queueClient;
 

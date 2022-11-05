@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace AspNetCore.Examples.ProductService.Specs.Steps
 {
     [Binding]
-    public class CreateProductStepDefinitions
+    public sealed class CreateProductStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
 
@@ -65,12 +65,10 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         {
             await Task.Delay(TimeSpan.FromSeconds(5));
             var message = await Services.OnProductCreatedEventQueueClient.ReceiveMessageAsync();
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All
-            };
-            var @event = JsonConvert.DeserializeObject<OnProductCreated>(message.Value.Body.ToString());
-            @event!.CreatedProduct.Id.Should().Be(TestData.CreateProductRequest.Id);
+            var @event = JsonConvert.DeserializeObject<OnProductCreatedEventDto>(message.Value.Body.ToString());
+            @event!.ProductId.Should().Be(TestData.CreateProductRequest.Id);
+            @event!.ProductName.Should().Be(TestData.CreateProductRequest.Name);
+            @event!.ProductPrice.Should().Be(TestData.CreateProductRequest.Price);
         }
     }
 }

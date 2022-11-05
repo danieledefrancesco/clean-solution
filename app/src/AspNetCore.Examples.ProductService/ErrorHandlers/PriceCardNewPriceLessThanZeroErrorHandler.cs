@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class PriceCardNewPriceLessThanZeroErrorHandler : ErrorHandlerBase<PriceCardNewPriceLessThanZeroError>
+    public sealed class PriceCardNewPriceLessThanZeroErrorHandler : ErrorHandlerBase<PriceCardNewPriceLessThanZeroError>
     {
         private readonly IMapper _mapper;
 

@@ -6,7 +6,7 @@ using ZapMicro.TransactionalOutbox.Handlers;
 
 namespace AspNetCore.Examples.ProductService.OutboxMessages
 {
-    public class EventOutboxMessageHandler<T>: OutboxMessageHandlerBase<EventOutboxMessage<T>> where T : EventBase
+    public sealed class EventOutboxMessageHandler<T>: OutboxMessageHandlerBase<EventOutboxMessage<T>>
     {
         private readonly IQueueHandler<T> _queueHandler;
 

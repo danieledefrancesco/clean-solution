@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore.Examples.ProductService.ErrorHandlers
 {
-    public class DefaultErrorHandler : ErrorHandlerBase
+    public sealed class DefaultErrorHandler : ErrorHandlerBase
     {
         private readonly IMapper _mapper;
 

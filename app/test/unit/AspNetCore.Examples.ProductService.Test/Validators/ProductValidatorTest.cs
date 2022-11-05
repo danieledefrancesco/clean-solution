@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.Validators
 {
-    public class ProductValidatorTest
+    public sealed class ProductValidatorTest
     {
         private ProductValidator _productValidator;
 

@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
       <PackageReference Include="Azure.Storage.Queues" Version="12.11.0" />
       <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
@@ -26,6 +27,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AspNetCore.Examples.ProductService.Application\AspNetCore.Examples.ProductService.Application.csproj" />
+      <ProjectReference Include="..\AspNetCore.Examples.ProductService.Contracts\AspNetCore.Examples.ProductService.Contracts.csproj" />
       <ProjectReference Include="..\AspNetCore.Examples.ProductService.Infrastructure.Abstractions\AspNetCore.Examples.ProductService.Infrastructure.Abstractions.csproj" />
     </ItemGroup>
 

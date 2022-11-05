@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCore.Examples.ProductService.Repositories
 {
-    public class ProductRepositoryTest : RepositoryTestBase<Product,string>
+    public sealed class ProductRepositoryTest : RepositoryTestBase<Product,ProductId>
     {
-        protected override RepositoryBase<Product, string> CreteRepository(DbContext dbContext)
+        protected override RepositoryBase<Product, ProductId> CreteRepository(DbContext dbContext)
         {
             return new ProductRepository(dbContext);
         }
@@ -22,16 +22,15 @@ namespace AspNetCore.Examples.ProductService.Repositories
 
         protected override Product CreateTestEntity()
         {
-            return new Product
+            return new Product(ProductId.From("productId"))
             {
-                Id = "productId",
                 Name =  ProductName.From("productName")
             };
         }
 
-        protected override string CreateId()
+        protected override ProductId CreateId()
         {
-            return "id";
+            return ProductId.From("id");
         }
     }
 }
