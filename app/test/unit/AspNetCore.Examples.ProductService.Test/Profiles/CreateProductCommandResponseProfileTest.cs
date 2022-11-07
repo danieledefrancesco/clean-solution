@@ -1,6 +1,6 @@
 namespace AspNetCore.Examples.ProductService.Profiles
 {
-    public sealed class CreateProductCommandResponseProfileTest : ProfileTestBase<CreateProductCommandRequestProfile>
+    public sealed class CreateProductCommandResponseProfileTest : ProfileTestBase<CreateProductCommandResponseProfile>
     {
         
     }

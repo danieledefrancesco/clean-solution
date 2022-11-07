@@ -31,7 +31,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
             };
         }
 
-        [When(@"I make a (.*) request to the /products endpoint")]
+        [When(@"I make a (.*) request to the \/products endpoint")]
         public async Task WhenIMakeApostRequestToTheProductsEndpoint(string method)
         {
             IDictionary<string, Func<CreateProductRequestDto, Task<Response<ProductDto>>>> request =

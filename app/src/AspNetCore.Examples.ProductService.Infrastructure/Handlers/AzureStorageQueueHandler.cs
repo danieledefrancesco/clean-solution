@@ -14,7 +14,7 @@ namespace AspNetCore.Examples.ProductService.Handlers
             _queueClient = queueClient;
         }
 
-        private string SerializeEvent(T @event)
+        private static string SerializeEvent(T @event)
         {
             var settings = new JsonSerializerSettings
             {

@@ -1,3 +1,4 @@
+using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.Requests;
 using FluentAssertions;
 using NUnit.Framework;
@@ -6,12 +7,12 @@ namespace AspNetCore.Examples.ProductService.Validators
 {
     public sealed class GetProductDtoRequestValidatorTest
     {
-        private GetProductDtoRequestValidator _getProductDtoRequestValidator;
+        private GetProductWithPriceCardByIdRequestDtoValidator _getProductWithPriceCardByIdRequestDtoValidator;
 
         [SetUp]
         public void SetUp()
         {
-            _getProductDtoRequestValidator = new GetProductDtoRequestValidator();
+            _getProductWithPriceCardByIdRequestDtoValidator = new GetProductWithPriceCardByIdRequestDtoValidator();
         }
 
         [TestCase("a1")]
@@ -25,7 +26,7 @@ namespace AspNetCore.Examples.ProductService.Validators
                 ProductId = id
             };
 
-            var validationResult = _getProductDtoRequestValidator.Validate(getProductDtoRequest);
+            var validationResult = _getProductWithPriceCardByIdRequestDtoValidator.Validate(getProductDtoRequest);
 
             validationResult
                 .Should()
@@ -51,7 +52,7 @@ namespace AspNetCore.Examples.ProductService.Validators
                 ProductId = id
             };
 
-            var validationResult = _getProductDtoRequestValidator.Validate(getProductDtoRequest);
+            var validationResult = _getProductWithPriceCardByIdRequestDtoValidator.Validate(getProductDtoRequest);
 
             validationResult
                 .Should()

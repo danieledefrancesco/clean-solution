@@ -1,5 +1,6 @@
-using System;
 using System.Threading;
+using System.Threading.Tasks;
+using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using AspNetCore.Examples.ProductService.Requests;
@@ -29,9 +30,51 @@ namespace AspNetCore.Examples.ProductService.Controllers
             _mapper = Substitute.For<IMapper>();
             _productsController = new ProductsController(_errorHandlerFactory, _mediator, _mapper);
         }
+        
+        [Test]
+        public async Task Get_ShouldReturnProduct_IfProductExists()
+        {
+            const string productId = "p1";
+            const decimal productPrice = 1;
+            const string productName = "name";
+
+            var product = new Product(ProductId.From(productId))
+            {
+                Price = ProductPrice.From(productPrice),
+                Name = ProductName.From(productName)
+            };
+
+            var getProductByIdResponse = new GetProductByIdResponse(product);
+
+            _mediator.Send(Arg.Any<GetProductByIdRequest>(), Arg.Any<CancellationToken>()).Returns(getProductByIdResponse);
+
+            var productDto = new ProductDto
+            {
+                Id = productId,
+                Name = product.Name.Value,
+                Price = product.Price.Value
+            };
+
+
+            var getProductDtoRequest = new GetProductByIdRequestDto
+            {
+                ProductId = productId
+            };
+            
+            _mapper.Map<ProductDto>(getProductByIdResponse).Returns(productDto);
+
+            
+            var actionResult = await _productsController.Get(getProductDtoRequest);
+
+            actionResult.Should().BeOfType<OkObjectResult>();
+            
+            var objectResult = actionResult as OkObjectResult;
+            objectResult!.StatusCode.Should().Be(200);
+            objectResult!.Value.Should().Be(productDto);
+        }
 
         [Test]
-        public void Get_ShouldReturnProduct_IfProductExists()
+        public async Task GetWithPriceCard_ShouldReturnProduct_IfProductExists()
         {
             const string productId = "p1";
             const decimal productPrice = 1;
@@ -47,11 +90,17 @@ namespace AspNetCore.Examples.ProductService.Controllers
 
             _mediator.Send(Arg.Any<GetProductWithPriceCardByIdRequest>(), Arg.Any<CancellationToken>()).Returns(getProductByIdResponse);
 
-            var productDto = new ProductDto()
+            var productDto = new ProductWithPriceCardDto
             {
                 Id = productId,
                 Name = product.Name.Value,
-                Price = product.Price.Value
+                Price = product.Price.Value,
+                FinalPrice = product.Price.Value,
+                PriceCard = new PriceCardDto
+                {
+                    Id = "priceCardId",
+                    NewPrice = product.Price.Value
+                }
             };
 
 
@@ -60,10 +109,10 @@ namespace AspNetCore.Examples.ProductService.Controllers
                 ProductId = productId
             };
             
-            _mapper.Map<ProductDto>(getProductByIdResponse).Returns(productDto);
+            _mapper.Map<ProductWithPriceCardDto>(getProductByIdResponse).Returns(productDto);
 
             
-            var actionResult = _productsController.Get(getProductDtoRequest).Result;
+            var actionResult = await _productsController.GetWithPriceCard(getProductDtoRequest);
 
             actionResult.Should().BeOfType<OkObjectResult>();
             
@@ -73,7 +122,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
         }
         
         [Test]
-        public void Insert_ShouldReturnProduct_IfProductDoesntExists()
+        public async Task Insert_ShouldReturnProduct_IfProductDoesntExists()
         {
             const string productId = "p1";
             const decimal productPrice = 1;
@@ -109,7 +158,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             _mapper.Map<ProductDto>(createProductResponse).Returns(productDto);
             _mapper.Map<CreateProductCommandRequest>(createProductRequestDto).Returns(createProductRequest);
             
-            var actionResult = _productsController.Insert(createProductRequestDto).Result;
+            var actionResult = await _productsController.Insert(createProductRequestDto);
 
             actionResult.Should().BeOfType<OkObjectResult>();
             

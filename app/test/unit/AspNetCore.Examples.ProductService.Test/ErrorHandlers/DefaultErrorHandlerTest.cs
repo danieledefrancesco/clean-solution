@@ -1,3 +1,4 @@
+using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.Errors;
 using AutoMapper;
 using FluentAssertions;

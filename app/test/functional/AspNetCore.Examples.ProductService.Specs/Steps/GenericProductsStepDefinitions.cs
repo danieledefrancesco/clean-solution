@@ -41,6 +41,29 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         {
             TestData.HttpStatusCode.Should().Be(statusCode);
         }
+        
+        
+        [Then(@"the product id is (.+)")]
+        public void ThenTheProductIdIsProduct_Id(string productId)
+        {
+            TestData.ProductResponse.Should().NotBeNull();
+            TestData.ProductResponse.GetContent().Id.Should().Be(productId);
+        }
+
+        [Then(@"the product name is (.+)")]
+        public void ThenTheProductNameIsProduct_Name(string productName)
+        {
+            TestData.ProductResponse.Should().NotBeNull();
+            TestData.ProductResponse.GetContent().Name.Should().Be(productName);
+        }
+
+        [Then(@"the product price is (.*)")]
+        public void ThenTheProductPriceIs(decimal productPrice)
+        {
+            TestData.ProductResponse.Should().NotBeNull();
+            TestData.ProductResponse.GetContent().Price.Should().Be(productPrice);
+        }
+
 
         [Given(@"a price card <(.*), (.*), (.*), (.*), (.*), (.*)>")]
         public async Task GivenAPricecard(string priceCardId, string proudctId, string priceCardName, double priceCardPrice, DateTime validFrom, DateTime validUntil)
