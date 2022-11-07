@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using AspNetCore.Examples.ProductService.Configurations;
 using AspNetCore.Examples.ProductService.Factories;
+using AspNetCore.Examples.ProductService.Products;
 using AspNetCore.Examples.ProductService.Repositories;
 using MediatR;
 using Microsoft.Extensions.Configuration;

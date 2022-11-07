@@ -1,5 +1,5 @@
 using AspNetCore.Examples.ProductService.Entities;
-using AspNetCore.Examples.ProductService.ValueObjects;
+using AspNetCore.Examples.ProductService.Products;
 using Microsoft.EntityFrameworkCore;
 using ZapMicro.TransactionalOutbox.DbContexts;
 using ZapMicro.TransactionalOutbox.Entities;

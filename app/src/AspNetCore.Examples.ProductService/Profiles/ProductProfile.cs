@@ -1,4 +1,5 @@
 using AspNetCore.Examples.ProductService.Entities;
+using AspNetCore.Examples.ProductService.Products;
 using AutoMapper;
 
 namespace AspNetCore.Examples.ProductService.Profiles
