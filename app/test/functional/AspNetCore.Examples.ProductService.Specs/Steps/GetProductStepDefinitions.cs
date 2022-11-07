@@ -1,14 +1,16 @@
 ﻿using System.Threading.Tasks;
 using FluentAssertions;
+using NUnit.Framework.Internal;
 using TechTalk.SpecFlow;
 
 namespace AspNetCore.Examples.ProductService.Specs.Steps
 {
     [Binding]
+    [Scope(Feature = "GetProduct")]
+
     public sealed class GetProductStepDefinitions
     {
-
-        [When(@"I make a GET request to the /products/(.+) endpoint")]
+        [When(@"I make a GET request to the \/products\/(.+) endpoint")]
         public async Task WhenIMakeAGetRequestToTheProductsIdEndpoint(string productId)
         {
             try
@@ -19,34 +21,6 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
             {
                 TestData.ApiError = e;
             }
-        }
-
-        [Then(@"the product id is (.+)")]
-        public void ThenTheProductIdIsProduct_Id(string productId)
-        {
-            TestData.ProductResponse.Should().NotBeNull();
-            TestData.ProductResponse.GetContent().Id.Should().Be(productId);
-        }
-
-        [Then(@"the product name is (.+)")]
-        public void ThenTheProductNameIsProduct_Name(string productName)
-        {
-            TestData.ProductResponse.Should().NotBeNull();
-            TestData.ProductResponse.GetContent().Name.Should().Be(productName);
-        }
-
-        [Then(@"the product price is (.*)")]
-        public void ThenTheProductPriceIs(decimal productPrice)
-        {
-            TestData.ProductResponse.Should().NotBeNull();
-            TestData.ProductResponse.GetContent().Price.Should().Be(productPrice);
-        }
-        
-        [Then(@"the product final price is (.*)")]
-        public void ThenTheProductFinalPriceIs(decimal productFinalPrice)
-        {
-            TestData.ProductResponse.Should().NotBeNull();
-            TestData.ProductResponse.GetContent().FinalPrice.Should().Be(productFinalPrice);
         }
     }
 }

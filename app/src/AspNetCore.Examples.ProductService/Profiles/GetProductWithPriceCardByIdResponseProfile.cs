@@ -7,7 +7,7 @@ namespace AspNetCore.Examples.ProductService.Profiles
     {
         public GetProductWithPriceCardByIdResponseProfile()
         {
-            CreateMap<GetProductWithPriceCardByIdResponse, ProductDto>()
+            CreateMap<GetProductWithPriceCardByIdResponse, ProductWithPriceCardDto>()
                 .ForMember(dto => dto.Id,
                     opt =>
                         opt.MapFrom(p => p.ProductWithPriceCard.Product.Id.Value))
@@ -19,7 +19,9 @@ namespace AspNetCore.Examples.ProductService.Profiles
                         opt.MapFrom(p => p.ProductWithPriceCard.Product.Price.Value))
                 .ForMember(dto => dto.FinalPrice,
                     opt =>
-                        opt.MapFrom(p => p.ProductWithPriceCard.FinalPrice.Value));
+                        opt.MapFrom(p => p.ProductWithPriceCard.FinalPrice.Value))
+                .ForMember(dto => dto.PriceCard,
+                    opt => opt.MapFrom(p=> p.ProductWithPriceCard.PriceCard));
         }
     }
 }

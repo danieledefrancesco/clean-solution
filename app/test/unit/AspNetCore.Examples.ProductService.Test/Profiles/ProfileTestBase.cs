@@ -12,8 +12,18 @@ namespace AspNetCore.Examples.ProductService.Profiles
         public void SetUp()
         {
             _mapperConfiguration = new MapperConfiguration(
-                cfg => cfg.AddProfile<T>());
+                cfg =>
+                {
+                    cfg.AddProfile<T>();
+                    AddAdditionalConfig(cfg);
+                });
             _mapper = _mapperConfiguration.CreateMapper();
+        }
+
+        protected virtual void AddAdditionalConfig(
+            IMapperConfigurationExpression mapperConfigurationExpression)
+        {
+            
         }
 
         [Test]

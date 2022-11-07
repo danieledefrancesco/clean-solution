@@ -23,7 +23,7 @@ namespace AspNetCore.Examples.ProductService.RequestHandlers
         }
 
         public async Task<OneOf<CreateProductCommandResponse, IError>> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
-        {;
+        {
             var productExists = await _productRepository.ExistsById(request.ProductId);
             if (productExists)
             {

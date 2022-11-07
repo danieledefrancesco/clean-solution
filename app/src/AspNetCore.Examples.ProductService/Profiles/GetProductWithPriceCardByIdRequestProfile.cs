@@ -1,3 +1,4 @@
+using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.ValueObjects;
 using AutoMapper;

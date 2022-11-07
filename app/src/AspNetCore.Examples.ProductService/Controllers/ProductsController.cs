@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using AspNetCore.Examples.ProductService.Requests;
 using AspNetCore.Examples.ProductService.Responses;
@@ -21,14 +22,23 @@ namespace AspNetCore.Examples.ProductService.Controllers
         {
             _mapper = mapper;
         }
-
+        
         [HttpGet("{id}")]
-        public Task<IActionResult> Get([FromRoute] GetProductWithPriceCardByIdRequestDto getProductWithPriceCardByIdRequestDto)
+        public Task<IActionResult> Get([FromRoute] GetProductByIdRequestDto getProductByIdRequestDto)
+        {
+            var getProductByIdRequest = _mapper.Map<GetProductByIdRequest>(getProductByIdRequestDto);
+            return MediatorResponse<GetProductByIdRequest, GetProductByIdResponse>(
+                getProductByIdRequest,
+                response => _mapper.Map<ProductDto>(response));
+        }
+
+        [HttpGet("{id}/with-price-card")]
+        public Task<IActionResult> GetWithPriceCard([FromRoute] GetProductWithPriceCardByIdRequestDto getProductWithPriceCardByIdRequestDto)
         {
             var getProductByIdRequest = _mapper.Map<GetProductWithPriceCardByIdRequest>(getProductWithPriceCardByIdRequestDto);
             return MediatorResponse<GetProductWithPriceCardByIdRequest, GetProductWithPriceCardByIdResponse>(
                 getProductByIdRequest,
-                response => _mapper.Map<ProductDto>(response));
+                response => _mapper.Map<ProductWithPriceCardDto>(response));
         }
 
         [HttpPost]

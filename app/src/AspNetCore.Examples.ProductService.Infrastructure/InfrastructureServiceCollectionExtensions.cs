@@ -52,10 +52,11 @@ namespace AspNetCore.Examples.ProductService
 
         private static IServiceCollection AddAzureStorageQueueForEvent<TEvent, TDto>(this IServiceCollection services, IConfiguration configuration)
         {
-            QueueClient ClientFactory() => new (configuration["QUEUE_STORAGE_CONNECTION_STRING"], typeof(TEvent)!.Name!.ToLower());
+            var connectionString = configuration["QUEUE_STORAGE_CONNECTION_STRING"];
+            QueueClient ClientFactory(string cs) => new (cs, typeof(TEvent)!.Name!.ToLower());
             return services
-                .AddSingleton((Func<QueueClient>)ClientFactory)
-                .AddScoped<IQueueHandler<TDto>>((_) => new AzureStorageQueueHandler<TDto>(ClientFactory()));
+                .AddSingleton((Func<string, QueueClient>)ClientFactory)
+                .AddScoped<IQueueHandler<TDto>>((_) => new AzureStorageQueueHandler<TDto>(ClientFactory(connectionString)));
         }
     }
 }
