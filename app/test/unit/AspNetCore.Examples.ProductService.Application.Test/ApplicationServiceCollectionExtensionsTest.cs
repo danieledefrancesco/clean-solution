@@ -1,4 +1,5 @@
 using System;
+using AspNetCore.Examples.ProductService.Products;
 using AspNetCore.Examples.ProductService.Repositories;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;

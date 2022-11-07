@@ -1,11 +1,13 @@
 using System.Threading;
 using System.Threading.Tasks;
+using AspNetCore.Examples.ProductService.CreateProductCommand;
 using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
+using AspNetCore.Examples.ProductService.GetProductById;
+using AspNetCore.Examples.ProductService.GetProductWithPriceCardById;
+using AspNetCore.Examples.ProductService.Products;
 using AspNetCore.Examples.ProductService.Requests;
-using AspNetCore.Examples.ProductService.Responses;
-using AspNetCore.Examples.ProductService.ValueObjects;
 using AutoMapper;
 using FluentAssertions;
 using MediatR;

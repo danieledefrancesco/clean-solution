@@ -1,4 +1,4 @@
-using AspNetCore.Examples.ProductService.ValueObjects;
+using AspNetCore.Examples.ProductService.Products;
 using AutoMapper;
 
 namespace AspNetCore.Examples.ProductService.Profiles
