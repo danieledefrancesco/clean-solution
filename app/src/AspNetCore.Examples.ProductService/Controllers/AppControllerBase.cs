@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using AspNetCore.Examples.ProductService.Errors;
@@ -28,10 +29,10 @@ namespace AspNetCore.Examples.ProductService.Controllers
         
         public virtual async Task<IActionResult> MediatorResponse<TRequest,TResponse>(
             TRequest request,
-            Func<TResponse, object> map)
+            Func<TResponse, object> map, CancellationToken cancellationToken)
         where TRequest : IAppRequest<TResponse>
         {
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(request, cancellationToken);
             return response.Match(
                 result => Ok(map(result)),
                 Error

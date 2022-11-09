@@ -26,7 +26,7 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
         {
             _mediator = Substitute.For<IMediator>();
             _priceCardServiceClient =
-                Substitute.For<PriceCardServiceClient>(new object[]{ Substitute.For<HttpClient>() });
+                Substitute.For<PriceCardServiceClient>(new object[] { Substitute.For<HttpClient>() });
             _getProductWithPriceCardByIdRequestHandler =
                 new GetProductWithPriceCardByIdRequestHandler(_mediator, _priceCardServiceClient);
         }
@@ -35,7 +35,7 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
         public async Task Handle_ReturnsNotFound_IfProductDoesntExist()
         {
             var productId = ProductId.From("abc");
-            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, IError>)new NotFoundError());
+            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, ErrorBase>)new NotFoundError());
             _mediator.Send(Arg.Any<GetProductByIdRequest>()).Returns(mockedResult);
 
             var request = new GetProductWithPriceCardByIdRequest(productId);
@@ -49,7 +49,8 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
         }
 
         [Test]
-        public async Task Handle_ReturnsPriceCardNewPriceIsLowerThanZero_IfProductExistsAndPriceCardNewPriceIsLowerThanZero()
+        public async Task
+            Handle_ReturnsPriceCardNewPriceIsLowerThanZero_IfProductExistsAndPriceCardNewPriceIsLowerThanZero()
         {
             const string productId = "abc";
             const string productName = "name";
@@ -68,11 +69,9 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
                 }
             });
 
-            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, IError>)new GetProductByIdResponse(new Product(ProductId.From(productId))
-            {
-                Name = ProductName.From(productName),
-                Price = ProductPrice.From(productPrice)
-            }));
+            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, ErrorBase>)new GetProductByIdResponse(
+                new Product(ProductId.From(productId), ProductName.From(productName),
+                    ProductPrice.From(productPrice))));
 
             _mediator.Send(Arg.Any<GetProductByIdRequest>()).Returns(mockedResult);
             _priceCardServiceClient.ActiveAsync(productId, CancellationToken.None).Returns(mockedPriceCardList);
@@ -101,11 +100,9 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
                 Items = new List<PriceCard>()
             });
 
-            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, IError>)new GetProductByIdResponse(new Product(ProductId.From(productId))
-            {
-                Name = ProductName.From(productName),
-                Price = ProductPrice.From(productPrice)
-            }));
+            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, ErrorBase>)new GetProductByIdResponse(
+                new Product(ProductId.From(productId), ProductName.From(productName),
+                    ProductPrice.From(productPrice))));
 
             _mediator.Send(Arg.Any<GetProductByIdRequest>()).Returns(mockedResult);
             _priceCardServiceClient.ActiveAsync(productId, cancellationToken).Returns(mockedPriceCardList);
@@ -137,7 +134,7 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
             const double priceCardPrice = 8;
 
 
-            var mockedPriceCardList = Task.FromResult(new PriceCardList()
+            var mockedPriceCardList = Task.FromResult(new PriceCardList
             {
                 Items = new List<PriceCard>
                 {
@@ -148,11 +145,9 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
                 }
             });
 
-            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, IError>)new GetProductByIdResponse(new Product(ProductId.From(productId))
-            {
-                Name = ProductName.From(productName),
-                Price = ProductPrice.From(productPrice)
-            }));
+            var mockedResult = Task.FromResult((OneOf<GetProductByIdResponse, ErrorBase>)new GetProductByIdResponse(
+                new Product(ProductId.From(productId), ProductName.From(productName),
+                    ProductPrice.From(productPrice))));
 
             _mediator.Send(Arg.Any<GetProductByIdRequest>()).Returns(mockedResult);
             _priceCardServiceClient.ActiveAsync(productId, CancellationToken.None).Returns(mockedPriceCardList);

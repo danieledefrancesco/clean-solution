@@ -42,13 +42,16 @@ namespace AspNetCore.Examples.ProductService.Specs
             }
         }
 
-        public static CreateProductRequestDto CreateProductRequest { get; set; }
+        public static CreateProductCommandRequestDto CreateProductRequest { get; set; }
+        public static UpdateProductCommandRequestDtoBody UpdateProductRequest { get; set; }
 
         public static void Reset()
         {
             ProductResponse = null;
+            ProductWithPriceCardResponse = null;
             ApiError = null;
             CreateProductRequest = null;
+            UpdateProductRequest = null;
         }
     }
 }

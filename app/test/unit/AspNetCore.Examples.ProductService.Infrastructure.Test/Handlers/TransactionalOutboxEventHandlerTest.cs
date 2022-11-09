@@ -1,17 +1,15 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Events;
-using AspNetCore.Examples.ProductService.Handlers;
 using AutoMapper;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using ZapMicro.TransactionalOutbox.Commands;
 
-namespace AspNetCore.Examples.ProductService.EventHandlers
+namespace AspNetCore.Examples.ProductService.Handlers
 {
-    public sealed class TransactionalOutboxEventHandlerTest : DomainEventBase
+    public sealed class TransactionalOutboxEventHandlerTest
     {
         private IEnqueueOutboxMessageCommand _enqueueOutboxMessageCommand;
         private IMapper _mapper;
@@ -28,7 +26,7 @@ namespace AspNetCore.Examples.ProductService.EventHandlers
         [Test]
         public async Task RaiseEvent_DoesntThrowException()
         {
-            var @event = new TestDomainEvent();
+            var @event = new TestDomainEvent(Guid.NewGuid());
             Func<Task> act = () => _transactionalOutboxEventHandler.Handle(@event, CancellationToken.None);
             await act.Should().NotThrowAsync();
         }

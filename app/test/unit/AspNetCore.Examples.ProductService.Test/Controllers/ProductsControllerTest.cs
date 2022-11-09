@@ -1,13 +1,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.CreateProductCommand;
-using AspNetCore.Examples.ProductService.DataTransferObjects;
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using AspNetCore.Examples.ProductService.GetProductById;
 using AspNetCore.Examples.ProductService.GetProductWithPriceCardById;
 using AspNetCore.Examples.ProductService.Products;
-using AspNetCore.Examples.ProductService.Requests;
 using AutoMapper;
 using FluentAssertions;
 using MediatR;
@@ -40,11 +37,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             const decimal productPrice = 1;
             const string productName = "name";
 
-            var product = new Product(ProductId.From(productId))
-            {
-                Price = ProductPrice.From(productPrice),
-                Name = ProductName.From(productName)
-            };
+            var product = new Product(ProductId.From(productId), ProductName.From(productName), ProductPrice.From(productPrice));
 
             var getProductByIdResponse = new GetProductByIdResponse(product);
 
@@ -66,7 +59,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             _mapper.Map<ProductDto>(getProductByIdResponse).Returns(productDto);
 
             
-            var actionResult = await _productsController.Get(getProductDtoRequest);
+            var actionResult = await _productsController.Get(getProductDtoRequest, CancellationToken.None);
 
             actionResult.Should().BeOfType<OkObjectResult>();
             
@@ -82,11 +75,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             const decimal productPrice = 1;
             const string productName = "name";
 
-            var product = new Product(ProductId.From(productId))
-            {
-                Price = ProductPrice.From(productPrice),
-                Name = ProductName.From(productName)
-            };
+            var product = new Product(ProductId.From(productId), ProductName.From(productName), ProductPrice.From(productPrice));
 
             var getProductByIdResponse = new GetProductWithPriceCardByIdResponse(new ProductWithPriceCard(product, null));
 
@@ -114,7 +103,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             _mapper.Map<ProductWithPriceCardDto>(getProductByIdResponse).Returns(productDto);
 
             
-            var actionResult = await _productsController.GetWithPriceCard(getProductDtoRequest);
+            var actionResult = await _productsController.GetWithPriceCard(getProductDtoRequest, CancellationToken.None);
 
             actionResult.Should().BeOfType<OkObjectResult>();
             
@@ -130,7 +119,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             const decimal productPrice = 1;
             const string productName = "name";
 
-            var createProductRequestDto = new CreateProductRequestDto
+            var createProductRequestDto = new CreateProductCommandRequestDto
             {
                 Id = productId,
                 Price = productPrice,
@@ -140,11 +129,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             var createProductRequest = new CreateProductCommandRequest(ProductId.From(productId),
                 ProductName.From(productName), ProductPrice.From(productPrice));
             
-            var product = new Product(ProductId.From(productId))
-            {
-                Name = ProductName.From(createProductRequestDto.Name),
-                Price = ProductPrice.From(createProductRequestDto.Price)
-            };
+            var product = new Product(ProductId.From(productId), ProductName.From(createProductRequestDto.Name), ProductPrice.From(createProductRequestDto.Price));
             
             var productDto = new ProductDto
             {
@@ -160,7 +145,7 @@ namespace AspNetCore.Examples.ProductService.Controllers
             _mapper.Map<ProductDto>(createProductResponse).Returns(productDto);
             _mapper.Map<CreateProductCommandRequest>(createProductRequestDto).Returns(createProductRequest);
             
-            var actionResult = await _productsController.Insert(createProductRequestDto);
+            var actionResult = await _productsController.Insert(createProductRequestDto, CancellationToken.None);
 
             actionResult.Should().BeOfType<OkObjectResult>();
             

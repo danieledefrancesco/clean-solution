@@ -1,5 +1,5 @@
 using System;
-using AspNetCore.Examples.ProductService.Events;
+using AspNetCore.Examples.ProductService.Products;
 using Azure.Storage.Queues;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -13,6 +13,7 @@ namespace AspNetCore.Examples.ProductService.Specs
         public static IWiremockAdminClient WiremockAdminClient { get; private set; }
 
         public static QueueClient OnProductCreatedEventQueueClient { get; private set; }
+        public static QueueClient OnProductUpdatedEventQueueClient { get; private set; }
         static Services()
         {
             Reset();
@@ -20,7 +21,8 @@ namespace AspNetCore.Examples.ProductService.Specs
         public static void Reset()
         {
             AppDbContext = new AppDbContext();
-            ProductServiceClient = RestEase.RestClient.For<IProductServiceClient>(Environment.GetEnvironmentVariable("SUT_BASE_URL")!);
+            ProductServiceClient = new RestEase.RestClient(Environment.GetEnvironmentVariable("SUT_BASE_URL")!)
+                .For<IProductServiceClient>();
             WiremockAdminClient = new RestEase.RestClient(Environment.GetEnvironmentVariable("WIREMOCK_BASE_URL")!)
             {
                 JsonSerializerSettings = new JsonSerializerSettings
@@ -29,10 +31,17 @@ namespace AspNetCore.Examples.ProductService.Specs
                     NullValueHandling = NullValueHandling.Ignore
                 }
             }.For<IWiremockAdminClient>();
-            OnProductCreatedEventQueueClient = new QueueClient(Environment.GetEnvironmentVariable("QUEUE_STORAGE_CONNECTION_STRING"),
-                nameof(OnProductCreated).ToLower());
-            OnProductCreatedEventQueueClient.DeleteIfExists();
-            OnProductCreatedEventQueueClient.CreateIfNotExists();
+            OnProductCreatedEventQueueClient = CreateClientForQueue<OnProductCreated>();
+            OnProductUpdatedEventQueueClient = CreateClientForQueue<OnProductUpdated>();
+        }
+
+        private static QueueClient CreateClientForQueue<T>()
+        {
+            var result = new QueueClient(Environment.GetEnvironmentVariable("QUEUE_STORAGE_CONNECTION_STRING"),
+                typeof(T).Name.ToLower());
+            result.DeleteIfExists();
+            result.CreateIfNotExists();
+            return result;
         }
     }
 }

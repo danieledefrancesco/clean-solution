@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "functional", "functional", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.Specs", "test\functional\AspNetCore.Examples.ProductService.Specs\AspNetCore.Examples.ProductService.Specs.csproj", "{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Examples.ProductService.IntegrationTests", "test\integration\AspNetCore.Examples.ProductService.IntegrationTests\AspNetCore.Examples.ProductService.IntegrationTests.csproj", "{427955ED-753C-4CB8-B201-4DC0A5FEE0D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,7 @@ Global
 		{4D144BE6-8CA1-485C-A8DC-7CEB73FDAB85} = {09775295-5A43-44CA-B3A8-205CC068263D}
 		{49C2E68C-CAC2-4731-8626-3F48CFAFAB31} = {CE12BC78-DCA9-4B21-B979-D2AD4196F535}
 		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79} = {49C2E68C-CAC2-4731-8626-3F48CFAFAB31}
+		{427955ED-753C-4CB8-B201-4DC0A5FEE0D4} = {95F780A0-31AC-4C24-8167-67D830587701}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{69CCD21F-FF26-475F-83A4-2711446DB1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -105,5 +108,9 @@ Global
 		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5BF29F5-5AAD-452A-B69B-BACEDE0A8E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{427955ED-753C-4CB8-B201-4DC0A5FEE0D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{427955ED-753C-4CB8-B201-4DC0A5FEE0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{427955ED-753C-4CB8-B201-4DC0A5FEE0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{427955ED-753C-4CB8-B201-4DC0A5FEE0D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

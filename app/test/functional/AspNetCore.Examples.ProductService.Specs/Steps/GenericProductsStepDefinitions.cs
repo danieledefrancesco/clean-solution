@@ -28,11 +28,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         [Given("a product <(.+), (.+), (.*)>")]
         public async Task GivenAProduct(string id, string name, decimal price)
         {
-            await Services.AppDbContext.Products.AddAsync(new Product(ProductId.From(id))
-            {
-                Name = ProductName.From(name),
-                Price = ProductPrice.From(price)
-            });
+            await Services.AppDbContext.Products.AddAsync(new Product(ProductId.From(id), ProductName.From(name), ProductPrice.From(price)));
             await Services.AppDbContext.SaveChangesAsync();
         }
 

@@ -1,13 +1,13 @@
-using AspNetCore.Examples.ProductService.Events;
+using AspNetCore.Examples.ProductService.Products;
 using AutoMapper;
 
-namespace AspNetCore.Examples.ProductService.Profiles
+namespace AspNetCore.Examples.ProductService.UpdateProductCommand
 {
-    public sealed class OnProductCreatedProfile : Profile
+    public sealed class OnProductUpdatedProfile : Profile
     {
-        public OnProductCreatedProfile()
+        public OnProductUpdatedProfile()
         {
-            CreateMap<OnProductCreated, OnProductCreatedEventDto>()
+            CreateMap<OnProductUpdated, OnProductUpdatedEventDto>()
                 .ForMember(dto => dto.Id,
                     opt => opt.MapFrom(e => e.Id))
                 .ForMember(dto => dto.ProductId,

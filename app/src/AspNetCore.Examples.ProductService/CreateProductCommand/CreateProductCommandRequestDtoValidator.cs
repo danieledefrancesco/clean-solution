@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace AspNetCore.Examples.ProductService.CreateProductCommand
 {
-    public sealed class CreateProductRequestValidator : AbstractValidator<CreateProductRequestDto>
+    public sealed class CreateProductCommandRequestDtoValidator : AbstractValidator<CreateProductCommandRequestDto>
     {
-        public CreateProductRequestValidator()
+        public CreateProductCommandRequestDtoValidator()
         {
             RuleFor(x => x.Id)
                 .ValidateProductId();

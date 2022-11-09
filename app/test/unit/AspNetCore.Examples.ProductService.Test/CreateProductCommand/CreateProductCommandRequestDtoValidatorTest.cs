@@ -3,14 +3,14 @@ using NUnit.Framework;
 
 namespace AspNetCore.Examples.ProductService.CreateProductCommand
 {
-    public sealed class CreateProductRequestValidatorTest
+    public sealed class CreateProductCommandRequestDtoValidatorTest
     {
-        private CreateProductRequestValidator _createProductRequestValidator;
+        private CreateProductCommandRequestDtoValidator _createProductCommandRequestDtoValidator;
 
         [SetUp]
         public void SetUp()
         {
-            _createProductRequestValidator = new CreateProductRequestValidator();
+            _createProductCommandRequestDtoValidator = new CreateProductCommandRequestDtoValidator();
         }
 
         [TestCase("id","Name")]
@@ -20,13 +20,13 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
         [TestCase("ID1","Name_- @#!2")]
         public void ProductValidator_ThrowsNoError_IfProductIdAndNameAreValid(string productId, string productName)
         {
-            var createProductRequest = new CreateProductRequestDto()
+            var createProductRequest = new CreateProductCommandRequestDto()
             {
                 Id = productId,
                 Name = productName
             };
             
-            var validationResult = _createProductRequestValidator.Validate(createProductRequest);
+            var validationResult = _createProductCommandRequestDtoValidator.Validate(createProductRequest);
 
             validationResult
                 .Should()
@@ -49,13 +49,13 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
         [TestCase("_id")]
         public void ProductValidator_ThrowsError_IfProductIdIsInvalid(string productId)
         {
-            var createProductRequest = new CreateProductRequestDto()
+            var createProductRequest = new CreateProductCommandRequestDto()
             {
                 Id = productId,
                 Name = "productName"
             };
             
-            var validationResult = _createProductRequestValidator.Validate(createProductRequest);
+            var validationResult = _createProductCommandRequestDtoValidator.Validate(createProductRequest);
 
             validationResult
                 .Should()
@@ -72,13 +72,13 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
         [TestCase(" ")]
         public void ProductValidator_ThrowsError_IfProductNameIsInvalid(string productName)
         {
-            var createProductRequest = new CreateProductRequestDto()
+            var createProductRequest = new CreateProductCommandRequestDto()
             {
                 Id = "id",
                 Name = productName
             };
             
-            var validationResult = _createProductRequestValidator.Validate(createProductRequest);
+            var validationResult = _createProductCommandRequestDtoValidator.Validate(createProductRequest);
 
             validationResult
                 .Should()
@@ -89,6 +89,5 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
                 .Should()
                 .NotBeEmpty();
         }
-
     }
 }

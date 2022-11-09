@@ -4,7 +4,7 @@ using OneOf;
 
 namespace AspNetCore.Examples.ProductService.Requests
 {
-    public interface IAppRequest<T> : IRequest<OneOf<T,IError>>
+    public interface IAppRequest<T> : IRequest<OneOf<T,ErrorBase>>
 
     {
 

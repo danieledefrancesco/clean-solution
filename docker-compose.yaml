@@ -15,7 +15,7 @@ services:
       - "DLL_NAME=${DLL_NAME}"
     image: "${WEB_IMAGE_NAME}-dev:${VERSION}"
     volumes:
-      - ./app/CleanSolution.sln:/app/CleanSolution.sln
+      - ./app/App.sln:/app/App.sln
       - ./app/Makefile:/app/Makefile
       - ./app/scripts:/app/scripts
       - ./app/settings:/app/settings
@@ -43,7 +43,7 @@ services:
       - ./app/env/web.env
       - ./app/env/web.dev.env
     volumes:
-      - ./app/CleanSolution.sln:/app/CleanSolution.sln
+      - ./app/App.sln:/app/App.sln
       - ./app/Makefile:/app/Makefile
       - ./app/scripts:/app/scripts
       - ./app/settings:/app/settings

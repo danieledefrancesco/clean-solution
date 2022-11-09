@@ -23,11 +23,8 @@ namespace AspNetCore.Examples.ProductService.Products
             const decimal productPrice = 1;
             var product = _productsFactory.CreateProduct(
                 ProductId.From(productId),
-                p =>
-                {
-                    p.Name = ProductName.From(productName);
-                    p.Price = ProductPrice.From(productPrice);
-                });
+                ProductName.From(productName),
+                ProductPrice.From(productPrice));
 
             product.Id.Value.Should().Be(productId);
             product.Name.Value.Should().Be(productName);

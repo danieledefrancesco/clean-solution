@@ -1,1 +1,1 @@
-dotnet watch run --project "${PROJECT_PATH}" --urls=http://0.0.0.0:80
+dotnet watch run --project "${PROJECT_PATH}" --no-launch-profile --urls=http://0.0.0.0:80

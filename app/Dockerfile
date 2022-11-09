@@ -37,6 +37,9 @@ RUN for file in $(ls *.csproj); do mkdir -p src/${file%.*}/ && mv $file src/${fi
 COPY test/unit/*/*.csproj ./
 RUN for file in $(ls *.csproj); do mkdir -p test/unit/${file%.*}/ && mv $file test/unit/${file%.*}/; done
 
+COPY test/integration/*/*.csproj ./
+RUN for file in $(ls *.csproj); do mkdir -p test/integration/${file%.*}/ && mv $file test/integration/${file%.*}/; done
+
 COPY test/functional/*/*.csproj ./
 RUN for file in $(ls *.csproj); do mkdir -p test/functional/${file%.*}/ && mv $file test/functional/${file%.*}/; done
 

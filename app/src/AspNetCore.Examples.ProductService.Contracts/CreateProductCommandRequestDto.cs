@@ -1,6 +1,6 @@
 namespace AspNetCore.Examples.ProductService
 {
-    public sealed class CreateProductRequestDto
+    public sealed class CreateProductCommandRequestDto
     {
         public string Id { get; set; }
         public string Name { get; set; }

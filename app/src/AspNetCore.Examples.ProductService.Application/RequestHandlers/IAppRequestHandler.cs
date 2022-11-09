@@ -5,7 +5,7 @@ using OneOf;
 
 namespace AspNetCore.Examples.ProductService.RequestHandlers
 {
-    public interface IAppRequestHandler<in TRequest, TResponse> : IRequestHandler<TRequest,OneOf<TResponse,IError>> 
+    public interface IAppRequestHandler<in TRequest, TResponse> : IRequestHandler<TRequest,OneOf<TResponse,ErrorBase>> 
         where TRequest : IAppRequest<TResponse>
     {
 

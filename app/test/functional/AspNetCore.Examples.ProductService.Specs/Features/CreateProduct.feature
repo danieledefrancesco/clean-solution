@@ -24,7 +24,7 @@ Link to a feature: [ProductService]($projectname$/Features/CreateProduct.feature
         And the product id is product-id
         And the product name is product-name
         And the product price is 1
-        And the OnProductCreatedEvent is created in the queue
+        And an OnProductCreatedEvent is created in the queue
 
         Examples:
           | method |

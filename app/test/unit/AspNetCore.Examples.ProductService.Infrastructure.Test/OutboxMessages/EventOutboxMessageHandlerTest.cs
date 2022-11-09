@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Handlers;
-using AspNetCore.Examples.ProductService.QueueHandlers;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -26,7 +25,7 @@ namespace AspNetCore.Examples.ProductService.OutboxMessages
         {
             var outboxMessage = new EventOutboxMessage<TestDomainEvent>
             {
-                Event = new TestDomainEvent()
+                Event = new TestDomainEvent(Guid.NewGuid())
             };
             Func<Task> act = () =>
                 _eventOutboxMessageHandler.OnOutboxMessageCreated(outboxMessage, CancellationToken.None).AsTask();

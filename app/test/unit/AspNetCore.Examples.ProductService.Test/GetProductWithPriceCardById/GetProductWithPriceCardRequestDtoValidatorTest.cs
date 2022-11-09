@@ -1,4 +1,3 @@
-using AspNetCore.Examples.ProductService.DataTransferObjects;
 using FluentAssertions;
 using NUnit.Framework;
 
