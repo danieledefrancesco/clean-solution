@@ -11,7 +11,7 @@ using RestEase;
 
 namespace AspNetCore.Examples.ProductService.Endpoints
 {
-    public sealed class CreateProductIntegrationTest : IntegrationTestBase
+    public sealed class UpdateProductByIdIntegrationTest : IntegrationTestBase
     {
         private readonly AppDbContext _appDbContext = new AppDbContext(
             new DbContextOptionsBuilder<AppDbContext>()
@@ -31,45 +31,43 @@ namespace AspNetCore.Examples.ProductService.Endpoints
         }
 
         [Test]
-        public async Task CreateProduct_ReturnCreatedProduct_IfProductExists()
+        public async Task UpdateProduct_ReturnsProduct_IfProductExists()
         {
             const string productId = "productId";
             const string productName = "productName";
             const decimal productPrice = 1;
-            var response = await GetApplicationClient().CreatePost(new CreateProductCommandRequestDto
-            {
-                Id = productId,
-                Name = productName,
-                Price = productPrice
-            });
-            var product = response.GetContent();
-            product.Id.Should().Be(productId);
-            product.Name.Should().Be(productName);
-            product.Price.Should().Be(productPrice);
-        }
-
-        [Test]
-        public async Task CreateProduct_Returns409ConflictError_IfProductAlreadyExists()
-        {
-            const string productId = "productId";
-            const string productName = "productName";
-            const decimal productPrice = 1;
-            var product = new Product(
-                ProductId.From(productId),
-                ProductName.From(productName),
+            const string newName = "newName";
+            const decimal newPrice = 2;
+            var product = new Product(ProductId.From(productId), ProductName.From(productName),
                 ProductPrice.From(productPrice));
             await _appDbContext.Products.AddAsync(product);
             await _appDbContext.SaveChangesAsync();
+            var response = await GetApplicationClient().Update(productId, new UpdateProductCommandRequestDtoBody
+            {
+                Name = newName,
+                Price = newPrice
+            });
+            var productDto = response.GetContent();
+            productDto.Should().NotBeNull();
+            productDto.Id.Should().Be(productId);
+            productDto.Name.Should().Be(newName);
+            productDto.Price.Should().Be(newPrice);
+            product = await _appDbContext.Products.FirstAsync(p => p.Id == ProductId.From(productId));
+            product.Name.Value.Should().Be(newName);
+            product.Price.Value.Should().Be(newPrice);
+        }
+
+        [Test]
+        public void UpdateProduct_Returns404_IfProductDoesntExist()
+        {
             GetApplicationClient()
-                .Invoking(client => client.CreatePost(new CreateProductCommandRequestDto
+                .Invoking(c => c.Update("productId", new UpdateProductCommandRequestDtoBody
                 {
-                    Id = productId,
-                    Name = productName,
-                    Price = productPrice
+                    Name = "name",
+                    Price = 1
                 }).GetAwaiter().GetResult())
-                .Should()
-                .Throw<ApiException>()
-                .Where(exc => exc.StatusCode == HttpStatusCode.Conflict);
+                .Should().Throw<ApiException>()
+                .Where(exc => exc.StatusCode == HttpStatusCode.NotFound);
         }
     }
 }

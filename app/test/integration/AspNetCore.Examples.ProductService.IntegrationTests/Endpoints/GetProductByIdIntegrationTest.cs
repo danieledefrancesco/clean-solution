@@ -20,6 +20,7 @@ namespace AspNetCore.Examples.ProductService.Endpoints
         protected override void ConfigureApplicationFactory(CustomApplicationFactoryBuilder builder)
         {
             _appDbContext.Products.RemoveRange(_appDbContext.Products.ToList());
+            _appDbContext.SaveChanges();
             builder.ReplaceService(_appDbContext);
             builder.ReplaceService<DbContext>(_appDbContext);
             builder.MockService<IAzureStorageQueueClientFactory<OnProductCreatedEventDto>>();

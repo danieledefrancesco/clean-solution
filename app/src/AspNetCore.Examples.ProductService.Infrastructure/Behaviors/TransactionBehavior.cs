@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -61,14 +62,21 @@ namespace AspNetCore.Examples.ProductService.Behaviors
             return result;
         }
 
-        private Task RaiseDomainEvents(CancellationToken cancellationToken)
+        private async Task RaiseDomainEvents(CancellationToken cancellationToken)
         {
             var changedEntities = 
                 _dbContext.ChangeTracker?.Entries<IAggregateRoot>()?.ToList() ?? Enumerable.Empty<EntityEntry<IAggregateRoot>>();
             var tasks = changedEntities
-                .SelectMany(e => e.Entity.DomainEvents
-                    .Select(domainEvent => _mediator.Publish(domainEvent, cancellationToken)));
-            return Task.WhenAll(tasks);
+                .SelectMany(e => RaiseAggregateEvents(e.Entity, cancellationToken));
+            await Task.WhenAll(tasks);
+            
+        }
+
+        private IEnumerable<Task> RaiseAggregateEvents(IAggregateRoot aggregateRoot, CancellationToken cancellationToken)
+        {
+            var events = aggregateRoot.DomainEvents;
+            aggregateRoot.ClearDomainEvents();
+            return events.Select(domainEvent => _mediator.Publish(domainEvent, cancellationToken));
         }
 
 

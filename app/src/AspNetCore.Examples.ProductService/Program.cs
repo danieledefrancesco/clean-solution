@@ -1,11 +1,14 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 
 namespace AspNetCore.Examples.ProductService
 {
     public sealed class Program
     {
+        private Program()
+        {
+            
+        }
         public static async Task Main(string[] args)
         {
             var builder = CreateWebHostBuilder(args);
@@ -14,13 +17,12 @@ namespace AspNetCore.Examples.ProductService
             await app.RunAsync();
         }
 
-        public static WebApplicationBuilder CreateWebHostBuilder(string[] args)
+        private static WebApplicationBuilder CreateWebHostBuilder(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             ApplicationConfigurator.ConfigureBuilder(builder);
             return builder;
         }
-        
         
     }
 }

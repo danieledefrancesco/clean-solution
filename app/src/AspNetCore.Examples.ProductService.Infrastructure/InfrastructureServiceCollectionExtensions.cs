@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AspNetCore.Examples.PriceCardService;
 using AspNetCore.Examples.ProductService.Behaviors;
-using AspNetCore.Examples.ProductService.Factories;
+using AspNetCore.Examples.ProductService.Configurations;
 using AspNetCore.Examples.ProductService.Handlers;
 using AspNetCore.Examples.ProductService.OutboxMessages;
 using AspNetCore.Examples.ProductService.RemoteEventDefinitions;
@@ -45,7 +46,7 @@ namespace AspNetCore.Examples.ProductService
         public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services,
             IConfiguration configuration) => services
                 .AddEntityFrameworkForSqlServer()
-                .AddPriceCardService()
+                .AddPriceCardService(configuration)
                 .AddTransactionalOutbox()
                 .AddAzureStorageQueues(configuration);
         
@@ -58,13 +59,21 @@ namespace AspNetCore.Examples.ProductService
             return services;
         }
 
-
-        private static IServiceCollection AddPriceCardService(this IServiceCollection services)
+        private static IServiceCollection AddPriceCardService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>()
-                .AddScoped(sp => sp.GetRequiredService<IPriceCardServiceClientFactory>().Create())
-                .AddHttpClient<IPriceCardServiceClientFactory, PriceCardServiceClientFactory>()
+            var priceCardServiceClientConfig = new PriceCardServiceClientConfiguration();
+            configuration.GetSection(nameof(PriceCardServiceClientConfiguration)).Bind(priceCardServiceClientConfig);
+            services.AddScoped<PriceCardServiceClient>()
+                .AddHttpClient<PriceCardServiceClient>()
                 .SetHandlerLifetime(TimeSpan.FromMinutes(5));
+
+            var service = services.First(x => x.ServiceType == typeof(PriceCardServiceClient));
+            var newService = new ServiceDescriptor(service.ServiceType,
+                CreatePriceCardServiceClientClosure(priceCardServiceClientConfig, service.ImplementationType),
+                service.Lifetime);
+            services.Remove(service);
+            services.Add(newService);
+            
             return services;
         }
 
@@ -110,6 +119,16 @@ namespace AspNetCore.Examples.ProductService
                 .AddScoped(
                     typeof(IQueueHandler<>).MakeGenericType(remoteEventDefinition.EventDtoType),
                     typeof(AzureStorageQueueHandler<>).MakeGenericType(remoteEventDefinition.EventDtoType));
+        }
+
+        public static Func<IServiceProvider, object> CreatePriceCardServiceClientClosure(PriceCardServiceClientConfiguration config, Type implementationType)
+        {
+            return sp =>
+            {
+                var client = (PriceCardServiceClient)ActivatorUtilities.CreateInstance(sp, implementationType);
+                client.BaseUrl = config.PriceCardServiceBaseUri;
+                return client;
+            };
         }
     }
 }
