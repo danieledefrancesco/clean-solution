@@ -22,10 +22,7 @@ namespace AspNetCore.Examples.ProductService.Repositories
 
         protected override Product CreateTestEntity()
         {
-            return new Product(ProductId.From("productId"))
-            {
-                Name =  ProductName.From("productName")
-            };
+            return new Product(ProductId.From("productId"), ProductName.From("productName"), ProductPrice.From(1));
         }
 
         protected override ProductId CreateId()

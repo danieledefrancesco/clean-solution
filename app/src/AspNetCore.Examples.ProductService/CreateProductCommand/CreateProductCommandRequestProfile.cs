@@ -7,7 +7,7 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
     {
         public CreateProductCommandRequestProfile()
         {
-            CreateMap<CreateProductRequestDto, CreateProductCommandRequest>()
+            CreateMap<CreateProductCommandRequestDto, CreateProductCommandRequest>()
                 .ConstructUsing(dto => new CreateProductCommandRequest(
                     ProductId.From(dto.Id),
                     ProductName.From(dto.Name),

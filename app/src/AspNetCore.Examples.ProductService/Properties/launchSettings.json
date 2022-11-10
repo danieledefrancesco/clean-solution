@@ -9,22 +9,17 @@
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "NTTData.Examples.WebAPI": {
+    "AspNetCore.Examples.ProductService": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "applicationUrl": "http://localhost:8000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DATABASE_CONNECTION_STRING": "Server=127.0.0.1,9002;Initial Catalog=product-service;Password=@_str0nG-p@ssw0rd!;User ID=sa",
+        "PriceCardServiceClientConfiguration__PriceCardServiceBaseUri": "http://localhost:8080/price-card-service",
+        "QUEUE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=http;AccountName": "devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://localhost:10001/devstoreaccount1"
       }
     }
   }

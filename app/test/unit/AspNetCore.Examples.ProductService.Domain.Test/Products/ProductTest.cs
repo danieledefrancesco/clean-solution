@@ -16,7 +16,7 @@ namespace AspNetCore.Examples.ProductService.Products
 
         protected override Product CreateEntityById(ProductId id)
         {
-            return new Product(id);
+            return new Product(id, ProductName.From("name"), ProductPrice.From(1));
         }
     }
 }

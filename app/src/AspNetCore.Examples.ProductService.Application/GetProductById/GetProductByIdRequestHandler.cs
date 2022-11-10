@@ -17,7 +17,7 @@ namespace AspNetCore.Examples.ProductService.GetProductById
             _productRepository = productRepository;
         }
 
-        public async Task<OneOf<GetProductByIdResponse, IError>> Handle(GetProductByIdRequest request, CancellationToken cancellationToken)
+        public async Task<OneOf<GetProductByIdResponse, ErrorBase>> Handle(GetProductByIdRequest request, CancellationToken cancellationToken)
         {
             var product = await _productRepository.GetById(request.ProductId);
             

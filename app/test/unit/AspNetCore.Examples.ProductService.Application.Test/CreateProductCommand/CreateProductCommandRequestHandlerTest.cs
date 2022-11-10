@@ -1,11 +1,7 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Errors;
-using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Products;
-using AspNetCore.Examples.ProductService.Repositories;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -23,7 +19,8 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
         {
             _productRepository = Substitute.For<IProductRepository>();
             _productsFactory = Substitute.For<IProductsFactory>();
-            _createProductCommandRequestHandler = new CreateProductCommandRequestHandler(_productRepository, _productsFactory);
+            _createProductCommandRequestHandler =
+                new CreateProductCommandRequestHandler(_productRepository, _productsFactory);
         }
 
         [Test]
@@ -32,14 +29,13 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
             var existingProductId = ProductId.From("p1");
             var existingProductName = ProductName.From("Product 1");
             var existingProductPrice = ProductPrice.From(1);
-            
-            var existingProduct = new Product(existingProductId);
 
             _productRepository.ExistsById(existingProductId).Returns(Task.FromResult(true));
-            
+
             var response = await _createProductCommandRequestHandler
-                .Handle(new CreateProductCommandRequest(existingProductId, existingProductName, existingProductPrice), CancellationToken.None);
-            
+                .Handle(new CreateProductCommandRequest(existingProductId, existingProductName, existingProductPrice),
+                    CancellationToken.None);
+
             response
                 .IsT1
                 .Should()
@@ -49,26 +45,22 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
                 .AsT1
                 .Should()
                 .BeOfType<AlreadyExistsError>();
-
         }
-        
+
         [Test]
         public async Task CreateProduct_ReturnsCreateProductCommandResponse_IfProductDoesntExist()
         {
             var productId = ProductId.From("p1");
             var productName = ProductName.From("Product 1");
             var productPrice = ProductPrice.From(1);
-            var product = new Product(productId)
-            {
-                Name = productName,
-                Price = productPrice
-            };
+            var product = new Product(productId, productName, productPrice);
 
-            _productsFactory.CreateProduct(Arg.Any<ProductId>(), Arg.Any<Action<Product>>()).Returns(product);
-            
+            _productsFactory.CreateProduct(Arg.Any<ProductId>(), Arg.Any<ProductName>(), Arg.Any<ProductPrice>())
+                .Returns(product);
+
             var response = await _createProductCommandRequestHandler
                 .Handle(new CreateProductCommandRequest(productId, productName, productPrice), CancellationToken.None);
-            
+
             response
                 .IsT0
                 .Should()

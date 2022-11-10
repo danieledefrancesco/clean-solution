@@ -1,10 +1,7 @@
-using System;
-using AspNetCore.Examples.ProductService.Products;
-
-namespace AspNetCore.Examples.ProductService.Factories
+namespace AspNetCore.Examples.ProductService.Products
 {
     public interface IProductsFactory
     {
-        Product CreateProduct(ProductId productId, Action<Product> initialize = null);
+        Product CreateProduct(ProductId productId, ProductName productName, ProductPrice productPrice);
     }
 }

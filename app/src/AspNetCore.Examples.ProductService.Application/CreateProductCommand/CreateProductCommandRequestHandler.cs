@@ -2,9 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.Attributes;
 using AspNetCore.Examples.ProductService.Errors;
-using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Products;
-using AspNetCore.Examples.ProductService.Repositories;
 using AspNetCore.Examples.ProductService.RequestHandlers;
 using OneOf;
 
@@ -22,7 +20,7 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
             _productsFactory = productsFactory;
         }
 
-        public async Task<OneOf<CreateProductCommandResponse, IError>> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
+        public async Task<OneOf<CreateProductCommandResponse, ErrorBase>> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
             var productExists = await _productRepository.ExistsById(request.ProductId);
             if (productExists)
@@ -33,11 +31,7 @@ namespace AspNetCore.Examples.ProductService.CreateProductCommand
                 };
             }
             
-            var productToCreate = _productsFactory.CreateProduct(request.ProductId, p =>
-            {
-                p.Name = request.ProductName;
-                p.Price = request.ProductPrice;
-            });
+            var productToCreate = _productsFactory.CreateProduct(request.ProductId, request.ProductName, request.ProductPrice);
 
             await _productRepository.Insert(productToCreate);
 

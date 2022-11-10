@@ -1,9 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Errors;
 using AspNetCore.Examples.ProductService.Products;
-using AspNetCore.Examples.ProductService.Repositories;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -49,12 +47,9 @@ namespace AspNetCore.Examples.ProductService.GetProductById
             var cancellationToken = default(CancellationToken);
             
             var request = new GetProductByIdRequest(ProductId.From(productId));
-            
-            var mockedResult = Task.FromResult(new Product(ProductId.From(productId))
-            {
-                Name = ProductName.From(productName),
-                Price = ProductPrice.From(productPrice)
-            });
+
+            var mockedResult = Task.FromResult(new Product(ProductId.From(productId), ProductName.From(productName),
+                ProductPrice.From(productPrice)));
             
             _productRepository.GetById(ProductId.From(productId)).Returns(mockedResult);
             var response = await _getProductByIdRequestHandler

@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.ProductService.ErrorHandlers;
 using AspNetCore.Examples.ProductService.Errors;
@@ -27,16 +28,15 @@ namespace AspNetCore.Examples.ProductService.Controllers
         }
 
         [Test]
-        public void MediatorResponse_ReturnsObjectResultWithStatusCode200_IfMediatorReturnsSuccessResponse()
+        public async Task MediatorResponse_ReturnsObjectResultWithStatusCode200_IfMediatorReturnsSuccessResponse()
         {
             var testRequest = new TestRequest();
             var testResponse = new TestResponse();
-            var mediatorResult = Task.FromResult(OneOf<TestResponse,IError>.FromT0(testResponse));
+            var mediatorResult = Task.FromResult(OneOf<TestResponse,ErrorBase>.FromT0(testResponse));
             _mediator.Send(testRequest).Returns(mediatorResult);
 
-            var actionResult = _appControllerBase
-                .MediatorResponse<TestRequest, TestResponse>(testRequest, x => x)
-                .Result;
+            var actionResult = await _appControllerBase
+                .MediatorResponse<TestRequest, TestResponse>(testRequest, x => x, CancellationToken.None);
 
             ((ObjectResult) actionResult)
                 .StatusCode
@@ -46,10 +46,10 @@ namespace AspNetCore.Examples.ProductService.Controllers
         }
         
         [Test]
-        public void MediatorResponse_ReturnsObjectResultGeneratedByErrorHandler_IfMediatorReturnsErrorResponse()
+        public async Task MediatorResponse_ReturnsObjectResultGeneratedByErrorHandler_IfMediatorReturnsErrorResponse()
         {
             var testRequest = new TestRequest();
-            var error = Substitute.For<IError>();
+            var error = Substitute.For<ErrorBase>();
             
             var errorActionResult = new ObjectResult(new ())
             {
@@ -65,12 +65,11 @@ namespace AspNetCore.Examples.ProductService.Controllers
                 .GetSupportingHandler(error)
                 .Returns(errorHandler);
             
-             var mediatorResult = Task.FromResult(OneOf<TestResponse,IError>.FromT1(error));
+             var mediatorResult = Task.FromResult(OneOf<TestResponse,ErrorBase>.FromT1(error));
             _mediator.Send(testRequest).Returns(mediatorResult);
 
-            var actionResult = _appControllerBase
-                .MediatorResponse<TestRequest, TestResponse>(testRequest, x => x)
-                .Result;
+            var actionResult = await _appControllerBase
+                .MediatorResponse<TestRequest, TestResponse>(testRequest, x => x, CancellationToken.None);
 
             actionResult
                 .Should()

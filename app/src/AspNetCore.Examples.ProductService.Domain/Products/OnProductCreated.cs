@@ -1,13 +1,12 @@
 using System;
-using AspNetCore.Examples.ProductService.Products;
+using AspNetCore.Examples.ProductService.Events;
 
-namespace AspNetCore.Examples.ProductService.Events
+namespace AspNetCore.Examples.ProductService.Products
 {
     public sealed class OnProductCreated : DomainEventBase
     {
-        public OnProductCreated(Guid id, ProductId productId, ProductName productName, ProductPrice productPrice)
+        public OnProductCreated(Guid id, ProductId productId, ProductName productName, ProductPrice productPrice): base(id)
         {
-            Id = id;
             ProductId = productId;
             ProductName = productName;
             ProductPrice = productPrice;

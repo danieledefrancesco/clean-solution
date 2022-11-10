@@ -9,9 +9,9 @@ namespace AspNetCore.Examples.ProductService.Handlers
     {
         private readonly QueueClient _queueClient;
 
-        public AzureStorageQueueHandler(QueueClient queueClient)
+        public AzureStorageQueueHandler(IAzureStorageQueueClientFactory<T> queueClientFactory)
         {
-            _queueClient = queueClient;
+            _queueClient = queueClientFactory.Create();
         }
 
         private static string SerializeEvent(T @event)

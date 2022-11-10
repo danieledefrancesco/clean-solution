@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AspNetCore.Examples.ProductService.Configurations;
-using AspNetCore.Examples.ProductService.Factories;
 using AspNetCore.Examples.ProductService.Products;
 using AspNetCore.Examples.ProductService.Repositories;
 using MediatR;
@@ -21,7 +19,6 @@ namespace AspNetCore.Examples.ProductService
             return services
                 .AddMediatR(CurrentAssembly)
                 .AddRepositories(CurrentAssembly)
-                .AddConfigurations(configuration)
                 .AddScoped<IProductsFactory, ProductsFactory>();
         }
 
@@ -34,11 +31,6 @@ namespace AspNetCore.Examples.ProductService
             RegisterConcreteTypesForInterfaces(services, assembly, repositoryInterfaces);
             return services;
         }
-
-        public static IServiceCollection AddConfigurations(this IServiceCollection services,
-            IConfiguration configuration) =>
-            services.Configure<PriceCardServiceClientConfiguration>(options =>
-                configuration.GetSection(nameof(PriceCardServiceClientConfiguration)).Bind(options));
 
         private static void RegisterConcreteTypesForInterfaces(IServiceCollection services, Assembly assembly, IEnumerable<Type> interfaces)
         {

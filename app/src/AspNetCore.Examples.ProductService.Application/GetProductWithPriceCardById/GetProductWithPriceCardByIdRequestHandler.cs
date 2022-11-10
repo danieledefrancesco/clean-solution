@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Examples.PriceCardService;
-using AspNetCore.Examples.ProductService.Entities;
 using AspNetCore.Examples.ProductService.Errors;
 using AspNetCore.Examples.ProductService.GetProductById;
 using AspNetCore.Examples.ProductService.Products;
@@ -25,15 +24,14 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
         }
 
 
-        public async Task<OneOf<GetProductWithPriceCardByIdResponse, IError>> Handle(GetProductWithPriceCardByIdRequest request, CancellationToken cancellationToken)
+        public async Task<OneOf<GetProductWithPriceCardByIdResponse, ErrorBase>> Handle(GetProductWithPriceCardByIdRequest request, CancellationToken cancellationToken)
         {
 
             var getProductByIdResponse = await  _mediator.Send(new GetProductByIdRequest(request.ProductId), cancellationToken);
-            if (getProductByIdResponse.IsT1) return (ErrorBase) getProductByIdResponse.AsT1;
-            return await GetProductWithPriceCard(getProductByIdResponse.AsT0.Product, cancellationToken);
+            return await getProductByIdResponse.ThrowErrorOrContinueWith(x => GetProductWithPriceCard(x.Product, cancellationToken));
         }
 
-        private async Task<OneOf<GetProductWithPriceCardByIdResponse, IError>> GetProductWithPriceCard(Product product, CancellationToken cancellationToken)
+        private async Task<OneOf<GetProductWithPriceCardByIdResponse, ErrorBase>> GetProductWithPriceCard(Product product, CancellationToken cancellationToken)
         {
             var priceCardList = await _priceCardServiceClient.ActiveAsync(product.Id, cancellationToken);
 

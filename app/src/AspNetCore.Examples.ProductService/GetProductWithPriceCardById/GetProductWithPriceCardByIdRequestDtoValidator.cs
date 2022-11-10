@@ -1,4 +1,3 @@
-using AspNetCore.Examples.ProductService.DataTransferObjects;
 using AspNetCore.Examples.ProductService.Validators;
 using FluentValidation;
 

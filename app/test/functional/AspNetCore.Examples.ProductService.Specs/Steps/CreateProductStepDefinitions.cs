@@ -23,7 +23,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         [Given(@"a create product request <(.*), (.*), (.*)>")]
         public void GivenACreateProductRequest(string productId, string productName, decimal productPrice)
         {
-            TestData.CreateProductRequest = new CreateProductRequestDto
+            TestData.CreateProductRequest = new CreateProductCommandRequestDto
             {
                 Id = productId,
                 Name = productName,
@@ -34,8 +34,8 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         [When(@"I make a (.*) request to the \/products endpoint")]
         public async Task WhenIMakeApostRequestToTheProductsEndpoint(string method)
         {
-            IDictionary<string, Func<CreateProductRequestDto, Task<Response<ProductDto>>>> request =
-                new Dictionary<string, Func<CreateProductRequestDto, Task<Response<ProductDto>>>>
+            IDictionary<string, Func<CreateProductCommandRequestDto, Task<Response<ProductDto>>>> request =
+                new Dictionary<string, Func<CreateProductCommandRequestDto, Task<Response<ProductDto>>>>
                 {
                     { "POST", Services.ProductServiceClient.CreatePost },
                     { "PUT", Services.ProductServiceClient.CreatePut }
@@ -60,7 +60,7 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
             product!.Price.Value.Should().Be(TestData.CreateProductRequest.Price);
         }
 
-        [Then(@"the OnProductCreatedEvent is created in the queue")]
+        [Then(@"an OnProductCreatedEvent is created in the queue")]
         public async Task ThenTheOnProductCreatedEventIsCreatedInTheQueue()
         {
             await Task.Delay(TimeSpan.FromSeconds(5));

@@ -4,6 +4,10 @@ namespace AspNetCore.Examples.ProductService.Events
 {
     public abstract class DomainEventBase : IDomainEvent
     {
-        public Guid Id { get; set; }
+        protected DomainEventBase(Guid id)
+        {
+            Id = id;
+        }
+        public Guid Id { get; }
     }
 }
