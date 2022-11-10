@@ -27,7 +27,7 @@ namespace AspNetCore.Examples.ProductService.ErrorHandlers
 
         protected override int ExpectedStatusCode => 409;
 
-        protected override AlreadyExistsError CreateErrorInstance()
+        protected override IError CreateErrorInstance()
         {
             return new AlreadyExistsError();
         }
