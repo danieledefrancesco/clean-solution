@@ -26,7 +26,7 @@ namespace AspNetCore.Examples.ProductService.ErrorHandlers
             _mapper.Map<ErrorDto>(Arg.Any<IError>()).Returns(error);
         }
 
-        protected override NotFoundError CreateErrorInstance()
+        protected override IError CreateErrorInstance()
         {
             return new NotFoundError();
         }

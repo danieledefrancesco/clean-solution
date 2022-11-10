@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS prepare-build-env
+FROM mcr.microsoft.com/dotnet/sdk:7.0-bullseye-slim AS prepare-build-env
 
 #Downloading dependencies
 RUN apt-get update
@@ -8,10 +8,10 @@ RUN apt-get -y install make procps
 RUN dotnet tool install --global dotnet-sonarscanner --version 5.5.3
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 RUN dotnet tool install --global coverlet.console --version 3.0.3
-RUN dotnet tool install --global Microsoft.dotnet-openapi --version 6.0.8
+RUN dotnet tool install --global Microsoft.dotnet-openapi --version 7
 RUN dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI --version 3.9.57
 RUN dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 6.4.0
-RUN dotnet tool install --global dotnet-ef --version 6.0.8
+RUN dotnet tool install --global dotnet-ef --version 7
 ENV PATH=${PATH}:/root/.dotnet/tools
 
 WORKDIR /app
@@ -57,7 +57,7 @@ RUN dotnet build
 ARG PROJECT_PATH
 RUN dotnet publish ${PROJECT_PATH} -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim AS prepare-prod-env
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-bullseye-slim AS prepare-prod-env
 RUN apt-get update && apt-get -y install curl
 
 FROM prepare-prod-env AS prod
