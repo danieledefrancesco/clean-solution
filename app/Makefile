@@ -28,7 +28,13 @@ update_database:
 	dotnet ef database update --project ./src/AspNetCore.Examples.ProductService.Infrastructure/AspNetCore.Examples.ProductService.Infrastructure.csproj
 
 run_functional_tests:
-	curl --retry 5 --retry-max-time 120 ${SUT_BASE_URL}/healthcheck
+	curl --connect-timeout 5 \
+                 --max-time 10 \
+                 --retry 10	 \
+                 --retry-delay 30 \
+                 --retry-max-time 300 \
+                 --retry-all-errors \
+                 ${SUT_BASE_URL}/healthcheck
 	dotnet test ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
 
 generate_functional_tests_report:
