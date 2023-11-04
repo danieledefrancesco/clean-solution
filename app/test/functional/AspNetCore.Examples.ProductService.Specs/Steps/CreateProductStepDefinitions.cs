@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AspNetCore.Examples.ProductService.Events;
+using AspNetCore.Examples.ProductService.Products;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -11,14 +11,9 @@ using TechTalk.SpecFlow;
 namespace AspNetCore.Examples.ProductService.Specs.Steps
 {
     [Binding]
-    public sealed class CreateProductStepDefinitions
+    public sealed class CreateProductStepDefinitions(ScenarioContext scenarioContext)
     {
-        private readonly ScenarioContext _scenarioContext;
-
-        public CreateProductStepDefinitions(ScenarioContext scenarioContext)
-        {
-            _scenarioContext = scenarioContext;
-        }
+        private readonly ScenarioContext _scenarioContext = scenarioContext;
 
         [Given(@"a create product request <(.*), (.*), (.*)>")]
         public void GivenACreateProductRequest(string productId, string productName, decimal productPrice)
@@ -54,7 +49,8 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         [Then(@"the product has been successfully created in the database")]
         public async Task ThenTheProductHasBeenSuccessfullyCreatedInTheDatabase()
         {
-            var product = await Services.AppDbContext.Products.FirstOrDefaultAsync(x => x.Id == TestData.CreateProductRequest.Id);
+            ProductId productId = ProductId.From(TestData.CreateProductRequest.Id);
+            var product = await Services.AppDbContext.Products.FirstOrDefaultAsync(x => x.Id == productId);
             product.Should().NotBeNull();
             product!.Name.Value.Should().Be(TestData.CreateProductRequest.Name);
             product!.Price.Value.Should().Be(TestData.CreateProductRequest.Price);

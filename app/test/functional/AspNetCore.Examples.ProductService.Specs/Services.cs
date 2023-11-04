@@ -1,6 +1,8 @@
 using System;
 using AspNetCore.Examples.ProductService.Products;
 using Azure.Storage.Queues;
+using Microsoft.Extensions.Http.Logging;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -34,7 +36,7 @@ namespace AspNetCore.Examples.ProductService.Specs
             OnProductCreatedEventQueueClient = CreateClientForQueue<OnProductCreated>();
             OnProductUpdatedEventQueueClient = CreateClientForQueue<OnProductUpdated>();
         }
-
+        
         private static QueueClient CreateClientForQueue<T>()
         {
             var result = new QueueClient(Environment.GetEnvironmentVariable("QUEUE_STORAGE_CONNECTION_STRING"),
