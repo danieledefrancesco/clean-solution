@@ -1,5 +1,6 @@
 test-report
 sonar-report
+test-results
 
 *.swp
 *.*~
@@ -7,7 +8,7 @@ project.lock.json
 .DS_Store
 *.pyc
 nupkg/
-[Pp]ackages/
+[Pp]ackages/sss
 
 # Visual Studio Code
 .vscode
