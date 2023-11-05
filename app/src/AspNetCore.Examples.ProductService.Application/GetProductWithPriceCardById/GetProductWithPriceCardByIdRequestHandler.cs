@@ -33,7 +33,7 @@ namespace AspNetCore.Examples.ProductService.GetProductWithPriceCardById
 
         private async Task<OneOf<GetProductWithPriceCardByIdResponse, ErrorBase>> GetProductWithPriceCard(Product product, CancellationToken cancellationToken)
         {
-            var priceCardList = await _priceCardServiceClient.ActiveAsync(product.Id, cancellationToken);
+            var priceCardList = await _priceCardServiceClient.ActiveAsync(product.Id.Value, cancellationToken);
 
             if (!priceCardList.Items.Any())
             {

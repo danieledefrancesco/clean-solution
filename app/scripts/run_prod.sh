@@ -1,1 +1,1 @@
-dotnet ${DLL_NAME}
+dotnet ${DLL_NAME} --urls=http://0.0.0.0:80
