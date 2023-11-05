@@ -44,7 +44,7 @@ namespace AspNetCore.Examples.ProductService.Behaviors
         public async Task Handle_DoesntBeginTransactionAndReturnsDelegateResponse_IfHandlerDoesntHaveTransactionAttribute()
         {
             var transactionBehavior = CreateBehaviorWithRequestHandler();
-            var actualResult = await transactionBehavior.Handle(new TestRequest(), CancellationToken.None, _delegate);
+            var actualResult = await transactionBehavior.Handle(new TestRequest(), _delegate, CancellationToken.None);
             actualResult.Should().Be(_oneOf);
             await _database.Received(0).BeginTransactionAsync();
         }
@@ -55,7 +55,7 @@ namespace AspNetCore.Examples.ProductService.Behaviors
             var transactionBehavior = CreateBehaviorWithTransactionRequestHandler();
             var oneOfValue = new object();
             _oneOf.Value.Returns(oneOfValue);
-            var actualResult = await transactionBehavior.Handle(new TestRequest(), CancellationToken.None, _delegate);
+            var actualResult = await transactionBehavior.Handle(new TestRequest(), _delegate, CancellationToken.None);
             actualResult.Should().Be(_oneOf);
             await _database.Received(1).BeginTransactionAsync();
             await _database.Received(1).CommitTransactionAsync();
@@ -67,7 +67,7 @@ namespace AspNetCore.Examples.ProductService.Behaviors
             var transactionBehavior = CreateBehaviorWithTransactionRequestHandler();
             var oneOfValue = Substitute.For<IError>();
             _oneOf.Value.Returns(oneOfValue);
-            var actualResult = await transactionBehavior.Handle(new TestRequest(), CancellationToken.None, _delegate);
+            var actualResult = await transactionBehavior.Handle(new TestRequest(), _delegate, CancellationToken.None);
             actualResult.Should().Be(_oneOf);
             await _database.Received(1).BeginTransactionAsync();
             await _database.Received(1).RollbackTransactionAsync();
@@ -80,8 +80,8 @@ namespace AspNetCore.Examples.ProductService.Behaviors
             var oneOfValue = Substitute.For<IError>();
             _oneOf.Value.Returns(oneOfValue);
             Func<Task> act = () => transactionBehavior.Handle(new TestRequest(),
-                CancellationToken.None,
-                () => throw new Exception());
+                () => throw new Exception(),
+                CancellationToken.None);
             await act.Should().ThrowAsync<Exception>();
             await _database.Received(1).BeginTransactionAsync(); 
             await _database.Received(1).RollbackTransactionAsync();

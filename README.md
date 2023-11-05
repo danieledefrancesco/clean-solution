@@ -62,11 +62,7 @@ Runs the unit tests. The coverage report will be stored in the `<project_root>/a
 make run_functional_tests
 ```
 Runs the functional tests. The report will be stored in the `<project-root>/app/behavioral-test-report` directory.
-### 6. Generate the swagger
-```
-make generate_swagger
-```
-Generates the swagger file. It will be stored in the `<project-root>/app/swagger-output` directory.
+
 ### 6. Run the sonarqube analysis
 ```
 make run_sonar_flow

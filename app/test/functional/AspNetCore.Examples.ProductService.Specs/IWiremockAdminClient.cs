@@ -14,7 +14,6 @@ namespace AspNetCore.Examples.ProductService.Specs
         public Task ResetMappings();
 
         [Post("mappings")]
-        [Header("content-type","application/json")]
         public Task CreateMapping([Body] Mapping mapping);
 
         [Post("scenarios/reset")]

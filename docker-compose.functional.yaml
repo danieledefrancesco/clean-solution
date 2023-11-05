@@ -14,7 +14,7 @@ services:
     environment:
       - "SUT_BASE_URL=http://web"
       - "WIREMOCK_BASE_URL=http://wiremock:8080"
-      - "DATABASE_CONNECTION_STRING=Data Source=sqlserver;Initial Catalog=product-service;Password=@_str0nG-p@ssw0rd!;User ID=sa"
+      - "DATABASE_CONNECTION_STRING=Data Source=sqlserver;Initial Catalog=product-service;Password=@_str0nG-p@ssw0rd!;User ID=sa;TrustServerCertificate=True"
       - "SPECS_PROJECT_PATH=${SPECS_PROJECT_PATH}"
       - "SPECS_PROJECT_NAME=${SPECS_PROJECT_NAME}"
       - "SPECS_DLL_NAME=${SPECS_DLL_NAME}"

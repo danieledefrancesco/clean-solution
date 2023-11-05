@@ -17,7 +17,7 @@ namespace AspNetCore.Examples.ProductService
             IConfiguration configuration)
         {
             return services
-                .AddMediatR(CurrentAssembly)
+                .AddMediatR(serviceConfiguration => serviceConfiguration.RegisterServicesFromAssembly(CurrentAssembly))
                 .AddRepositories(CurrentAssembly)
                 .AddScoped<IProductsFactory, ProductsFactory>();
         }

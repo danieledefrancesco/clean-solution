@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using AspNetCore.Examples.ProductService.Products;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -10,14 +11,9 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
 {
     [Binding]
     [Scope(Feature = "UpdateProduct")]
-    public sealed class UpdateProductStepDefinitions
+    public sealed class UpdateProductStepDefinitions(ScenarioContext scenarioContext)
     {
-        private readonly ScenarioContext _scenarioContext;
-
-        public UpdateProductStepDefinitions(ScenarioContext scenarioContext)
-        {
-            _scenarioContext = scenarioContext;
-        }
+        private readonly ScenarioContext _scenarioContext = scenarioContext;
 
         [Given(@"an update product request <(.*), (.*)>")]
         public void GivenAnUpdateProductRequest(string productName, decimal productPrice)
@@ -47,7 +43,8 @@ namespace AspNetCore.Examples.ProductService.Specs.Steps
         public async Task ThenTheProductHasBeenSuccessfullyUpdatedInTheDatabase(string productId)
         {
             Services.AppDbContext.ChangeTracker.Clear();
-            var product = await Services.AppDbContext.Products.FirstOrDefaultAsync(x => x.Id == productId);
+            ProductId pId = ProductId.From(productId);
+            var product = await Services.AppDbContext.Products.FirstOrDefaultAsync(x => x.Id == pId);
             product.Should().NotBeNull();
             product!.Name.Value.Should().Be(TestData.UpdateProductRequest.Name);
             product!.Price.Value.Should().Be(TestData.UpdateProductRequest.Price);

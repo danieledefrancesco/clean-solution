@@ -28,6 +28,13 @@ update_database:
 	dotnet ef database update --project ./src/AspNetCore.Examples.ProductService.Infrastructure/AspNetCore.Examples.ProductService.Infrastructure.csproj
 
 run_functional_tests:
+	curl --connect-timeout 5 \
+                 --max-time 10 \
+                 --retry 10	 \
+                 --retry-delay 30 \
+                 --retry-max-time 300 \
+                 --retry-all-errors \
+                 ${SUT_BASE_URL}/healthcheck
 	dotnet test ${SPECS_PROJECT_PATH}/${SPECS_PROJECT_NAME}
 
 generate_functional_tests_report:
@@ -41,9 +48,6 @@ wait_app_is_started:
         --retry-max-time 300 \
         --retry-all-errors \
         'http://localhost/healthcheck'
-
-generate_swagger:
-	swagger tofile --yaml --host http://localhost:8000 --output swagger-output/swagger.yaml ${PROJECT_FOLDER_PATH}/bin/Debug/net6.0/${DLL_NAME} v1
 
 create_queue:
 	az storage queue create -n $(QUEUE_NAME) --connection-string "${QUEUE_STORAGE_CONNECTION_STRING}"
