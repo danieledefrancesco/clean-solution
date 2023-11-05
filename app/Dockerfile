@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get -y install default-jre
 RUN apt-get -y install make procps
 
-RUN dotnet tool install --global dotnet-sonarscanner --version 5.14.0
+RUN dotnet tool install --global dotnet-sonarscanner --version 5.5.3
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 RUN dotnet tool install --global coverlet.console --version 6.0.0
 RUN dotnet tool install --global Microsoft.dotnet-openapi --version 8.0.0-rc.2.23480.2 
