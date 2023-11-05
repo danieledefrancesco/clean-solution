@@ -8,9 +8,8 @@ RUN apt-get -y install make procps
 RUN dotnet tool install --global dotnet-sonarscanner --version 5.14.0
 RUN dotnet tool install --global dotnet-reportgenerator-globaltool
 RUN dotnet tool install --global coverlet.console --version 6.0.0
-RUN dotnet tool install --global Microsoft.dotnet-openapi --version 7.0.13
+RUN dotnet tool install --global Microsoft.dotnet-openapi --version 8.0.0-rc.2.23480.2 
 RUN dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI --version 3.9.57
-RUN dotnet tool install --global Swashbuckle.AspNetCore.Cli --version 6.5.0
 RUN dotnet tool install --global dotnet-ef --version 8.0.0-rc.2.23480.1
 ENV PATH=${PATH}:/root/.dotnet/tools
 
